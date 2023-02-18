@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :sensor do
+    sequence(:name)         { |n| "Test Sensor #{n}" }
+    sequence(:access_token) { |n| "test_access_token#{n}" }
+    description             { nil }
+    sensor_type             { 'BME280' }
     association :user
-    name          { 'Test Sensor' }
-    description   { nil }
-    sensor_type   { 'BME280' }
-    access_token  { 'test_access_token' }
   end
 end

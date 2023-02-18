@@ -8,4 +8,20 @@ class ApplicationController < ActionController::Base
     end
     I18n.locale = params[:locale] || current_user&.locale || I18n.default_locale
   end
+
+  def authorize_resource(resource)
+    render_forbidden if resource.user != current_user
+  end
+
+  def render_forbidden
+    respond_to do |format|
+      format.html do
+        flash[:error] = t('resource_not_allowed')
+        redirect_to root_path
+      end
+      format.json do
+        render json: { status: 'error', message: t('resource_not_allowed') }, status: :forbidden
+      end
+    end
+  end
 end

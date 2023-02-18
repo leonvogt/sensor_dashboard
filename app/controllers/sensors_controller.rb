@@ -55,6 +55,7 @@ class SensorsController < ApplicationController
   private
   def set_sensor
     @sensor = Sensor.find(params[:id])
+    authorize_resource(@sensor)
   end
 
   def sensor_params
