@@ -1,0 +1,49 @@
+source "https://rubygems.org"
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+ruby "3.2.1"
+
+# Rails Basics
+gem "rails", "~> 7.0.4", ">= 7.0.4.1"
+gem "sprockets-rails"
+gem "jsbundling-rails"
+gem "turbo-rails"
+gem "stimulus-rails"
+gem "jbuilder"
+gem "bootsnap", require: false
+
+# Webserver
+gem "puma", "~> 5.0"
+
+# Database
+gem "pg", "~> 1.1"
+
+# Authentication
+gem 'devise'
+
+# Background Job Handling
+gem 'sidekiq'
+
+# Redis adapter to run Action Cable in production
+# And for sidekiq background jobs
+gem "redis", "~> 4.0"
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+  gem 'pry'
+  gem 'pry-rails'
+end
+
+group :development do
+  gem "web-console"
+  gem "rack-mini-profiler"
+  gem 'better_errors'
+  gem 'binding_of_caller'
+end
+
+group :test do
+  gem "capybara"
+  gem "selenium-webdriver"
+  gem "webdrivers"
+end
