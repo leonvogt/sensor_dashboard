@@ -6,3 +6,6 @@ import { application } from "./application"
 
 import SensorChart from "./sensor_chart_controller"
 application.register("sensor-chart", SensorChart)
+
+import ClickableElement from "./clickable_element_controller.js"
+application.register("clickable-element", ClickableElement)

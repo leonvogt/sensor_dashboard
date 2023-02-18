@@ -28,7 +28,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_16_191907) do
     t.string "name", null: false
     t.string "description"
     t.string "sensor_type", null: false
-    t.string "access_token", null: false
+    t.string "access_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["access_token"], name: "index_sensors_on_access_token", unique: true

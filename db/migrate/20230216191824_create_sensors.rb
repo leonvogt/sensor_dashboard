@@ -5,7 +5,7 @@ class CreateSensors < ActiveRecord::Migration[7.0]
       t.string :name, null: false
       t.string :description
       t.string :sensor_type, null: false
-      t.string :access_token, null: false
+      t.string :access_token
 
       t.index :access_token, unique: true
 

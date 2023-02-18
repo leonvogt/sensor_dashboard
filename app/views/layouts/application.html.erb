@@ -13,19 +13,23 @@
   </head>
 
   <body class="py-5">
-    <%= render "layouts/mobile_menu" %>
+    <% if user_signed_in? %>
+      <%= render "layouts/mobile_menu" %>
 
-    <div class="flex mt-[4.7rem] md:mt-0">
-      <%= render "layouts/side_menu" %>
-     <div class="content">
-        <div class="top-bar">
-          <%= render 'layouts/breadcrumbs' %>
-        </div>
+      <div class="flex mt-[4.7rem] md:mt-0">
+        <%= render "layouts/side_menu" %>
+      <div class="content">
+          <div class="top-bar">
+            <%= render 'layouts/breadcrumbs' %>
+          </div>
 
-        <div class="grid grid-cols-12 gap-6">
-          <%= yield %>
+          <div class="grid grid-cols-12 gap-6">
+            <%= yield %>
+          </div>
         </div>
       </div>
-    </div>
+    <% else %>
+      <%= yield %>
+    <% end %>
   </body>
 </html>

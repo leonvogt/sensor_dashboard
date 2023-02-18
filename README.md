@@ -8,9 +8,19 @@ bundle install
 yarn install
 ```
 
-2. Make sure redis is installed and running on your system.
+2. Create the database:
+```bash
+rails db:create
+rails db:migrate
+rails db:seed (optional)
+```
 
-To start the webserver, sidekiq and yarn watch locally run:
+3. Make sure redis is installed and running on your system.
+```bash
+redis-server --daemonize yes
+```
+
+To start the webserver, sidekiq, yarn watch and tailwind watch run:
 ```bash
 bin/dev
 ```

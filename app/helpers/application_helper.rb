@@ -11,4 +11,10 @@ module ApplicationHelper
     html << ' ' << text.to_s unless text.blank?
     html
   end
+
+  def menu_link_active_class(link)
+    if request.url.include?(link)
+      'side-menu--active'
+    end
+  end
 end

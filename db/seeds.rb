@@ -8,7 +8,9 @@ end
 
 sensor = Sensor.find_or_create_by(user: user, name: 'Test Sensor', sensor_type: 'BME280', access_token: 'test_access_token')
 if sensor.sensor_data.count == 0
-  100.times do |i|
-    sensor.sensor_data.create(value: rand(100), value_type: 'temperature')
+  SensorTypes::SENSOR_VALUE_TYPES.values.flatten.uniq.each do |value_type|
+    100.times do |i|
+      sensor.sensor_data.create(value: rand(100), value_type: value_type, created_at: Time.now - i.hours)
+    end
   end
 end

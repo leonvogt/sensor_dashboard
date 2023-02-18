@@ -29,6 +29,7 @@ gem 'sidekiq'
 gem "redis", "~> 4.0"
 
 # Styling
+gem 'sass-rails'
 gem "tailwindcss-rails", "~> 2.0"
 
 group :development, :test do

@@ -6,15 +6,17 @@
   <div class="side-nav__devider my-6"></div>
   <ul>
     <li>
-      <a href="javascript:;.html" class="side-menu side-menu--active">
+      <%= link_to dashboard_path, class: "side-menu #{menu_link_active_class(dashboard_path)}" do %>
         <div class="side-menu__icon"><i data-lucide="home"></i></div>
-        <div class="side-menu__title">
-          Dashboard
-          <div class="side-menu__sub-icon transform rotate-180">
-            <i data-lucide="chevron-down"></i>
-          </div>
-        </div>
-      </a>
+        <div class="side-menu__title">Dashboard</div>
+      <% end %>
+    </li>
+
+    <li>
+      <%= link_to sensors_path, class: "side-menu #{menu_link_active_class(sensors_path)}" do %>
+        <div class="side-menu__icon"><i data-lucide="home"></i></div>
+        <div class="side-menu__title"><%= Sensor.model_name.human(count: 2) %></div>
+      <% end %>
     </li>
   </ul>
 </nav>

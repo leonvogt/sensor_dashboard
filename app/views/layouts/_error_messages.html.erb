@@ -1,0 +1,10 @@
+<% if resource.errors.any? %>
+  <div class="alert alert-warning" role="alert">
+    <h4 class="alert-heading"><%= t('errors.template.header', count: resource.errors.count, model: resource.model_name.human) %></h4>
+    <ul class="mb-0">
+      <% resource.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

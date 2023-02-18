@@ -1,0 +1,27 @@
+<div class="intro-y col-span-12">
+  <div class="box">
+    <div class="flex flex-col lg:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400" >
+      <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
+        <span class="font-medium"><%= @sensor.name %></span>
+        <div class="text-slate-500 text-xs mt-0.5"><%= @sensor.description %></div>
+        <ul class="p-5">
+          <% @sensor.supported_value_types.each do |value_type| %>
+            <li>
+              <%= icon('fa', 'check', color: 'green') %>
+              <%= value_type.capitalize %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="text-end p-5">
+        <%= @sensor.sensor_type %>
+      </div>
+    </div>
+    <div class="text-end p-5">
+      <%= link_to @sensor, data: { turbo_method: :delete, turbo_confirm: t('confirm_delete') }, class: 'btn btn-outline-secondary text-danger' do %>
+        <%= t('delete') %>
+      <% end %>
+      <%= link_to t('edit_title', model: Sensor.model_name.human), edit_sensor_path(@sensor), class: 'btn btn-outline-secondary' %>
+    </div>
+  </div>
+</div>
