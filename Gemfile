@@ -28,6 +28,9 @@ gem 'sidekiq'
 # And for sidekiq background jobs
 gem "redis", "~> 4.0"
 
+# Styling
+gem "tailwindcss-rails", "~> 2.0"
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'

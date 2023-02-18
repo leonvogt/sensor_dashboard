@@ -40,11 +40,6 @@ export default class extends Controller {
     sensorData.forEach((data) => {
       const chartData    = this.sensorChartData(data)
       const chartOptions = this.sensorChartOptions(data)
-
-      console.log(data.value_type);
-      console.log(chartData);
-      console.log(chartOptions);
-      console.log("----------");
       const chartId = `sensor-${this.sensorId}-${data.value_type}`
       charts = [...charts, createChart('line', chartId, { data: chartData, options: chartOptions })]
     })

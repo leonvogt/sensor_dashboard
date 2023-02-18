@@ -2,15 +2,30 @@
 <html>
   <head>
     <title>SensorDashboard</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="py-5">
+    <%= render "layouts/mobile_menu" %>
+
+    <div class="flex mt-[4.7rem] md:mt-0">
+      <%= render "layouts/side_menu" %>
+     <div class="content">
+        <div class="top-bar">
+          <%= render 'layouts/breadcrumbs' %>
+        </div>
+
+        <div class="grid grid-cols-12 gap-6">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

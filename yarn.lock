@@ -135,6 +135,13 @@
   resolved "https://registry.yarnpkg.com/@hotwired/turbo/-/turbo-7.2.5.tgz#2d9d6bde8a9549c3aea8970445ade16ffd56719a"
   integrity sha512-o5PByC/mWkmTe4pWnKrixhPECJUxIT/NHtxKqjq7n9Fj6JlNza1pgxdTCJVIq+PI0j95U+7mA3N4n4A/QYZtZQ==
 
+"@left4code/tw-starter@^3.1.35":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@left4code/tw-starter/-/tw-starter-3.2.0.tgz#a69151058d2879ee0952ffeb3b08bf60a07cf95a"
+  integrity sha512-3Wu5QRJBSb1IfsV/b7AqM1hSHndTVOCTTqiWwifqwzcP3Zw8uyXm/gwUV/Lp9EcfD8SbHzCUiCjtN8xtnTBr/w==
+  dependencies:
+    "@left4code/tw-starter" "^3.1.35"
+
 "@rails/actioncable@^7.0":
   version "7.0.4"
   resolved "https://registry.yarnpkg.com/@rails/actioncable/-/actioncable-7.0.4.tgz#70a3ca56809f7aaabb80af2f9c01ae51e1a8ed41"
