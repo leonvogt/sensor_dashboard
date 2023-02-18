@@ -23,24 +23,23 @@
         </div>
       </div>
     </div>
+    <ul class="nav nav-link-tabs flex-col sm:flex-row justify-center lg:justify-start text-center" role="tablist" >
+      <li id="chart-tab" class="nav-item">
+        <a href="javascript:;" class="nav-link py-4 active" data-tw-target="#charts" role="tab"><%= t('.charts') %></a>
+      </li>
+      <li id="api-tab" class="nav-item">
+        <a href="javascript:;" class="nav-link py-4" data-tw-target="#api-info" role="tab"><%= t('.api') %></a>
+      </li>
+    </ul>
   </div>
 </div>
 
-<%= turbo_frame_tag @sensor, class: 'intro-y col-span-12' do %>
-  <div class="intro-y box px-5 pt-5 mt-5">
-    <ul class="nav nav-link-tabs flex-col sm:flex-row justify-center lg:justify-start text-center" role="tablist">
-      <li class="nav-item">
-        <%= link_to t('.charts'), sensor_path(@sensor, tab_content: 'charts'), class: "nav-link py-4 #{'active' if @tab_content == 'charts'}" %>
-      </li>
-      <li class="nav-item">
-        <%= link_to t('.api'), sensor_path(@sensor, tab_content: 'api_info'), class: "nav-link py-4 #{'active' if @tab_content == 'api_info'}" %>
-      </li>
-    </ul>
-    <div class="intro-y tab-content mt-5">
-      <div class="grid grid-cols-12 gap-6">
-        <%= render 'charts', sensor: @sensor, layout: 'show' if @tab_content == 'charts' %>
-        <%= render 'api_info', sensor: @sensor if @tab_content == 'api_info' %>
-      </div>
-    </div>
+<div class="intro-y col-span-12 box tab-content px-5 pt-5 mt-5">
+  <div id="charts" class="tab-pane active" role="tabpanel">
+    <%= render 'charts', sensor: @sensor, layout: 'show' %>
   </div>
-<% end %>
+
+  <div id="api-info" class="tab-pane" role="tabpanel">
+    <%= render 'api_info', sensor: @sensor %>
+  </div>
+</div>

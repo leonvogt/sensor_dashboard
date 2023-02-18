@@ -13,7 +13,6 @@ class SensorsController < ApplicationController
   end
 
   def show
-    @tab_content = params[:tab_content] || 'charts'
     respond_to do |format|
       format.html
       format.json do

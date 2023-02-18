@@ -2,7 +2,9 @@ import { Turbo } from "@hotwired/turbo-rails"
 Turbo.session.drive = false
 
 import "@fortawesome/fontawesome-free/js/all"
-import "@left4code/tw-starter/dist/js/dropdown";
+
+// Initializers
+import "./init/tailwind"
 
 // Import Stimulus controllers
 import "./controllers"
