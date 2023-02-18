@@ -1,8 +1,6 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.2.1"
-
 # Rails Basics
 gem "rails", "~> 7.0.4", ">= 7.0.4.1"
 gem "sprockets-rails"
@@ -31,6 +29,9 @@ gem "redis", "~> 4.0"
 # Styling
 gem 'sass-rails'
 gem "tailwindcss-rails", "~> 2.0"
+
+# Deployment
+gem 'mina'
 
 group :development, :test do
   gem 'rspec-rails'
