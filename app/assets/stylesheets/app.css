@@ -16072,7 +16072,7 @@ html body{
     color: RGB(var(--color-slate-400) / var(--tw-text-opacity));
 }
 @media (max-width: calc(1024px - 1px)) {
-    & :root {
+    .litepicker {
         --litepicker-day-width: 35px;
     }
   }
