@@ -13,7 +13,7 @@ module ApplicationHelper
   end
 
   def menu_link_active_class(link)
-    if request.url.include?(link)
+    if request.url.include?(link) || link == '/dashboard' && controller_name == 'dashboard'
       'side-menu--active'
     end
   end

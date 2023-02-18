@@ -73,6 +73,8 @@ export default class extends Controller {
       pointRadius: 0,
       hitRadius: 20,
       hoverRadius: 10,
+      responsive: true,
+      maintainAspectRatio: false,
       scales: {
         x: {
           display: this.showDetails,

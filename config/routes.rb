@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :sensor_data, only: :create
+      resource :sensor_data, only: :create
     end
   end
 end

@@ -1,0 +1,19 @@
+<div class="col-span-12">
+  <div class="p-5">
+    <%= t('.request_hint') %>
+      <div class="text-slate-500">
+        POST: <%= api_v1_sensor_data_url %>
+        <br>
+        BODY:
+      </div>
+    <pre>
+      {
+        "token":"ACCESS_TOKEN",
+        "temperature":23,
+        "pressure":96562,
+        "altitude":424,
+        "humidity":37,
+      }
+    </pre>
+  </div>
+</div>

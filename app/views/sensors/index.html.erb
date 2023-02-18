@@ -6,7 +6,6 @@
     <table class="table">
       <thead>
         <tr>
-          <th class="whitespace-nowrap">#</th>
           <th class="whitespace-nowrap"><%= Sensor.human_attribute_name(:name) %></th>
           <th class="whitespace-nowrap"><%= Sensor.human_attribute_name(:description) %></th>
           <th class="whitespace-nowrap"><%= Sensor.human_attribute_name(:sensor_type) %></th>
@@ -17,7 +16,6 @@
           <tr data-controller="clickable-element"
               data-action="click->clickable-element#open_link"
               data-url="<%= sensor_path(sensor) %>">
-            <td><%= sensor.id %></td>
             <td><%= sensor.name %></td>
             <td><%= sensor.description %></td>
             <td><%= sensor.sensor_type %></td>

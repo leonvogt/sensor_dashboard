@@ -43,6 +43,7 @@ en:
   date_end: "End date"
   select_all: "Select All"
   fullscreen: "Fullscreen"
+  details: "Details"
   successful:
     messages:
       created: "%{model} was successfully created."

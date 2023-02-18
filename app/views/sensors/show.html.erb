@@ -1,27 +1,46 @@
 <div class="intro-y col-span-12">
-  <div class="box">
-    <div class="flex flex-col lg:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400" >
-      <div class="lg:ml-2 lg:mr-auto text-center lg:text-left mt-3 lg:mt-0">
-        <span class="font-medium"><%= @sensor.name %></span>
-        <div class="text-slate-500 text-xs mt-0.5"><%= @sensor.description %></div>
-        <ul class="p-5">
+  <div class="intro-y box px-5 pt-5 mt-5">
+    <div class="flex flex-col lg:flex-row border-b border-slate-200/60 dark:border-darkmode-400 pb-5 -mx-5">
+      <div class="flex flex-1 px-5 items-center justify-center lg:justify-start">
+        <div class="ml-5">
+          <div class="w-24 sm:w-40 truncate sm:whitespace-normal font-medium text-lg"><%= @sensor.name %></div>
+          <div class="text-slate-500"><%= @sensor.description %></div>
+        </div>
+      </div>
+      <div class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
+        <div class="flex flex-col justify-center items-center lg:items-start mt-4">
           <% @sensor.supported_value_types.each do |value_type| %>
-            <li>
-              <%= icon('fa', 'check', color: 'green') %>
+            <div class="truncate sm:whitespace-normal flex items-center mt-3">
+              <%= icon('fa', 'check', color: 'green', class: 'mr-2') %>
               <%= value_type.capitalize %>
-            </li>
+            </div>
           <% end %>
-        </ul>
+        </div>
       </div>
-      <div class="text-end p-5">
-        <%= @sensor.sensor_type %>
+      <div class="mt-6 lg:mt-0 flex-1 px-5 border-t lg:border-0 border-slate-200/60 dark:border-darkmode-400 pt-5 lg:pt-0">
+        <div class="flex items-center justify-center mt-2">
+            <span class="ml-3 font-medium text-lg text-success"><%= @sensor.sensor_type %></span>
+        </div>
       </div>
-    </div>
-    <div class="text-end p-5">
-      <%= link_to @sensor, data: { turbo_method: :delete, turbo_confirm: t('confirm_delete') }, class: 'btn btn-outline-secondary text-danger' do %>
-        <%= t('delete') %>
-      <% end %>
-      <%= link_to t('edit_title', model: Sensor.model_name.human), edit_sensor_path(@sensor), class: 'btn btn-outline-secondary' %>
     </div>
   </div>
 </div>
+
+<%= turbo_frame_tag @sensor, class: 'intro-y col-span-12' do %>
+  <div class="intro-y box px-5 pt-5 mt-5">
+    <ul class="nav nav-link-tabs flex-col sm:flex-row justify-center lg:justify-start text-center" role="tablist">
+      <li class="nav-item">
+        <%= link_to t('.charts'), sensor_path(@sensor, tab_content: 'charts'), class: "nav-link py-4 #{'active' if @tab_content == 'charts'}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t('.api'), sensor_path(@sensor, tab_content: 'api_info'), class: "nav-link py-4 #{'active' if @tab_content == 'api_info'}" %>
+      </li>
+    </ul>
+    <div class="intro-y tab-content mt-5">
+      <div class="grid grid-cols-12 gap-6">
+        <%= render 'charts', sensor: @sensor, layout: 'show' if @tab_content == 'charts' %>
+        <%= render 'api_info', sensor: @sensor if @tab_content == 'api_info' %>
+      </div>
+    </div>
+  </div>
+<% end %>

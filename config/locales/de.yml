@@ -42,6 +42,7 @@ de:
   date_start: "Start Datum"
   select_all: "Alle Auswählen"
   fullscreen: "Vollbild"
+  details: "Details"
   successful:
     messages:
       created: "%{model} wurde erfolgreich erstellt."
