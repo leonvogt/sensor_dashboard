@@ -34,7 +34,8 @@ module.exports = {
         './public/*.html',
         './app/helpers/**/*.rb',
         './app/javascript/**/*.js',
-        './app/views/**/*.{erb,html}'
+        './app/views/**/*.html.erb',
+        './app/assets/stylesheets/**/*.css',
     ],
     darkMode: "class",
     theme: {
