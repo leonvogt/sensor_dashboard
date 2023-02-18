@@ -1,4 +1,13 @@
 module ApplicationHelper
+  def class_for_flash(type)
+    {
+      success: "alert-success",
+      error: "alert-danger",
+      alert: "alert-warning",
+      notice: "alert-primary"
+    }[type.to_sym] || type.to_s
+  end
+
   def icon(style, name, text = nil, html_options = {})
     text, html_options = nil, text if text.is_a?(Hash)
 

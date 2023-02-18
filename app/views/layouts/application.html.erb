@@ -15,17 +15,15 @@
   <body class="py-5">
     <% if user_signed_in? %>
       <%= render 'layouts/mobile_menu' %>
-
       <div class="flex mt-[4.7rem] md:mt-0">
         <%= render 'layouts/side_menu' %>
-
         <div class="content">
           <%= render 'layouts/top_bar' %>
+          <%= render 'layouts/flash_messages', flash: flash %>
           <div class="grid grid-cols-12 gap-6">
             <%= yield %>
           </div>
         </div>
-
       </div>
     <% else %>
       <%= yield %>
