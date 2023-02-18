@@ -1,0 +1,12 @@
+en:
+  activerecord:
+    models:
+      sensor:
+        one: "Sensor"
+        other: "Sensors"
+    attributes:
+      sensor:
+        name: Name
+        description: Description
+        sensor_type: Sensor type
+        access_token: Access token
