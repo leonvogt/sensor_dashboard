@@ -1,19 +1,38 @@
-<div class="col-span-12">
-  <div class="p-5">
-    <%= t('.request_hint') %>
-      <div class="text-slate-500">
-        POST: <%= api_v1_sensor_data_url %>
-        <br>
-        BODY:
+<div class="col-span-12 p-5">
+  <div class="flex flex-col lg:flex-row border-b border-slate-200/60 dark:border-darkmode-400 pb-5 -mx-5">
+    <div class="flex flex-1 px-5 items-center justify-center flex-col gap-28">
+      <% if sensor.access_token.present? %>
+        <div class="font-medium"><%= t('sensors.show.access_token_is_present') %></div>
+        <%= button_to sensor_access_token_path(sensor), class: 'btn btn-warning inline-block my-5' do %>
+          <%= icon('fa', 'sync') %>
+          <%= t('sensors.show.reset_access_token') %>
+        <% end %>
+      <% else %>
+        <div class="font-medium"><%= t('sensors.show.access_token_is_not_present') %></div>
+        <%= button_to sensor_access_token_path(sensor), class: 'btn btn-primary inline-block my-5' do %>
+          <%= icon('fa', 'plus') %>
+          <%= t('sensors.show.create_access_token') %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
+      <div class="flex flex-col justify-center items-center lg:items-start mt-4">
+        <%= t('sensors.show.request_hint') %>
+        <div class="text-slate-500">
+          POST: <%= api_v1_sensor_data_url %>
+          <br>
+          BODY:
+        </div>
+        <pre>
+          {
+            "token":"ACCESS_TOKEN",
+            "temperature":23,
+            "pressure":96562,
+            "altitude":424,
+            "humidity":37,
+          }
+        </pre>
       </div>
-    <pre>
-      {
-        "token":"ACCESS_TOKEN",
-        "temperature":23,
-        "pressure":96562,
-        "altitude":424,
-        "humidity":37,
-      }
-    </pre>
+    </div>
   </div>
 </div>

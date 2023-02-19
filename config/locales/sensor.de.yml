@@ -20,4 +20,8 @@ de:
     show:
       charts: Charts
       api: API
+      access_token_is_not_present: Für diesen Sensor gibt es noch keinen Access Token!
+      access_token_is_present: Für diesen Sensor gibt es einen Access Token.
+      create_access_token: Access Token erstellen
+      reset_access_token: Access Token neu erstellen?
       request_hint: "Um Sensor Werte auf dem Server zu speichern, wird ein Request mit folgendem Format erwartet:"

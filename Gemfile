@@ -45,6 +45,7 @@ group :development do
   gem "rack-mini-profiler"
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'solargraph'
 end
 
 group :test do
