@@ -16,22 +16,34 @@
       <% end %>
     </div>
     <div class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
-      <div class="flex flex-col justify-center items-center lg:items-start mt-4">
-        <%= t('sensors.show.request_hint') %>
-        <div class="text-slate-500">
-          POST: <%= api_v1_sensor_data_url %>
-          <br>
-          BODY:
+      <%= t('sensors.show.request_hint') %>
+      <div class="flex flex-col lg:flex-row py-5 -mx-5">
+        <div class="flex px-5 flex-col">
+          <span>URL:</span>
+          <span>Method:</span>
+          <span>Content-Type:</span>
+          <span>Authorization:</span>
+          <span>Body:</span>
         </div>
-        <pre>
-          {
-            "token":"ACCESS_TOKEN",
-            "temperature":23,
-            "pressure":96562,
-            "altitude":424,
-            "humidity":37,
-          }
-        </pre>
+        <div class="flex flex-col">
+          <span class="text-slate-500"><%= api_v1_sensor_data_url %></span>
+          <span class="text-slate-500">POST</span>
+          <span class="text-slate-500">application/json</span>
+          <span class="text-slate-500">Bearer ACCESS_TOKEN</span>
+          <span class="text-slate-500">
+            <pre>
+              {
+                "sensor_values":{
+                  "temperature":23,
+                  "pressure":96562,
+                  "altitude":424,
+                  "humidity":37,
+                  ...
+                }
+              }
+            </pre>
+          </span>
+        </div>
       </div>
     </div>
   </div>

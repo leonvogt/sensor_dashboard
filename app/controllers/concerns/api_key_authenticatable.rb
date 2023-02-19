@@ -16,6 +16,6 @@ module ApiKeyAuthenticatable
   attr_writer :current_sensor
 
   def authenticator(token, options)
-    @current_sensor = AccessTokenHandler.authenticate_by_token(token)
+    @current_sensor = AccessTokenHandler.new.authorize_by_token(token)
   end
 end
