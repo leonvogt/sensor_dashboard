@@ -40,3 +40,4 @@
 dump.rdb
 *.DS_Store
 stellar.yaml
+remote_database_importer.yml
