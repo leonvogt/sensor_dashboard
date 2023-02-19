@@ -23,14 +23,23 @@
         </div>
       </div>
     </div>
-    <ul class="nav nav-link-tabs flex-col sm:flex-row justify-center lg:justify-start text-center" role="tablist" >
-      <li id="chart-tab" class="nav-item">
-        <a href="javascript:;" class="nav-link py-4 active" data-tw-target="#charts" role="tab"><%= t('.charts') %></a>
-      </li>
-      <li id="api-tab" class="nav-item">
-        <a href="javascript:;" class="nav-link py-4" data-tw-target="#api-info" role="tab"><%= t('.api') %></a>
-      </li>
-    </ul>
+    <div class="flex flex-row justify-between">
+
+      <ul class="nav nav-link-tabs flex-col sm:flex-row justify-center lg:justify-start text-center" role="tablist" >
+        <li id="chart-tab" class="nav-item">
+          <a href="javascript:;" class="nav-link py-4 active" data-tw-target="#charts" role="tab"><%= t('.charts') %></a>
+        </li>
+        <li id="api-tab" class="nav-item">
+          <a href="javascript:;" class="nav-link py-4" data-tw-target="#api-info" role="tab"><%= t('.api') %></a>
+        </li>
+      </ul>
+      <div class="flex items-center">
+        <%= link_to @sensor, data: { turbo: true, turbo_method: :delete, turbo_confirm: t('confirm_delete') }, class: 'btn btn-outline-secondary text-danger mr-5' do %>
+          <%= t('delete') %>
+        <% end %>
+        <%= link_to t('edit_title', model: Sensor.model_name.human), edit_sensor_path(@sensor), class: 'btn btn-outline-secondary whitespace-nowrap' %>
+      </div>
+    </div>
   </div>
 </div>
 

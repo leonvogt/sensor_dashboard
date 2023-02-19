@@ -48,7 +48,7 @@ class SensorsController < ApplicationController
       @sensor.sensor_data.delete_all
       @sensor.destroy
     end
-    redirect_to sensors_path, notice: t('successful.messages.destroyed', model: Sensor.model_name.human)
+    redirect_to sensors_path, notice: t('successful.messages.deleted', model: Sensor.model_name.human)
   end
 
   private
