@@ -6,11 +6,13 @@ if user.blank?
   user = User.create(email: DEFAULT_EMAIL, password: DEFAULT_PASSWORD, password_confirmation: DEFAULT_PASSWORD)
 end
 
-sensor = Sensor.find_or_create_by(user: user, name: 'Test Sensor', sensor_type: 'BME280', access_token: 'test_access_token')
+device = Device.find_or_create_by(user: user, name: 'Test Device', description: 'Test description', access_token: 'test_access_token')
+sensor = Sensor.find_or_create_by(device: device, sensor_type: 'temperature', chart_type: 'line')
+
 if sensor.sensor_data.count == 0
-  SensorTypes::SENSOR_VALUE_TYPES.values.flatten.uniq.each do |value_type|
-    100.times do |i|
-      sensor.sensor_data.create(value: rand(100), value_type: value_type, created_at: Time.now - i.hours)
-    end
+  value = 20
+  100.times do |i|
+    value += rand(-2..2)
+    sensor.sensor_data.create!(value: value, created_at: Time.current - i.hours)
   end
 end

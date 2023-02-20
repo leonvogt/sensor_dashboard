@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe AccessTokenHandler do
-  let!(:sensor) { create(:sensor) }
+  let!(:device) { create(:device) }
 
   subject { described_class.new }
 
@@ -31,10 +31,10 @@ RSpec.describe AccessTokenHandler do
   end
 
   describe '#authorize_by_token' do
-    it 'finds the sensor by access token' do
+    it 'finds the device by access token' do
       access_token = subject.generate_plain_token
-      sensor.update!(access_token: subject.generate_digest_token(access_token))
-      expect(subject.authorize_by_token(access_token)).to eq(sensor)
+      device.update!(access_token: subject.generate_digest_token(access_token))
+      expect(subject.authorize_by_token(access_token)).to eq(device)
     end
   end
 end

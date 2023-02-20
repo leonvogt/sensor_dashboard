@@ -1,0 +1,51 @@
+<div class="intro-y col-span-12">
+  <div class="intro-y box px-5 pt-5 mt-5">
+    <div class="flex flex-col lg:flex-row border-b border-slate-200/60 dark:border-darkmode-400 pb-5 -mx-5">
+      <div class="flex flex-1 px-5 items-center justify-center lg:justify-start">
+        <div class="ml-5">
+          <div class="w-24 sm:w-40 truncate sm:whitespace-normal font-medium text-lg"><%= @device.name %></div>
+          <div class="text-slate-500 flex flex-col">
+            <%= @device.description %>
+            <i><%= l(@device.created_at, format: :short) %></i>
+          </div>
+        </div>
+      </div>
+      <div class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
+        <div class="flex flex-col mt-4">
+          <% @device.sensors.each do |sensor| %>
+            <div>
+              <%= icon('fa', 'check', color: sensor.sensor_data.present? ? 'green' : 'red', class: 'mr-2') %>
+              <%= sensor.to_s %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col lg:flex-row justify-between">
+      <ul class="nav nav-link-tabs flex-col sm:flex-row justify-center lg:justify-start text-center" role="tablist" >
+        <li class="nav-item">
+          <a href="javascript:;" class="nav-link py-4 active" data-tw-target="#sensors-tab" role="tab"><%= t('.sensors_tab') %></a>
+        </li>
+        <li class="nav-item">
+          <a href="javascript:;" class="nav-link py-4" data-tw-target="#api-info-tab" role="tab"><%= t('.api_info_tab') %></a>
+        </li>
+      </ul>
+      <div class="flex items-center">
+        <%= link_to @device, data: { turbo: true, turbo_method: :delete, turbo_confirm: t('confirm_delete') }, class: 'btn btn-outline-secondary text-danger mr-5' do %>
+          <%= t('delete') %>
+        <% end %>
+        <%= link_to t('edit_title', model: Device.model_name.human), edit_device_path(@device), class: 'btn btn-outline-secondary whitespace-nowrap' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="intro-y col-span-12 box tab-content px-5 pt-5 mt-5">
+  <div id="sensors-tab" class="tab-pane active" role="tabpanel">
+    <%= render 'sensors_tab', device: @device %>
+  </div>
+
+  <div id="api-info-tab" class="tab-pane" role="tabpanel">
+    <%= render 'api_info', device: @device %>
+  </div>
+</div>

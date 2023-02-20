@@ -1,0 +1,25 @@
+<div class="col-span-12">
+  <div class="overflow-x-auto">
+    <div class="mr-auto ">
+      <%= link_to t('new_title', model: Device.model_name.human), new_device_path, class: 'btn btn-primary w-50 mr-1 mb-2' %>
+    </div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="whitespace-nowrap"><%= Device.human_attribute_name(:name) %></th>
+          <th class="whitespace-nowrap"><%= Device.human_attribute_name(:description) %></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @devices.each do |device| %>
+          <tr data-controller="clickable-element"
+              data-action="click->clickable-element#open_link"
+              data-url="<%= device_path(device) %>">
+            <td><%= device.name %></td>
+            <td><%= device.description %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

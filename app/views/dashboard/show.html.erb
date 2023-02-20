@@ -1,7 +1,5 @@
 <div class="col-span-12 2xl:col-span-9">
   <div class="grid grid-cols-12 gap-6">
-    <% current_user.sensors.each do |sensor| %>
-      <%= render 'sensors/charts', sensor: sensor, layout: 'dashboard' %>
-    <% end %>
+    <%= render 'dashboard/charts' %>
   </div>
 </div>

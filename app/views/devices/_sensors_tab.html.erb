@@ -1,0 +1,6 @@
+<%= link_to new_device_sensor_path(device), class: 'btn btn-outline-secondary mb-5', data: { turbo_frame: dom_id(Sensor.new) } do %>
+  <%= t('new_title', model: Sensor.model_name.human) %>
+<% end %>
+<%= turbo_frame_tag Sensor.new %>
+<%= turbo_frame_tag 'edit_sensor' %>
+<%= render partial: 'sensors/chart', collection: device.sensors, as: :sensor %>

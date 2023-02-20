@@ -1,6 +1,11 @@
 # Sensor Dashboard
 This Sensor Dashboard is a web application that allows users to view sensor data from a variety of sources. The application is built using Ruby on Rails.
 
+## Data model
+The idea is to have devices that have sensors attached to them.
+Therefore a device can have multiple sensors that collect data and send it to the server.
+Each sensor has a type (like temperature, humidity, pressure, etc.) and can define a chart type (line, bar, etc.) and a chart color.
+
 ## Installation
 1. Install the dependencies:
 ```bash
@@ -25,16 +30,19 @@ To start the webserver, sidekiq, yarn watch and tailwind watch run:
 bin/dev
 ```
 
-## Sensor list
-The following sensors are currently supported:
-- [BME280](https://www.adafruit.com/product/2652)
-- [CCS811](https://www.adafruit.com/product/3566)
-- [CCS811_BME280](https://www.bastelgarage.ch/ccs811-bme280-co2-air-quality-umwelt-sensor)
-
 ## Sensor data
-The following sensor data is currently supported:
+The following sensor data are currently supported:
 - Temperature
 - Humidity
 - Pressure
 - CO2
-- TVOC
+- VOC
+- Altitude
+- Gas
+- Light
+- Sound
+- Vibration
+- Ethanol
+- pH
+- EC (Conductivity)
+- Hz (General frequency)

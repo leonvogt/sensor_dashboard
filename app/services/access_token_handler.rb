@@ -20,6 +20,6 @@ class AccessTokenHandler
   private
   def authorize_by_token!(token)
     digest = OpenSSL::HMAC.hexdigest('SHA256', HMAC_SECRET_KEY, token)
-    Sensor.find_by!(access_token: digest)
+    Device.find_by!(access_token: digest)
   end
 end

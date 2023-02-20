@@ -26,4 +26,12 @@ module ApplicationHelper
       'side-menu--active'
     end
   end
+
+  def sensor_types_for_select
+    SensorConfiguration::SENSOR_TYPES.map { |sensor_type| [I18n.t(sensor_type, scope: 'sensors.sensor_types'), sensor_type] }
+  end
+
+  def chart_types_for_select
+    SensorConfiguration::CHART_TYPES.map { |chart_type| [I18n.t(chart_type, scope: 'sensors.chart_types'), chart_type] }
+  end
 end

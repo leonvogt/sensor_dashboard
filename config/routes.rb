@@ -3,8 +3,10 @@ Rails.application.routes.draw do
   get  'dashboard', to: 'dashboard#show'
   devise_for :users
 
-  resources :sensors do
+  resources :devices do
     resource :access_token, only: :create
+    resources :sensors, shallow: true
+    resources :api_errors, only: :destroy
   end
 
   namespace :api do

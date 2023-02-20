@@ -1,11 +1,13 @@
 import { Controller } from "@hotwired/stimulus"
-import { createChart, updateChart } from '../global/chart_functions'
+import { createChart } from '../global/chart_functions'
 const  { DateTime }  = require("luxon")
 
 // Connects to data-controller="sensor-chart"
 export default class extends Controller {
+  static targets = ['canvas']
+
   connect() {
-    this.destroyCharts()
+    this.chart?.destroy()
 
     this.sensorId     = this.element.dataset.sensorId
     this.showDetails  = this.element.dataset.showDetails == 'true'
@@ -15,35 +17,21 @@ export default class extends Controller {
     this.currentTimestampStart = DateTime.local().minus({ hours: 24 }).toSeconds()
     this.currentTimestampEnd = DateTime.now().toSeconds()
 
-    // Chart initial laden
-    this.initializeChart().then((charts) => {
-      this.charts = charts
+    this.initializeChart().then((chart) => {
+      this.chart = chart
     })
   }
 
   disconnect() {
-    this.destroyCharts()
-  }
-
-  destroyCharts() {
-    this.charts?.forEach((chart) => {
-      chart.destroy()
-    })
+    this.chart?.destroy()
   }
 
   async initializeChart() {
-    // Get Sensor Data
-    const sensorData = await this.getSensorData(this.currentTimestampStart, this.currentTimestampEnd)
+    const sensorData = await this.getSensorData()
 
-    let charts = []
-    // Generate Chart Data for each Sensor Measurement (temperature, humidity, ...)
-    sensorData.forEach((data) => {
-      const chartData    = this.sensorChartData(data)
-      const chartOptions = this.sensorChartOptions(data)
-      const chartId = `sensor-${this.sensorId}-${data.value_type}`
-      charts = [...charts, createChart('line', chartId, { data: chartData, options: chartOptions })]
-    })
-
+    const chartData    = this.sensorChartData(sensorData)
+    const chartOptions = this.sensorChartOptions(sensorData)
+    return createChart(sensorData.chart_type, this.canvasTarget.id, { data: chartData, options: chartOptions })
   }
 
   async getSensorData(start = this.currentTimestampStart, end = this.currentTimestampEnd) {
@@ -92,7 +80,7 @@ export default class extends Controller {
         y: {
           ticks: {
             callback: function (value) {
-              return value + ' °C'
+              return value + data.value_suffix
             }
           },
         }
@@ -108,7 +96,7 @@ export default class extends Controller {
           callbacks: {
             label: function(context) {
               let label = context.formattedValue || ''
-              return label + ' °C'
+              return `${label} ${data.value_suffix}`
             }
           }
         }

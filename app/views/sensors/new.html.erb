@@ -1,1 +1,3 @@
-<%= render 'form', sensor: @sensor %>
+<%= turbo_frame_tag Sensor.new do %>
+  <%= render 'sensors/form', sensor: @sensor, model: [@sensor.device, @sensor] %>
+<% end %>

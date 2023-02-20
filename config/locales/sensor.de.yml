@@ -2,26 +2,29 @@ de:
   activerecord:
     models:
       sensor:
-        one: "Sensor"
-        other: "Sensoren"
+        one: Sensor
+        other: Sensoren
     attributes:
       sensor:
-        name: Name
-        description: Beschreibung
         sensor_type: Sensor-Typ
-        access_token: Access-Token
+        chart_type: Chart-Typ
   sensors:
-    value_types:
+    no_sensor_data: Noch keine Daten vorhanden
+    sensor_types:
       temperature: Temperatur
       humidity: Luftfeuchtigkeit
       pressure: Druck
       co2: CO2
-      tvoc: TVOC
-    show:
-      charts: Charts
-      api: API
-      access_token_is_not_present: Für diesen Sensor gibt es noch keinen Access Token!
-      access_token_is_present: Für diesen Sensor gibt es einen Access Token.
-      create_access_token: Access Token erstellen
-      reset_access_token: Access Token neu erstellen?
-      request_hint: "Um Sensor Werte auf dem Server zu speichern, wird ein Request mit folgendem Format erwartet:"
+      voc: VOC
+      altitude: Höhe
+      gas: Gas
+      light: Licht
+      sound: Sound
+      vibration: Vibration
+      ethanol: Ethanol
+      ph: pH
+      ec: Elektrische Leitfähigkeit
+      frequencies: General frequency (Hz)
+    chart_types:
+      bar: Säulendiagramm
+      line: Kurvendiagramm

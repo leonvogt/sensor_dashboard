@@ -4,7 +4,7 @@ module ApiKeyAuthenticatable
   include ActionController::HttpAuthentication::Basic::ControllerMethods
   include ActionController::HttpAuthentication::Token::ControllerMethods
 
-  attr_reader :current_sensor
+  attr_reader :current_device
 
   # Raises an error and automatically respond with a 401 HTTP status
   # when API key authentication fails
@@ -13,9 +13,9 @@ module ApiKeyAuthenticatable
   end
 
   private
-  attr_writer :current_sensor
+  attr_writer :current_device
 
   def authenticator(token, options)
-    @current_sensor = AccessTokenHandler.new.authorize_by_token(token)
+    @current_device = AccessTokenHandler.new.authorize_by_token(token)
   end
 end

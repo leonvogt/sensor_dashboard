@@ -1,0 +1,20 @@
+en:
+  activerecord:
+    models:
+      device:
+        one: "Device"
+        other: "Devices"
+    attributes:
+      device:
+        name: Name
+        description: Description
+        access_token: Access token
+  devices:
+    show:
+      sensors_tab: Sensors
+      api_info_tab: API
+      access_token_is_not_present: There is no Access Token for this sensor yet!
+      access_token_is_present: There is an Access Token for this sensor.
+      create_access_token: Create an access token.
+      reset_access_token: Create new Access Token?
+      request_hint: "To store sensor values on the server, a request with the following format is expected:"

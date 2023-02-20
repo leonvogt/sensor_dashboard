@@ -1,17 +1,17 @@
 <div class="col-span-12 p-5">
   <div class="flex flex-col lg:flex-row border-b border-slate-200/60 dark:border-darkmode-400 pb-5 -mx-5">
     <div class="flex flex-1 px-5 items-center justify-center flex-col gap-28">
-      <% if sensor.access_token.present? %>
+      <% if device.access_token.present? %>
         <div class="font-medium"><%= t('sensors.show.access_token_is_present') %></div>
-        <%= button_to sensor_access_token_path(sensor), class: 'btn btn-warning inline-block my-5' do %>
+        <%= button_to device_access_token_path(device), class: 'btn btn-warning inline-block my-5' do %>
           <%= icon('fa', 'sync') %>
-          <%= t('sensors.show.reset_access_token') %>
+          <%= t('devices.show.reset_access_token') %>
         <% end %>
       <% else %>
         <div class="font-medium"><%= t('sensors.show.access_token_is_not_present') %></div>
-        <%= button_to sensor_access_token_path(sensor), class: 'btn btn-primary inline-block my-5' do %>
+        <%= button_to device_access_token_path(device), class: 'btn btn-primary inline-block my-5' do %>
           <%= icon('fa', 'plus') %>
-          <%= t('sensors.show.create_access_token') %>
+          <%= t('devices.show.create_access_token') %>
         <% end %>
       <% end %>
     </div>
@@ -33,12 +33,10 @@
           <span class="text-slate-500">
             <pre>
               {
-                "sensor_values":{
-                  "temperature":23,
-                  "pressure":96562,
-                  "altitude":424,
-                  "humidity":37,
-                  ...
+                "sensor_values": {
+                  <% device.sensors.each do |sensor| %>
+                    <%= "\"#{sensor.sensor_type}\":#{rand(30)}" %>
+                  <% end %>
                 }
               }
             </pre>
