@@ -16,6 +16,7 @@ en:
       pressure: Pressure
       co2: CO2
       voc: VOC
+      tvoc: TVOC
       altitude: Altitude
       gas: Gas
       light: Light

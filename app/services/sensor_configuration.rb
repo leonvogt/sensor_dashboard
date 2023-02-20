@@ -13,6 +13,7 @@ class SensorConfiguration
     'ethanol' => 'ppm',
     'co2' => 'ppm',
     'voc' => 'ppb',
+    'tvoc' => 'ppb',
     'ph' => 'pH',
     'ec' => 'µS/cm',
     'frequencies' => 'Hz',

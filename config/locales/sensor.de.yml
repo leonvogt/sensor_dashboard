@@ -16,6 +16,7 @@ de:
       pressure: Druck
       co2: CO2
       voc: VOC
+      tvoc: TVOC
       altitude: Höhe
       gas: Gas
       light: Licht
