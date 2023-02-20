@@ -14,6 +14,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_19_213057) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "api_errors", force: :cascade do |t|
+    t.text "error_message"
+    t.bigint "device_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["device_id"], name: "index_api_errors_on_device_id"
+  end
 
   create_table "devices", force: :cascade do |t|
     t.string "name", null: false
@@ -56,6 +63,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_19_213057) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "api_errors", "devices"
   add_foreign_key "devices", "users"
   add_foreign_key "sensor_data", "sensors"
   add_foreign_key "sensors", "devices"

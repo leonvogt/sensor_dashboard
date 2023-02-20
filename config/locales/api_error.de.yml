@@ -1,0 +1,12 @@
+de:
+  activerecord:
+    models:
+      api_error:
+        one: "API Error"
+        other: "API Error"
+    attributes:
+      api_error:
+        error_message: Fehlermeldung
+  errors:
+    api_error:
+      sensor_not_found: "Kein Sensor mit dem Typ '%{sensor_type}' gefunden"

@@ -1,6 +1,8 @@
 <% flash.each do |type, message| %>
-  <div class="alert <%= class_for_flash(type) %> alert-dismissible fade show mb-10" role="alert">
+  <div class="alert <%= class_for_flash(type) %> alert-dismissible show mb-10 flex items-center" role="alert">
     <%= message %>
-    <button type="button" class="btn-close text-white" data-tw-dismiss="alert" aria-label="Close"> <i data-lucide="x" class="w-4 h-4"></i> </button>
+    <button type="button" class="btn-close text-white" data-tw-dismiss="alert" aria-label="Close">
+      <%= icon('fa', 'xmark') %>
+    </button>
   </div>
 <% end %>

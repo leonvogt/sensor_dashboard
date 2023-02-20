@@ -11,8 +11,17 @@ class Api::V1::SensorDataController < ApplicationController
 
 
   def create
-    sensor_value_params.each do |value_type, value|
-      @current_sensor.sensor_data.create!(value: value, value_type: value_type)
+    ActiveRecord::Base.transaction do
+      sensor_value_params.each do |sensor_type, value|
+        begin
+          @current_device.sensors.find_by!(sensor_type: sensor_type).sensor_data.create!(value: value)
+        rescue ActiveRecord::RecordNotFound
+          error_message = I18n.t('errors.api_error.sensor_not_found', sensor_type: sensor_type)
+          @current_device.api_errors.create!(error_message: error_message)
+          render json: { status: 'error', message: error_message }, status: :unprocessable_entity
+          return
+        end
+      end
     end
 
     render json: { status: 'success' }, status: :ok
