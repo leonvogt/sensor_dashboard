@@ -4,4 +4,5 @@ class User < ApplicationRecord
 
   has_many :devices, dependent: :destroy
   has_many :sensors, through: :devices
+  has_many :sensor_data, through: :sensors
 end

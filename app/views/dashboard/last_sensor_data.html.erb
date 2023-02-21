@@ -1,0 +1,29 @@
+<%= turbo_frame_tag 'last-sensor-data' do %>
+  <div class="2xl:border-l -mb-10 pb-10">
+    <div class="2xl:pl-6 grid grid-cols-12 gap-x-6 2xl:gap-x-0 gap-y-6">
+      <div class="col-span-12 md:col-span-6 xl:col-span-4 2xl:col-span-12 mt-3 2xl:mt-8">
+        <div class="intro-x flex items-center h-10">
+          <h2 class="text-lg font-medium truncate mr-5"><%= t('dashboard.last_sensor_data', count: 5) %></h2>
+        </div>
+        <div class="mt-5">
+          <% @sensor_data.each do |data| %>
+            <div class="intro-x">
+              <%= link_to data.sensor&.device, target: '_top' do %>
+                <div class="box px-5 py-3 mb-3 flex items-center zoom-in">
+                  <div class="ml-4 mr-auto">
+                    <div class="font-medium"><%= data.sensor.to_s %></div>
+                    <div class="text-slate-500 text-xs mt-0.5"><%= data.sensor.device&.to_s %></div>
+                  </div>
+                  <div>
+                    <div class="text-success"><%= data.to_s %></div>
+                    <div class="text-slate-500 text-xs mt-0.5"><%= time_ago_in_words(data.created_at) %></div>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
