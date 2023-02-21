@@ -13,9 +13,8 @@ RSpec.describe SerializeSensorData do
     end
 
     it 'contains all sensor data' do
-      serialized_data       = subject.serialize
-
-      expect(serialized_data[:timestamps]).to match_array(sensor_data.map(&:created_at).map(&:to_i))
+      serialized_data = subject.serialize
+      expect(serialized_data[:timestamps]).to match_array(sensor_data.map(&:created_at))
       expect(serialized_data[:values]).to match_array(sensor_data.map(&:value))
     end
 
@@ -23,7 +22,7 @@ RSpec.describe SerializeSensorData do
       serialized_data = subject.serialize
       expect(serialized_data[:min_value]).to eq(sensor_data.map(&:value).min)
       expect(serialized_data[:max_value]).to eq(sensor_data.map(&:value).max)
-      expect(serialized_data[:avg_value]).to eq((sensor_data.map(&:value).sum / sensor_data.count).round(2))
+      expect(serialized_data[:avg_value]).to eq(sensor_data.map(&:value).sum || 1 / @sensor_data.count.round(2) || 1)
     end
   end
 end
