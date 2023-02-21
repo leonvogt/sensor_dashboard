@@ -1,5 +1,8 @@
 class DashboardController < ApplicationController
   def show
-    @sensors = current_user.sensors.includes(:sensor_data, :device)
+  end
+
+  def charts
+    @sensors = current_user.sensors.includes(:device)
   end
 end

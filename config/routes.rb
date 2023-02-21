@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root "dashboard#show"
   get  'dashboard', to: 'dashboard#show'
+  get  'dashboard_charts', to: 'dashboard#charts'
   devise_for :users
 
   resources :devices do
