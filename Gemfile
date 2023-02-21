@@ -24,7 +24,7 @@ gem 'sidekiq'
 
 # Redis adapter to run Action Cable in production
 # And for sidekiq background jobs
-gem "redis", "~> 4.0"
+gem "redis", "~> 5.0"
 
 # Styling
 gem "tailwindcss-rails", "~> 2.0"
