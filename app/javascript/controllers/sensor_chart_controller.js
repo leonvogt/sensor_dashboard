@@ -4,7 +4,7 @@ const  { DateTime }  = require("luxon")
 
 // Connects to data-controller="sensor-chart"
 export default class extends Controller {
-  static targets = ['canvas']
+  static targets = ['canvas', 'resetButton']
 
   connect() {
     this.chart?.destroy()
@@ -24,6 +24,11 @@ export default class extends Controller {
 
   disconnect() {
     this.chart?.destroy()
+  }
+
+  resetChartZoom() {
+    this.chart.resetZoom()
+    this.hideResetZoomButton()
   }
 
   async initializeChart() {
@@ -86,6 +91,22 @@ export default class extends Controller {
         }
       },
       plugins: {
+        zoom: {
+          zoom: {
+            mode: 'x',
+            onZoomStart: () => this.checkZoomValidity(),
+            onZoom: () => this.showResetZoomButton(),
+            // Maus zum zoomen
+            drag: {
+              enabled: true,
+              backgroundColor: 'rgba(54, 162, 235, 0.2)'
+            },
+            // Fingergeste zum zoomen
+            pinch: {
+              enabled: true
+            }
+          }
+        },
         autocolors: false,
         legend: {
           display: false
@@ -102,5 +123,29 @@ export default class extends Controller {
         }
       }
     }
+  }
+
+  checkZoomValidity() {
+    const timeStamps        = this.chart.scales.x.ticks.map(tick => tick.value)
+    const timeStampStart    = timeStamps[0] / 1000
+    const timeStampEnd      = timeStamps[timeStamps.length - 1] / 1000
+    const durationInSeconds = timeStampEnd - timeStampStart
+    if (durationInSeconds < (60 * 60)) {
+      return false
+    }
+  }
+
+  chartWasZoomed() {
+
+  }
+
+  showResetZoomButton() {
+    this.resetButtonTarget.classList.remove('tns-fadeOut')
+    this.resetButtonTarget.classList.add('tns-fadeIn')
+  }
+
+  hideResetZoomButton() {
+    this.resetButtonTarget.classList.remove('tns-fadeIn')
+    this.resetButtonTarget.classList.add('tns-fadeOut')
   }
 }
