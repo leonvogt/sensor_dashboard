@@ -67,7 +67,7 @@ export default class extends Controller {
       hitRadius: 20,
       hoverRadius: 10,
       responsive: true,
-      maintainAspectRatio: false,
+      maintainAspectRatio: this.showDetails,
       scales: {
         x: {
           display: this.showDetails,
@@ -84,6 +84,7 @@ export default class extends Controller {
         },
         y: {
           ticks: {
+            display: this.showDetails,
             callback: function (value) {
               return value + data.value_suffix
             }

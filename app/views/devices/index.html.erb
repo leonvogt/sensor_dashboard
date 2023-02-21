@@ -16,7 +16,7 @@
         <% @devices.each do |device| %>
           <tr data-controller="clickable-element"
               data-action="click->clickable-element#open_link"
-              data-url="<%= device_path(device) %>">
+              data-url=<%= device_path(device) %>>
             <td><%= device.name %></td>
             <td><%= device.description %></td>
           </tr>

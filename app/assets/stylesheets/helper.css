@@ -1,3 +1,7 @@
 [data-controller="clickable-element"] {
   cursor: pointer;
 }
+
+.h-inherit {
+  height: inherit;
+}

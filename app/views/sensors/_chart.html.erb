@@ -1,30 +1,27 @@
-<div class="col-span-12">
-  <div class="grid grid-cols-1 2xl:grid-cols-7 gap-6 p-5">
-    <div class="2xl:col-span-2">
-      <div class="grid grid-cols-2 gap-6">
-        <div class="col-span-2 sm:col-span-1 2xl:col-span-2 box dark:bg-darkmode-500 p-5">
-          <div class="flex">
-            <div class="font-medium"><%= sensor.to_s %></div>
-            <div class="ml-auto">
-              <%= link_to edit_sensor_path(sensor), data: { turbo_frame: 'edit_sensor' }  do %>
-                <%= icon('fa', 'cog', class: 'text-slate-500') %>
-              <% end %>
-            </div>
+<div class="grid grid-cols-2 gap-6 mb-5">
+  <div class="col-span-2 sm:col-span-1 2xl:col-span-2 box dark:bg-darkmode-500 p-5">
+    <div class="flex mb-5">
+      <div class="font-medium"><%= sensor.to_s %></div>
+      <div class="ml-auto">
+        <%= link_to edit_sensor_path(sensor), data: { turbo_frame: 'edit_sensor' }  do %>
+          <%= icon('fa', 'cog', class: 'text-slate-500') %>
+        <% end %>
+      </div>
+    </div>
+    <div class="flex items-center mt-1 sm:mt-0"
+         data-controller="clickable-element"
+         data-action="mousedown->clickable-element#click_start mouseup->clickable-element#maybe_open_link"
+         data-url=<%= device_path(sensor&.device, sensor_to_show: sensor.id) %>>
+      <div class="w-full overflow-auto">
+        <% if sensor.sensor_data.present? %>
+          <div class="h-[51px]" data-controller="sensor-chart" data-sensor-id=<%= sensor.id %> data-show-details="false">
+            <canvas id=<%= "sensor-#{sensor.id}" %> data-sensor-chart-target="canvas">
+              <p>Oops, Something went wrong here, sorry!</p>
+            </canvas>
           </div>
-          <div class="flex items-center mt-1 sm:mt-0">
-            <div class="w-5/6 overflow-auto">
-              <% if sensor.sensor_data.present? %>
-                <div class="h-[51px]" data-controller="sensor-chart" data-sensor-id="<%= sensor.id %>" data-show-details="false">
-                  <canvas id="<%= "sensor-#{sensor.id}" %>" data-sensor-chart-target="canvas">
-                    <p>Oops, Something went wrong here, sorry!</p>
-                  </canvas>
-                </div>
-              <% else %>
-                <p class="text-center"><i><%= t('sensors.no_sensor_data') %></i></p>
-              <% end %>
-            </div>
-          </div>
-        </div>
+        <% else %>
+          <p class="text-center"><i><%= t('sensors.no_sensor_data') %></i></p>
+        <% end %>
       </div>
     </div>
   </div>
