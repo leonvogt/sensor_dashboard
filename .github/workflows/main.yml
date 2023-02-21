@@ -6,7 +6,7 @@ on:
     branches: [ main ]
 
 env:
-  HMAC_SECRET_KEY: "TopSecretAndSecureHMACKey"
+  API_KEY_HMAC_SECRET_KEY: "TopSecretAndSecureHMACKey"
 
 jobs:
   test:
