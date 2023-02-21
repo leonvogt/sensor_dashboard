@@ -10,6 +10,7 @@ de:
   save: "Speichern"
   back: "Zurück"
   close: "Schliessen"
+  cancel: "Abbrechen"
   delete: "Löschen"
   confirm: "Sind Sie sicher?"
   confirm_delete: "Sind Sie sicher, dass Sie dieses Element löschen wollen?"
