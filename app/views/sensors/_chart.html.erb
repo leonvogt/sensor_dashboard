@@ -3,9 +3,9 @@
     <div class="2xl:col-span-2">
       <div class="grid grid-cols-2 gap-6">
         <div class="col-span-2 sm:col-span-1 2xl:col-span-2 box dark:bg-darkmode-500 p-5">
-          <div class="flex justify-between  ">
+          <div class="flex">
             <div class="font-medium"><%= sensor.to_s %></div>
-            <div>
+            <div class="ml-auto">
               <%= link_to edit_sensor_path(sensor), data: { turbo_frame: 'edit_sensor' }  do %>
                 <%= icon('fa', 'cog', class: 'text-slate-500') %>
               <% end %>
