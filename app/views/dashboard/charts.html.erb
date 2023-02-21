@@ -1,27 +1,32 @@
 <%= turbo_frame_tag 'charts' do %>
   <div class="col-span-12 2xl:col-span-12">
-    <div class="grid grid-cols-12 gap-6">
-      <% @sensors.each do |sensor| %>
-        <div class="col-span-12 sm:col-span-6 lg:col-span-4 mt-8" data-controller="sensor-chart" data-sensor-id="<%= sensor.id %>" data-show-details="true">
-          <div class="intro-y flex items-center h-10">
-            <h2 class="text-lg font-medium truncate mr-5"><%= sensor.to_s %></h2>
-            <%= link_to t('details'), sensor.device, class: 'ml-auto text-primary truncate' %>
-          </div>
-          <div class="intro-y box p-5 mt-5">
-            <div class="flex justify-end">
-              <button class="btn btn-sm tns-fadeOut" data-sensor-chart-target="resetButton" data-action="click->sensor-chart#resetChartZoom">
-                <%= icon('fas', 'sync-alt', class: 'mr-2') %>
-                Reset Zoom
-              </button>
+    <% @devices.each do |device| %>
+      <div class="intro-y box px-5 pt-5 mt-5">
+        <h1 class="font-medium text-lg"><%= device.name %></h1>
+        <div class="grid grid-cols-12 gap-6">
+          <% device.sensors.shown_in_dashboard.each do |sensor| %>
+            <div class="col-span-12 sm:col-span-6 lg:col-span-4 my-4" data-controller="sensor-chart" data-sensor-id="<%= sensor.id %>" data-show-details="true">
+              <div class="intro-y flex items-center h-10">
+                <h2><%= sensor.to_s %></h2>
+                <%= link_to t('details'), sensor.device, class: 'ml-auto text-primary truncate', target: '_top' %>
+              </div>
+              <div class="intro-y box p-5">
+                <div class="flex justify-end">
+                  <button class="btn btn-sm tns-fadeOut" data-sensor-chart-target="resetButton" data-action="click->sensor-chart#resetChartZoom">
+                    <%= icon('fas', 'sync-alt', class: 'mr-2') %>
+                    Reset Zoom
+                  </button>
+                </div>
+                <div class="h-[213px] my-5">
+                  <canvas id="<%= "sensor-#{sensor.id}" %>" data-sensor-chart-target="canvas">
+                    <p>Oops, Something went wrong here, sorry!</p>
+                  </canvas>
+                </div>
+              </div>
             </div>
-            <div class="h-[213px] my-5">
-              <canvas id="<%= "sensor-#{sensor.id}" %>" data-sensor-chart-target="canvas">
-                <p>Oops, Something went wrong here, sorry!</p>
-              </canvas>
-            </div>
-          </div>
+          <% end %>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 <% end %>

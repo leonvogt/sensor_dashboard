@@ -3,6 +3,6 @@ class DashboardController < ApplicationController
   end
 
   def charts
-    @sensors = current_user.sensors.includes(:device)
+    @devices = current_user.devices.includes(:sensors)
   end
 end

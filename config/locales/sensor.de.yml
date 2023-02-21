@@ -8,6 +8,7 @@ de:
       sensor:
         sensor_type: Sensor-Typ
         chart_type: Chart-Typ
+        show_in_dashboard: Im Dashboard anzeigen
   sensors:
     no_sensor_data: Noch keine Daten vorhanden
     sensor_types:
