@@ -1,7 +1,7 @@
 <div class="intro-y col-span-12">
   <div class="intro-y box px-5">
     <div class="flex flex-col lg:flex-row border-b border-slate-200/60 dark:border-darkmode-400 pb-5 -mx-5">
-      <div class="flex flex-1 px-2 items-center justify-center lg:justify-start">
+      <div class="flex flex-1 p-2 items-center justify-center lg:justify-start">
         <div class="ml-5">
           <div class="w-24 sm:w-40 truncate sm:whitespace-normal font-medium text-lg"><%= @device.name %></div>
           <div class="text-slate-500 flex flex-col">
@@ -51,41 +51,42 @@
     <% end %>
     <%= turbo_frame_tag Sensor.new %>
     <%= turbo_frame_tag 'edit_sensor' %>
+    <% if @sensor_to_show.present? %>
+      <div class="col-span-12">
+        <div class="grid grid-cols-1 2xl:grid-cols-7 gap-6 p-5">
+          <div class="2xl:col-span-2">
+            <%= render partial: 'sensors/chart', collection: @sensors.where.not(id: @sensor_to_show.id), as: :sensor %>
+          </div>
 
-    <div class="col-span-12">
-      <div class="grid grid-cols-1 2xl:grid-cols-7 gap-6 p-5">
-        <div class="2xl:col-span-2">
-          <%= render partial: 'sensors/chart', collection: @sensors.where.not(id: @sensor_to_show.id), as: :sensor %>
-        </div>
-
-        <div class="2xl:col-span-5 w-full h-full">
-          <div class="box dark:bg-darkmode-500 p-5 h-max">
-            <div class="flex">
-              <div class="font-medium"><%= @sensor_to_show.to_s %></div>
-              <div class="ml-auto">
-                <%= link_to edit_sensor_path(@sensor_to_show), data: { turbo_frame: 'edit_sensor' }  do %>
-                  <%= icon('fa', 'cog', class: 'text-slate-500') %>
-                <% end %>
-              </div>
-            </div>
-            <% if @sensor_to_show.sensor_data.present? %>
-              <div class="" data-controller="sensor-chart" data-sensor-id=<%= @sensor_to_show.id %> data-show-details="true">
-                <div class="flex justify-end">
-                  <button class="btn btn-sm tns-fadeOut" data-sensor-chart-target="resetButton" data-action="click->sensor-chart#resetChartZoom">
-                    <%= icon('fas', 'sync-alt', class: 'mr-2') %>
-                    Reset Zoom
-                  </button>
+          <div class="2xl:col-span-5 w-full h-full">
+            <div class="box dark:bg-darkmode-500 p-5 h-max">
+              <div class="flex">
+                <div class="font-medium"><%= @sensor_to_show.to_s %></div>
+                <div class="ml-auto">
+                  <%= link_to edit_sensor_path(@sensor_to_show), data: { turbo_frame: 'edit_sensor' }  do %>
+                    <%= icon('fa', 'cog', class: 'text-slate-500') %>
+                  <% end %>
                 </div>
-                <canvas id=<%= "sensor-#{@sensor_to_show.id}" %> data-sensor-chart-target="canvas">
-                  <p>Oops, Something went wrong here, sorry!</p>
-                </canvas>
               </div>
-            <% else %>
-              <p class="text-center"><i><%= t('sensors.no_sensor_data') %></i></p>
-            <% end %>
+              <% if @sensor_to_show.sensor_data.present? %>
+                <div class="" data-controller="sensor-chart" data-sensor-id=<%= @sensor_to_show.id %> data-show-details="true">
+                  <div class="flex justify-end">
+                    <button class="btn btn-sm tns-fadeOut" data-sensor-chart-target="resetButton" data-action="click->sensor-chart#resetChartZoom">
+                      <%= icon('fas', 'sync-alt', class: 'mr-2') %>
+                      Reset Zoom
+                    </button>
+                  </div>
+                  <canvas id=<%= "sensor-#{@sensor_to_show.id}" %> data-sensor-chart-target="canvas">
+                    <p>Oops, Something went wrong here, sorry!</p>
+                  </canvas>
+                </div>
+              <% else %>
+                <p class="text-center"><i><%= t('sensors.no_sensor_data') %></i></p>
+              <% end %>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>
