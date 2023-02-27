@@ -85,6 +85,7 @@ de:
       already_signed_out: Erfolgreich abgemeldet.
       new:
         sign_in: Anmelden
+        sign_in_as_guest: Als Gast anmelden
       signed_in: Erfolgreich angemeldet.
       signed_out: Erfolgreich abgemeldet.
     shared:

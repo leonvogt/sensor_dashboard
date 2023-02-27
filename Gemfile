@@ -33,6 +33,9 @@ gem "cssbundling-rails", "~> 1.1"
 # Deployment
 gem 'mina'
 
+# Other
+gem 'faker'
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_bot_rails'
