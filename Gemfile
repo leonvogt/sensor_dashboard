@@ -11,7 +11,7 @@ gem "jbuilder"
 gem "bootsnap", require: false
 
 # Webserver
-gem "puma", "~> 5.0"
+gem "puma", "~> 6.1"
 
 # Database
 gem "pg", "~> 1.1"
