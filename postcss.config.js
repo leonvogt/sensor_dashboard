@@ -1,15 +1,24 @@
+let postcss = require('postcss')
+
 module.exports = {
   plugins: [
-    require("postcss-import"),
-    require("autoprefixer"),
-    require("tailwindcss"),
-    require("postcss-nested"),
-    require("postcss-flexbugs-fixes"),
-    require("postcss-preset-env")({
-      autoprefixer: {
-        flexbox: "no-2009",
+    {
+      postcssPlugin: 'grouped',
+      Once(root, { result }) {
+        return postcss([
+          require('postcss-import'),
+          require('postcss-mixins'),
+          require('postcss-simple-vars'),
+          require("postcss-import"),
+          require("postcss-advanced-variables"),
+          require("tailwindcss/nesting"),
+          require("tailwindcss")("./tailwind.config.js"),
+          require("autoprefixer"),
+        ]).process(root, result.opts)
       },
-      stage: 3,
-    }),
+    },
+    require('tailwindcss'),
+    require('postcss-nested'),
+    require('autoprefixer'),
   ],
-};
+}

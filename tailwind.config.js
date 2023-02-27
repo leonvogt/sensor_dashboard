@@ -1,26 +1,3 @@
-// const defaultTheme = require('tailwindcss/defaultTheme')
-
-// module.exports = {
-//   content: [
-//     './public/*.html',
-//     './app/helpers/**/*.rb',
-//     './app/javascript/**/*.js',
-//     './app/views/**/*.{erb,haml,html,slim}'
-//   ],
-//   theme: {
-//     extend: {
-//       fontFamily: {
-//         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
-//       },
-//     },
-//   },
-//   plugins: [
-//     require('@tailwindcss/forms'),
-//     require('@tailwindcss/aspect-ratio'),
-//     require('@tailwindcss/typography'),
-//   ]
-// }
-
 const colors = require("tailwindcss/colors");
 const {
     toRGB,
@@ -30,12 +7,10 @@ const {
 module.exports = {
     mode: "jit",
     content: [
-        "./node_modules/@left4code/tw-starter/**/*.js",
-        './public/*.html',
-        './app/helpers/**/*.rb',
-        './app/javascript/**/*.js',
-        './app/views/**/*.html.erb',
-        './app/assets/stylesheets/**/*.css',
+      './public/*.html',
+      './app/helpers/**/*.rb',
+      './app/javascript/**/*.js',
+      './app/views/**/*.{erb,html}'
     ],
     darkMode: "class",
     theme: {
