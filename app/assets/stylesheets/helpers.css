@@ -2,6 +2,6 @@
   cursor: pointer;
 }
 
-.h-inherit {
-  height: inherit;
+canvas {
+  cursor: crosshair;
 }

@@ -1,7 +1,7 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="flex justify-center container mx-auto my-auto w-screen h-screen items-center flex-col">
     <div class="w-full md:w-3/4  lg:w-1/2 flex flex-col items-center bg-slate-50 rounded-md p-10">
-      <div class="text-slate-100 items-center">
+      <div class="items-center">
         <svg class="w-10 h-10 mx-auto pb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
         <div class="text-center pb-3">Welcome back!</div>
       </div>
@@ -16,7 +16,7 @@
         <%= f.submit "Log in", class: 'btn btn-primary w-full' %>
       </div>
 
-      <div class="mt-6 text-slate-100 text-sm">
+      <div class="mt-6 text-sm">
         <div class="flex flex-col gap-2 items-center">
           <%= link_to t('devise.passwords.new.forgot_your_password'), new_password_path(resource_name) %><br />
           <%= link_to t('devise.signup'), new_registration_path(resource_name) %><br />

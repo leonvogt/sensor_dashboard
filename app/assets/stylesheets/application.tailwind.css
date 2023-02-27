@@ -37,16 +37,11 @@
 /* Custom Components */
 @import "./components/_global.css";
 @import "./components/_top-bar.css";
-@import "./components/_login.css";
-@import "./components/_table-report.css";
-@import "./components/_report-chart.css";
 @import "./components/_content.css";
 @import "./components/_top-nav.css";
 @import "./components/_side-nav.css";
 @import "./components/_breadcrumb.css";
-@import "./components/_top-bar-boxed.css";
 @import "./components/_tom-select.css";
 @import "./components/_dark-mode-switcher.css";
 
-@import "main";
-@import "helper";
+@import "helpers";
