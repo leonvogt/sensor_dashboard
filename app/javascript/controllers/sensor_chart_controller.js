@@ -1,10 +1,10 @@
 import { Controller } from "@hotwired/stimulus"
-import { createChart } from '../global/chart_functions'
+import { createChart, addDatapointToChart } from '../global/chart_functions'
 const  { DateTime }  = require("luxon")
 
 // Connects to data-controller="sensor-chart"
 export default class extends Controller {
-  static targets = ['canvas', 'resetButton']
+  static targets = ['canvas', 'resetButton', 'newValueNotifier']
 
   connect() {
     this.chart?.destroy()
@@ -45,12 +45,17 @@ export default class extends Controller {
     return data
   }
 
+  newValueNotifierTargetConnected(notifier) {
+    const formatedTimeLabel = DateTime.fromSeconds(Number(notifier.dataset.timestamp)).toISO()
+    addDatapointToChart(this.chart, formatedTimeLabel, notifier.dataset.newValue)
+  }
+
   sensorChartData(data) {
     return {
       labels: data.timestamps,
       datasets: [{
         data: data.values,
-        tension: 0.4,
+        tension: 0.15,
         borderWidth: 2,
         pointHoverBackgroundColor: 'rgba(54, 162, 235, 1)',
         segment: {
@@ -67,7 +72,7 @@ export default class extends Controller {
       hitRadius: 20,
       hoverRadius: 10,
       responsive: true,
-      maintainAspectRatio: this.showDetails,
+      maintainAspectRatio: false,
       scales: {
         x: {
           display: this.showDetails,
@@ -141,12 +146,12 @@ export default class extends Controller {
   }
 
   showResetZoomButton() {
-    this.resetButtonTarget.classList.remove('tns-fadeOut')
-    this.resetButtonTarget.classList.add('tns-fadeIn')
+    this.resetButtonTarget.classList.remove('fadeOut')
+    this.resetButtonTarget.classList.add('fadeIn')
   }
 
   hideResetZoomButton() {
-    this.resetButtonTarget.classList.remove('tns-fadeIn')
-    this.resetButtonTarget.classList.add('tns-fadeOut')
+    this.resetButtonTarget.classList.remove('fadeIn')
+    this.resetButtonTarget.classList.add('fadeOut')
   }
 }

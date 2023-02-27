@@ -3,6 +3,8 @@ class Api::V1::SensorDataController < ApplicationController
 
   # Deactivate Devise authentication
   skip_before_action :authenticate_user!
+
+  # Deactivate CSRF protection, because we are using an API key
   skip_before_action :verify_authenticity_token
 
   # Check for valid API key, before any other action
@@ -14,7 +16,8 @@ class Api::V1::SensorDataController < ApplicationController
     ActiveRecord::Base.transaction do
       sensor_value_params.each do |sensor_type, value|
         begin
-          @current_device.sensors.find_by!(sensor_type: sensor_type).sensor_data.create!(value: value)
+          sensor_data = @current_device.sensors.find_by!(sensor_type: sensor_type).sensor_data.create!(value: value)
+          broadcast_new_sensor_data(sensor_data)
         rescue ActiveRecord::RecordNotFound
           error_message = I18n.t('errors.api_error.sensor_not_found', sensor_type: sensor_type)
           @current_device.api_errors.create!(error_message: error_message)
@@ -30,5 +33,10 @@ class Api::V1::SensorDataController < ApplicationController
   private
   def sensor_value_params
     params.require(:sensor_values)
+  end
+
+  def broadcast_new_sensor_data(sensor_data)
+    Broadcast::add_sensor_data_to_chart("sensor-show-page", sensor_data)
+    Broadcast::add_sensor_data_to_chart("dashboard", sensor_data)
   end
 end

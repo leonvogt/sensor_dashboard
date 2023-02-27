@@ -12,7 +12,16 @@ export async function createChart(chartType, chartId, chartData){
   return new Chart(ctx, chartConfig);
 }
 
-// Update labels and Datapoints of a chart
+// Add specific label and Datapoint to a chart
+export function addDatapointToChart(chart, newLabel, newDataPoint) {
+  chart.data.labels.push(newLabel);
+  chart.data.datasets.forEach((dataset) => {
+      dataset.data.push(newDataPoint);
+  });
+  chart.update();
+}
+
+// Update all labels and Datapoints of a chart
 export function updateChart(chart, newLabels, newData, newBorderInfo) {
   chart.data.labels        = [];
   chart.data.datasets.data = [];

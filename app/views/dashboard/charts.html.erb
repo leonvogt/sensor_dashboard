@@ -10,16 +10,18 @@
           </div>
           <div class="intro-y box p-5">
             <div class="flex justify-end">
-              <button class="btn btn-sm tns-fadeOut" data-sensor-chart-target="resetButton" data-action="click->sensor-chart#resetChartZoom">
+              <button class="btn btn-sm fadeOut" data-sensor-chart-target="resetButton" data-action="click->sensor-chart#resetChartZoom">
                 <%= icon('fas', 'sync-alt', class: 'mr-2') %>
                 Reset Zoom
               </button>
             </div>
-            <div class="h-[213px] my-5">
-              <canvas id=<%= "sensor-#{sensor.id}" %> data-sensor-chart-target="canvas">
-                <p>Oops, Something went wrong here, sorry!</p>
-              </canvas>
-            </div>
+            <% if sensor.sensor_data.any? %>
+              <%= content_tag :div, id: "sensor-container-#{sensor.id}", class: 'h-[213px]' do %>
+                <%= content_tag :canvas, '', id: "sensor-#{sensor.id}", data: { sensor_chart_target: 'canvas' } %>
+              <% end %>
+            <% else %>
+              <p class="text-center"><i><%= t('sensors.no_sensor_data') %></i></p>
+            <% end %>
           </div>
         </div>
       <% end %>

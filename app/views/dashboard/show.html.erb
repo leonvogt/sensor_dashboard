@@ -1,3 +1,4 @@
+<%= turbo_stream_from 'dashboard', current_user.id, class: 'hidden' %>
 <div class="col-span-12 2xl:col-span-9">
   <%= turbo_frame_tag 'charts', src: dashboard_charts_path %>
 </div>
