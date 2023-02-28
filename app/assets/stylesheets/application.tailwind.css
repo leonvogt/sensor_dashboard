@@ -32,6 +32,7 @@
 @import "@left4code/tw-starter/dist/css/_tab.css";
 @import "@left4code/tw-starter/dist/css/_table.css";
 @import "@left4code/tw-starter/dist/css/_box.css";
+@import "toastify-js/src/toastify.css";
 
 
 /* Custom Components */

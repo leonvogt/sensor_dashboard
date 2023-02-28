@@ -9,3 +9,6 @@ application.register("sensor-chart", SensorChart)
 
 import ClickableElement from "./clickable_element_controller.js"
 application.register("clickable-element", ClickableElement)
+
+import Toastify from "./toastify_controller.js"
+application.register("toastify", Toastify)

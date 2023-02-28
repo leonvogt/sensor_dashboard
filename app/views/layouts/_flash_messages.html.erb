@@ -1,8 +1,3 @@
 <% flash.each do |type, message| %>
-  <div class="alert <%= class_for_flash(type) %> alert-dismissible show mb-10 flex items-center" role="alert">
-    <%= message %>
-    <button type="button" class="btn-close text-white" data-tw-dismiss="alert" aria-label="Close">
-      <%= icon('fa', 'xmark') %>
-    </button>
-  </div>
+  <%= content_tag :div, '', data: { controller: 'toastify', toastify_type_value: type, toastify_message_value: message } %>
 <% end %>
