@@ -26,6 +26,7 @@
         </div>
       </div>
     <% else %>
+      <%= render 'layouts/flash_messages', flash: flash %>
       <%= yield %>
     <% end %>
   </body>
