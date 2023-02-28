@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resource :sensor_data, only: :create
+      resources :mobile_app_connections, only: :create
     end
   end
 end

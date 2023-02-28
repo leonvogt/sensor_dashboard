@@ -38,6 +38,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_25_192807) do
     t.string "platform"
     t.string "notification_token"
     t.string "app_version"
+    t.string "unique_mobile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["notification_token"], name: "index_mobile_app_connections_on_notification_token", unique: true

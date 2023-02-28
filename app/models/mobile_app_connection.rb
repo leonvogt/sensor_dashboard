@@ -4,5 +4,5 @@ class MobileAppConnection < ApplicationRecord
   belongs_to :user
 
   validates :platform, presence: true, inclusion: { in: PLATFORMS }
-  validates :notification_token, presence: true, uniqueness: true
+  validates :unique_mobile_id, :notification_token, presence: true, uniqueness: true
 end

@@ -1,0 +1,12 @@
+en:
+  activerecord:
+    models:
+      mobile_app_connection:
+        one: MobileApp connection
+        other: MobileApp connections
+    attributes:
+      mobile_app_connection:
+        platform: Platform
+        notification_token: Notification Token
+        app_version: App Version
+        unique_mobile_id: Unique Mobile ID

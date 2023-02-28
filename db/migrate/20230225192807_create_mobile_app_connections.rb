@@ -5,6 +5,7 @@ class CreateMobileAppConnections < ActiveRecord::Migration[7.0]
       t.string :platform
       t.string :notification_token
       t.string :app_version
+      t.string :unique_mobile_id
 
       t.index :notification_token, unique: true
       t.timestamps
