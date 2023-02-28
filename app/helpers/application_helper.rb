@@ -1,4 +1,12 @@
 module ApplicationHelper
+  def mobile_request?
+    request.user_agent.include? 'SensorDashboardAndroid'
+  end
+
+  def web_request?
+    !mobile_request?
+  end
+
   def icon(style, name, text = nil, html_options = {})
     text, html_options = nil, text if text.is_a?(Hash)
 
