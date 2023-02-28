@@ -18,6 +18,9 @@ class SensorsController < ApplicationController
   end
 
   def update
+    @sensors = @sensor.device.sensors.includes(:sensor_data)
+    @sensor_to_show = params[:sensor_to_show].present? ? Sensor.find(params[:sensor_to_show]) : @sensors.first
+
     respond_to do |format|
       if @sensor.update(sensor_params)
         format.html { redirect_to @sensor.device }
@@ -29,7 +32,9 @@ class SensorsController < ApplicationController
   end
 
   def create
-    @sensor = @device.sensors.new(sensor_params)
+    @sensor  = @device.sensors.new(sensor_params)
+    @sensors = @device.sensors.includes(:sensor_data)
+    @sensor_to_show = params[:sensor_to_show].present? ? Sensor.find(params[:sensor_to_show]) : @sensors.first
 
     respond_to do |format|
       if @sensor.save
