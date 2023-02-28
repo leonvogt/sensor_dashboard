@@ -11,8 +11,6 @@ namespace :seed_data do
 
   desc 'Create sample data development'
   task for_initial_use: :environment do
-    return if !Rails.env.development?
-
     DEFAULT_EMAIL    = 'test@test.com'
     DEFAULT_PASSWORD = 'pleaseChangeMe!!1'
     user = User.find_by_email(DEFAULT_EMAIL)
