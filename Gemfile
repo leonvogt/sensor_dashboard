@@ -26,6 +26,10 @@ gem 'sidekiq'
 # And for sidekiq background jobs
 gem "redis", "~> 5.0"
 
+# Push Notifications
+gem 'noticed'
+gem 'googleauth'
+
 # Styling
 gem "tailwindcss-rails", "~> 2.0"
 gem "cssbundling-rails", "~> 1.1"
