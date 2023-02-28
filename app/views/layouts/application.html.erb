@@ -14,8 +14,8 @@
 
   <body class="py-5">
     <% if user_signed_in? %>
-      <%= render 'layouts/mobile_menu' %>
-      <div class="flex mt-[4.7rem] md:mt-0">
+      <%= render 'layouts/mobile_menu'  if web_request? %>
+      <%= content_tag :div, '', class: "flex md:mt-0 #{'mt-[4.7rem]' if web_request?}" do %>
         <%= render 'layouts/side_menu' if web_request? %>
         <div class="content">
           <%= render 'layouts/top_bar' %>
@@ -24,7 +24,7 @@
             <%= yield %>
           </div>
         </div>
-      </div>
+      <% end %>
     <% else %>
       <%= render 'layouts/flash_messages', flash: flash %>
       <%= yield %>

@@ -44,5 +44,6 @@
 @import "./components/_breadcrumb.css";
 @import "./components/_tom-select.css";
 @import "./components/_dark-mode-switcher.css";
+@import "./components/_mobile-menu.css";
 
 @import "helpers";

@@ -6,14 +6,14 @@
   <ul>
     <li>
       <%= link_to dashboard_path, class: "side-menu #{menu_link_active_class(dashboard_path)}" do %>
-        <div class="side-menu__icon"><i data-lucide="home"></i></div>
+        <div class="side-menu__icon"><%= icon('fa', 'home') %></div>
         <div class="side-menu__title">Dashboard</div>
       <% end %>
     </li>
 
     <li>
       <%= link_to devices_path, class: "side-menu #{menu_link_active_class(devices_path)}" do %>
-        <div class="side-menu__icon"><i data-lucide="home"></i></div>
+        <div class="side-menu__icon"><%= icon('fa', 'tablet-screen-button') %></div>
         <div class="side-menu__title"><%= Device.model_name.human(count: 2) %></div>
       <% end %>
     </li>

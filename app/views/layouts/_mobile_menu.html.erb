@@ -1,22 +1,23 @@
 <div class="mobile-menu md:hidden">
-  <div class="mobile-menu-bar">
+  <div class="mobile-menu-bar flex justify-end mr-5">
     <a href="javascript:;" class="mobile-menu-toggler">
-      <i data-lucide="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i>
+      <%= icon('fa', 'bars', class: 'text-white') %>
     </a>
   </div>
   <div class="scrollable">
-    <a href="javascript:;" class="mobile-menu-toggler">
-      <i data-lucide="x-circle" class="w-8 h-8 text-white transform -rotate-90"></i>
-    </a>
     <ul class="scrollable__content py-2">
       <li>
-        <a href="javascript:;.html" class="menu menu--active">
-          <div class="menu__icon"><i data-lucide="home"></i></div>
-          <div class="menu__title">
-            Dashboard
-            <i data-lucide="chevron-down" class="menu__sub-icon transform rotate-180"></i>
-          </div>
-        </a>
+        <%= link_to root_path, class: "menu" do %>
+          <div class="menu__icon"><%= icon('fa', 'home') %></div>
+          <div class="menu__title">Dashboard</div>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to devices_path, class: "menu" do %>
+          <div class="menu__icon"><%= icon('fa', 'tablet-screen-button') %></div>
+          <div class="menu__title"><%= Device.model_name.human(count: 2) %></div>
+        <% end %>
       </li>
     </ul>
   </div>
