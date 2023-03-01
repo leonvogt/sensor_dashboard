@@ -1,6 +1,6 @@
 module ApplicationHelper
   def mobile_request?
-    request.user_agent.include? 'SensorDashboardAndroid'
+    request.user_agent&.include? 'SensorDashboardAndroid'
   end
 
   def web_request?
