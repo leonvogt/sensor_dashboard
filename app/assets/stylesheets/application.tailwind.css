@@ -22,18 +22,15 @@
 @import "@left4code/tw-starter/dist/css/_form-reset.css";
 @import "@left4code/tw-starter/dist/css/_form-check.css";
 @import "@left4code/tw-starter/dist/css/_form-control.css";
-@import "@left4code/tw-starter/dist/css/_form-help.css";
 @import "@left4code/tw-starter/dist/css/_form-inline.css";
-@import "@left4code/tw-starter/dist/css/_form-label.css";
 @import "@left4code/tw-starter/dist/css/_form-select.css";
-@import "@left4code/tw-starter/dist/css/_image-fit.css";
 @import "@left4code/tw-starter/dist/css/_input-group.css";
 @import "@left4code/tw-starter/dist/css/_intro.css";
 @import "@left4code/tw-starter/dist/css/_tab.css";
 @import "@left4code/tw-starter/dist/css/_table.css";
 @import "@left4code/tw-starter/dist/css/_box.css";
+@import "@left4code/tw-starter/dist/css/_zoom-in.css";
 @import "toastify-js/src/toastify.css";
-
 
 /* Custom Components */
 @import "./components/_global.css";
@@ -43,7 +40,7 @@
 @import "./components/_side-nav.css";
 @import "./components/_breadcrumb.css";
 @import "./components/_tom-select.css";
-@import "./components/_dark-mode-switcher.css";
 @import "./components/_mobile-menu.css";
 
+/* Custom Files */
 @import "helpers";
