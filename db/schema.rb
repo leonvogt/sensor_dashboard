@@ -18,7 +18,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_25_192807) do
     t.bigint "sensor_id", null: false
     t.string "rule_type"
     t.decimal "value"
-    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["sensor_id"], name: "index_alarm_rules_on_sensor_id"

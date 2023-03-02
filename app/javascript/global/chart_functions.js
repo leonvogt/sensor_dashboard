@@ -1,9 +1,10 @@
 const Chart = require('chart.js');
 import 'chartjs-adapter-luxon';
 import zoomPlugin from 'chartjs-plugin-zoom';
+import annotationPlugin from 'chartjs-plugin-annotation';
 
 Chart.register(zoomPlugin);
-
+Chart.register(annotationPlugin);
 
 export async function createChart(chartType, chartId, chartData){
   const ctx = document.getElementById(chartId).getContext('2d');

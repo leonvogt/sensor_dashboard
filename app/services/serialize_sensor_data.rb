@@ -11,8 +11,18 @@ class SerializeSensorData
       min_value:    @sensor_data.map(&:value).min,
       max_value:    @sensor_data.map(&:value).max,
       avg_value:    @sensor_data.map(&:value).sum || 1 / @sensor_data.count.round(2) || 1,
+      alarm_rules:  @sensor.alarm_rules.map { |rule| serialize_alarm_rule(rule) },
       timestamps:   @sensor_data.map(&:created_at),
       values:       @sensor_data.map(&:value)
+    }
+  end
+
+  private
+  def serialize_alarm_rule(rule)
+    {
+      value: rule.value,
+      rule_type: rule.rule_type,
+      label: I18n.t(rule.rule_type, scope: 'alarm_rules.rule_types')
     }
   end
 

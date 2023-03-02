@@ -50,6 +50,58 @@ export default class extends Controller {
     addDatapointToChart(this.chart, formatedTimeLabel, notifier.dataset.newValue)
   }
 
+  sensorAlarmRuleLines(data) {
+    let lines = { }
+
+    data.alarm_rules.forEach((alarmRule, index) => {
+      lines[`line${index}`] = {
+        type: 'line',
+        borderColor: 'rgba(225, 56, 0, 1)',
+        borderWidth: 1,
+        borderDash: [0],
+        label: {
+          display: this.showDetails,
+          backgroundColor: 'rgba(225, 56, 0, 0.8)',
+          color: 'white',
+          content: alarmRule.label,
+          font: {
+            size: 10
+          }
+        },
+        yMax: alarmRule.value,
+        yMin: alarmRule.value,
+        yScaleID: 'y',
+        xScaleID: 'x'
+      }
+    })
+
+    return lines
+  }
+
+  minMaxAlarmRuleValues(alarm_rules) {
+    const alarmRuleValues = alarm_rules.map((alarmRule) => Number(alarmRule.value))
+    return { minAlarmRule: Math.round(Math.min(...alarmRuleValues)), maxAlarmRule: Math.round(Math.max(...alarmRuleValues)) }
+  }
+
+  minMaxSensorValues(values) {
+    const sensorValues = values.map((value) => Number(value))
+    return { minSensorValue: Math.round(Math.min(...sensorValues)), maxSensorValue: Math.round(Math.max(...sensorValues)) }
+  }
+
+  // Sensor alarm rules should be alway visible.
+  // Check if the lowest/highest values are defined by the alarm rules or by the sensor value.
+  // Add some space to the lowest/highest values to make the chart little nicer.
+  calcMinMaxChartBorder(data) {
+    const { minSensorValue, maxSensorValue } = this.minMaxSensorValues(data.values)
+    const { minAlarmRule, maxAlarmRule } = this.minMaxAlarmRuleValues(data.alarm_rules)
+
+    const min = minSensorValue < minAlarmRule ? minSensorValue : minAlarmRule
+    const max = maxSensorValue > maxAlarmRule ? maxSensorValue : maxAlarmRule
+
+    const space = Math.round(max / 10)
+    return { chartMin: min - space, chartMax: max + space }
+  }
+
   sensorChartData(data) {
     return {
       labels: data.timestamps,
@@ -66,6 +118,8 @@ export default class extends Controller {
   }
 
   sensorChartOptions(data) {
+    let { chartMin, chartMax } = this.calcMinMaxChartBorder(data)
+
     return {
       locale: 'de-DE',
       pointRadius: 0,
@@ -88,6 +142,8 @@ export default class extends Controller {
           }
         },
         y: {
+          min: chartMin,
+          max: chartMax,
           ticks: {
             display: this.showDetails,
             callback: function (value) {
@@ -97,6 +153,9 @@ export default class extends Controller {
         }
       },
       plugins: {
+        annotation: {
+          annotations: this.sensorAlarmRuleLines(data)
+        },
         zoom: {
           zoom: {
             mode: 'x',
