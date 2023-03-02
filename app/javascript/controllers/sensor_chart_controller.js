@@ -102,16 +102,43 @@ export default class extends Controller {
     return { chartMin: min - space, chartMax: max + space }
   }
 
+  // Get the min value from the max alarm rules and max value from the min alarm rules
+  minMaxAllowedValues(alarmRules) {
+    const allowedMinValues = alarmRules.filter(rule => rule.rule_type == 'min_value').map(rule => rule.value)
+    const allowedMaxValues = alarmRules.filter(rule => rule.rule_type == 'max_value').map(rule => rule.value)
+
+    return { allowedMaxValue: Math.min(...allowedMaxValues), allowedMinValue: Math.max(...allowedMinValues) }
+  }
+
   sensorChartData(data) {
+    const { allowedMaxValue, allowedMinValue } = this.minMaxAllowedValues(data.alarm_rules)
+
+    const segmentIsInAlarmZone = (ctx, alarmColor) => {
+      // p0 is the current data point. p1 the next from the segment
+      // p0.parsed.y corresponds to the measurement point value
+      // p0.parsed.x corresponds to the measurement point timestamp
+      // If the current or the next point is above -/ below the max -/ min limit the line should be red
+      if ((ctx.p0.parsed.y < allowedMinValue || ctx.p0.parsed.y > allowedMaxValue) ||
+          (ctx.p1.parsed.y < allowedMinValue || ctx.p1.parsed.y > allowedMaxValue)) {
+        return alarmColor
+      }
+    }
+
+    const pointIsInAlarmZone = (ctx, alarmColor) => {
+      if (ctx.parsed.y < allowedMinValue || ctx.parsed.y > allowedMaxValue) {
+        return alarmColor
+      }
+    }
+
     return {
       labels: data.timestamps,
       datasets: [{
         data: data.values,
         tension: 0.15,
         borderWidth: 2,
-        pointHoverBackgroundColor: 'rgba(54, 162, 235, 1)',
+        pointHoverBackgroundColor: ctx => pointIsInAlarmZone(ctx, 'rgba(225, 56, 0, 1)') || 'rgba(54, 162, 235, 1)',
         segment: {
-          borderColor: 'rgba(54, 162, 235, 1)'
+          borderColor: ctx => segmentIsInAlarmZone(ctx, 'rgba(225, 56, 0, 1)') || 'rgba(54, 162, 235, 1)'
         }
       }]
     }
