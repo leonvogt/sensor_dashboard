@@ -1,0 +1,20 @@
+de:
+  activerecord:
+    models:
+      alarm_rule:
+        one: "Alarm Regel"
+        other: "Alarm Regeln"
+    attributes:
+      alarm_rule:
+        min_value: "Minimum"
+        max_value: "Maximum"
+        value: "Wert"
+  alarm_rules:
+    no_rules_found: "Keine aktiven Sensor Alarm Regeln gefunden"
+    rule_type_hint: "Darf nicht"
+    rule_types:
+      min_value: "Unter"
+      max_value: "Über"
+    label:
+      min_value: "Nicht unter %{value} °C"
+      max_value: "Nicht über %{value} °C"

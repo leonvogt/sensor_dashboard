@@ -10,5 +10,11 @@ application.register("sensor-chart", SensorChart)
 import ClickableElement from "./clickable_element_controller.js"
 application.register("clickable-element", ClickableElement)
 
+import DomManipulations from "./dom_manipulations_controller.js"
+application.register("dom-manipulations", DomManipulations)
+
 import Toastify from "./toastify_controller.js"
 application.register("toastify", Toastify)
+
+import FormTemplate from "./form_template_controller.js"
+application.register("form-template", FormTemplate)

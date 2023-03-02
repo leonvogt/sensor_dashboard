@@ -61,6 +61,6 @@ class SensorsController < ApplicationController
   end
 
   def sensor_params
-    params.require(:sensor).permit(:sensor_type, :chart_type, :show_in_dashboard)
+    params.require(:sensor).permit(:sensor_type, :chart_type, :show_in_dashboard, alarm_rules_attributes: {})
   end
 end

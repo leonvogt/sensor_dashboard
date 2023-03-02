@@ -7,8 +7,10 @@ Rails.application.routes.draw do
   devise_for :users
   resources :devices do
     resource :access_token, only: :create
-    resources :sensors, shallow: true
     resources :api_errors, only: :destroy
+    resources :sensors, shallow: true do
+      resources :alarm_rules, shallow: true
+    end
   end
 
   namespace :api do

@@ -26,6 +26,10 @@ module ApplicationHelper
     end
   end
 
+  def alarm_rule_types_for_select
+    AlarmRule::RULE_TYPES.map { |rule_type| [I18n.t(rule_type, scope: 'alarm_rules.rule_types'), rule_type] }
+  end
+
   def sensor_types_for_select
     SensorConfiguration::SENSOR_TYPES.map { |sensor_type| [I18n.t(sensor_type, scope: 'sensors.sensor_types'), sensor_type] }
   end

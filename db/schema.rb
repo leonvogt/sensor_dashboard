@@ -14,6 +14,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_25_192807) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "alarm_rules", force: :cascade do |t|
+    t.bigint "sensor_id", null: false
+    t.string "rule_type"
+    t.decimal "value"
+    t.datetime "deleted_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["sensor_id"], name: "index_alarm_rules_on_sensor_id"
+  end
+
   create_table "api_errors", force: :cascade do |t|
     t.text "error_message"
     t.bigint "device_id", null: false
@@ -88,6 +98,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_25_192807) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "alarm_rules", "sensors"
   add_foreign_key "api_errors", "devices"
   add_foreign_key "devices", "users"
   add_foreign_key "mobile_app_connections", "users"

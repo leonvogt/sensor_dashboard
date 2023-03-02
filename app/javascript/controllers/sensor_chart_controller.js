@@ -146,12 +146,12 @@ export default class extends Controller {
   }
 
   showResetZoomButton() {
-    this.resetButtonTarget.classList.remove('fadeOut')
-    this.resetButtonTarget.classList.add('fadeIn')
+    this.resetButtonTarget.classList.remove('fade-out')
+    this.resetButtonTarget.classList.add('fade-in')
   }
 
   hideResetZoomButton() {
-    this.resetButtonTarget.classList.remove('fadeIn')
-    this.resetButtonTarget.classList.add('fadeOut')
+    this.resetButtonTarget.classList.remove('fade-in')
+    this.resetButtonTarget.classList.add('fade-out')
   }
 }
