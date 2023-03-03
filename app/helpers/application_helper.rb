@@ -1,10 +1,7 @@
 module ApplicationHelper
-  def mobile_request?
-    request.user_agent&.include? 'SensorDashboardAndroid'
-  end
-
-  def web_request?
-    !mobile_request?
+  # Turbo Native applications are identified by having the string "Turbo Native" as part of their user agent.
+  def not_a_turbo_native_request?
+    !request.user_agent.to_s.match?(/Turbo Native/)
   end
 
   def icon(style, name, text = nil, html_options = {})
