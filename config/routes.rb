@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get  'dashboard_last_sensor_data', to: 'dashboard#last_sensor_data'
 
   devise_for :users
+  resource :health_check, only: :show
+
   resources :devices do
     resource :access_token, only: :create
     resources :api_errors, only: :destroy
