@@ -40,8 +40,11 @@ gem 'mina'
 # Other
 gem 'faker'
 
-# Monitoring
+# Error monitoring
 gem 'honeybadger'
+
+# Performance monitoring
+gem 'skylight'
 
 group :development, :test do
   gem 'rspec-rails'

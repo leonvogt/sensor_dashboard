@@ -1,0 +1,5 @@
+---
+# Usees the SKYLIGHT_AUTHENTICATION ENV to authentication the application.
+authentication: SKYLIGHT_AUTHENTICATION
+ignored_endpoints:
+  - HealthChecksController#show
