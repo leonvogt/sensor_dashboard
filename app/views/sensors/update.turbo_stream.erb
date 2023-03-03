@@ -1,5 +1,5 @@
-<%= turbo_stream.update 'sensors-tab' do %>
-  <%= render partial: 'devices/sensors_tab', locals: { device: @sensor.device, sensors: @sensors, sensor_to_show: @sensor_to_show} %>
+<%= turbo_stream.update "sensor-#{@sensor.id}-chart" do %>
+  <%= render partial: 'sensors/chart', locals: { sensor: @sensor, container_class: 'h-[400px]', show_details: true } %>
 <% end %>
 
 <%= turbo_stream.toast 'success', t('successful.messages.updated', model: Sensor.model_name.human) %>

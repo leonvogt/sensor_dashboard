@@ -1,4 +1,4 @@
-<%= content_tag :div, data: { controller: 'sensor-chart', sensor_id: sensor.id, show_details: show_details } do %>
+<%= content_tag :div, id: "sensor-#{sensor.id}-chart", data: { controller: 'sensor-chart', sensor_id: sensor.id, show_details: show_details } do %>
   <div class="mb-5">
     <%= turbo_frame_tag sensor %>
   </div>
