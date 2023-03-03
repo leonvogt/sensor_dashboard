@@ -43,3 +43,4 @@ dump.rdb
 stellar.yaml
 remote_database_importer.yml
 /esbuild_error_*
+/config/honeybadger.yml

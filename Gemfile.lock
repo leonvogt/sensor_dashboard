@@ -134,6 +134,7 @@ GEM
       multi_json (~> 1.11)
       os (>= 0.9, < 2.0)
       signet (>= 0.16, < 2.a)
+    honeybadger (5.2.0)
     http (5.1.1)
       addressable (~> 2.8)
       http-cookie (~> 1.0)
@@ -386,6 +387,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   googleauth
+  honeybadger
   jbuilder
   jsbundling-rails
   mina
