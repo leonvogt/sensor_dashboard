@@ -2,6 +2,10 @@
 import { StreamActions } from "@hotwired/turbo"
 import "./init/fontawesome"
 
+// Turbo Native bridge
+import Bridge from "./turbo/bridge.js";
+window.bridge = Bridge;
+
 // Custom StreamActions
 StreamActions.toast = () => void 0;
 

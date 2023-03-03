@@ -28,6 +28,13 @@ RSpec.describe 'MobileAppConnection', type: :request do
       expect { send_request }.to change { MobileAppConnection.count }.by(1)
     end
 
+    it 'Renews only the app_version' do
+      existing_connection = create :mobile_app_connection, unique_mobile_id: '123', notification_token: '123', app_version: '1.0.0'
+      expect {
+        send_request(unique_mobile_id: existing_connection.unique_mobile_id, notification_token: '123', app_version: '2.0.0')
+      }.to change { existing_connection.reload.app_version }
+    end
+
     it 'Renews a NotificationToken' do
       existing_connection = create :mobile_app_connection, unique_mobile_id: '123', notification_token: '123'
       expect {
