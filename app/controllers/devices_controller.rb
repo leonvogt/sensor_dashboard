@@ -13,7 +13,7 @@ class DevicesController < ApplicationController
   end
 
   def show
-    @sensors = @device.sensors.includes(:sensor_data)
+    @sensors = @device.sensors
     @sensor_to_show = params[:sensor_to_show].present? ? Sensor.find(params[:sensor_to_show]) : @sensors.first
   end
 

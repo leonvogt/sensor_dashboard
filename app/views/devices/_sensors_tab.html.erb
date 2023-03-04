@@ -7,7 +7,7 @@
   <div class="col-span-12">
     <div class="grid grid-cols-1 2xl:grid-cols-7 gap-6 p-5">
       <div class="2xl:col-span-2">
-        <% sensors.where.not(id: sensor_to_show.id).each do |sensor| %>
+        <% sensors.reject { |sensor| sensor == sensor_to_show }.each do |sensor| %>
           <div class="grid grid-cols-2 gap-6 mb-5">
             <div class="col-span-2 sm:col-span-1 2xl:col-span-2 box dark:bg-darkmode-500 p-5">
               <%= render 'sensors/chart', sensor: sensor, container_class: 'h-[50px]', show_details: false %>

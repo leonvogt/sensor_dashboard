@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize_resource(resource)
-    render_forbidden if resource.user != current_user
+    render_forbidden if resource.user_id != current_user.id
   end
 
   def render_forbidden

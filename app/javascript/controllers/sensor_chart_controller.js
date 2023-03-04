@@ -5,6 +5,7 @@ const  { DateTime }  = require("luxon")
 // Connects to data-controller="sensor-chart"
 export default class extends Controller {
   static targets = ['canvas', 'resetButton', 'newValueNotifier']
+  static values = { noDataText: String }
 
   connect() {
     this.chart?.destroy()
@@ -33,6 +34,10 @@ export default class extends Controller {
 
   async initializeChart() {
     const sensorData = await this.getSensorData()
+    if (sensorData.values.length == 0) {
+      this.canvasTarget.outerHTML = `<div class='alert alert-warning' role='alert'>${this.noDataTextValue}</div>`
+      return
+    }
 
     const chartData    = this.sensorChartData(sensorData)
     const chartOptions = this.sensorChartOptions(sensorData)

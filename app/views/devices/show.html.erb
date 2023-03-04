@@ -11,16 +11,6 @@
           </div>
         </div>
       </div>
-      <div class="mt-6 lg:mt-0 flex-1 px-5 border-l border-r border-slate-200/60 dark:border-darkmode-400 border-t lg:border-t-0 pt-5 lg:pt-0">
-        <div class="flex flex-col mt-4">
-          <% @sensors.each do |sensor| %>
-            <div>
-              <%= icon('fa', 'check', color: sensor.sensor_data.present? ? 'green' : 'red', class: 'mr-2') %>
-              <%= sensor.to_s %>
-            </div>
-          <% end %>
-        </div>
-      </div>
     </div>
     <div class="flex flex-col lg:flex-row justify-between">
       <ul class="nav nav-link-tabs flex-col sm:flex-row justify-center lg:justify-start text-center" role="tablist" >

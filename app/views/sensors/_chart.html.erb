@@ -1,4 +1,4 @@
-<%= content_tag :div, id: "sensor-#{sensor.id}-chart", data: { controller: 'sensor-chart', sensor_id: sensor.id, show_details: show_details } do %>
+<%= content_tag :div, id: "sensor-#{sensor.id}-chart", data: { controller: 'sensor-chart', sensor_id: sensor.id, show_details: show_details, sensor_chart_no_data_text_value: t('sensors.no_sensor_data') } do %>
   <div class="mb-5">
     <%= turbo_frame_tag sensor %>
   </div>
@@ -18,12 +18,8 @@
   </div>
   <div class="flex items-center mt-1 sm:mt-0">
     <div class="w-full overflow-auto">
-      <% if sensor.sensor_data.any? %>
-        <%= content_tag :div, id: "sensor-container-#{sensor.id}", class: container_class do %>
-          <%= content_tag :canvas, '', id: "sensor-#{sensor.id}", data: { sensor_chart_target: 'canvas' } %>
-        <% end %>
-      <% else %>
-        <p class="text-center"><i><%= t('sensors.no_sensor_data') %></i></p>
+      <%= content_tag :div, id: "sensor-container-#{sensor.id}", class: container_class do %>
+        <%= content_tag :canvas, '', id: "sensor-#{sensor.id}", data: { sensor_chart_target: 'canvas' } %>
       <% end %>
     </div>
   </div>
