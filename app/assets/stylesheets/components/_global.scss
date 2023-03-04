@@ -1,0 +1,47 @@
+/* Global Styles */
+body {
+  @apply antialiased overflow-x-hidden py-3 px-8 font-roboto text-sm text-slate-800;
+  @include media-breakpoint-down(sm) {
+    @apply px-3;
+  }
+}
+
+.content {
+  @apply min-w-0 min-h-screen flex-1 pb-10;
+  @include media-breakpoint-down(md) {
+    @apply px-4 max-w-full;
+  }
+  &:before {
+    content: "";
+    @apply w-full h-px block;
+  }
+}
+
+/* Styles for the desktop version */
+body.desktop {
+  @apply bg-primary;
+  &.dark {
+    @apply bg-darkmode-800;
+    body {
+      @apply text-slate-300;
+      *,
+      ::before,
+      ::after {
+        @apply border-white/5;
+      }
+    }
+  }
+  .content {
+    @apply bg-slate-100 dark:bg-darkmode-700;
+    border-radius: 30px;
+    padding: 0px 22px;
+  }
+}
+
+/* Styles for the mobile version */
+body.native {
+  @apply bg-slate-100 dark:bg-darkmode-700;
+  .content {
+    padding-left: 0px;
+  }
+}

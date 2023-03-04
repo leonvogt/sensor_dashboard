@@ -12,11 +12,18 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body class="py-5">
-    <% if user_signed_in? %>
-      <%= render 'layouts/mobile_menu' if not_a_turbo_native_request? %>
-      <%= content_tag :div, '', class: "flex md:mt-0 #{'mt-[4.7rem]' if not_a_turbo_native_request?}" do %>
-        <%= render 'layouts/side_menu' if not_a_turbo_native_request? %>
+  <body class="<%= turbo_native_app? ? 'native' : 'desktop' %>">
+    <% if user_signed_in? && turbo_native_app? %>
+      <div class="content">
+        <%= render 'layouts/flash_messages', flash: flash %>
+        <div class="grid grid-cols-12 gap-6">
+          <%= yield %>
+        </div>
+      </div>
+    <% elsif user_signed_in? %>
+      <%= render 'layouts/mobile_menu' %>
+      <div class="flex md:mt-0 mt-[4.7rem]">
+        <%= render 'layouts/side_menu' %>
         <div class="content">
           <%= render 'layouts/top_bar' %>
           <%= render 'layouts/flash_messages', flash: flash %>
@@ -24,7 +31,7 @@
             <%= yield %>
           </div>
         </div>
-      <% end %>
+      </div>
     <% else %>
       <%= render 'layouts/flash_messages', flash: flash %>
       <%= yield %>

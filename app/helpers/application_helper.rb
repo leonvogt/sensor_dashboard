@@ -1,7 +1,7 @@
 module ApplicationHelper
   # Turbo Native applications are identified by having the string "Turbo Native" as part of their user agent.
-  def not_a_turbo_native_request?
-    !request.user_agent.to_s.match?(/Turbo Native/)
+  def turbo_native_app?
+    request.user_agent.to_s.match?(/Turbo Native/)
   end
 
   def icon(style, name, text = nil, html_options = {})

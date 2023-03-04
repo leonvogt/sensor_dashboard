@@ -33,9 +33,8 @@
 @import "toastify-js/src/toastify.css";
 
 /* Custom Components */
-@import "./components/_global.css";
+@import "./components/_global.scss";
 @import "./components/_top-bar.css";
-@import "./components/_content.css";
 @import "./components/_top-nav.css";
 @import "./components/_side-nav.css";
 @import "./components/_breadcrumb.css";
