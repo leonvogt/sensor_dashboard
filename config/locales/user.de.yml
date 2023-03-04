@@ -1,0 +1,15 @@
+de:
+  activerecord:
+    models:
+      user:
+        one: Benutzer
+        other: Benutzer
+    attributes:
+      user:
+        password: Passwort
+        current_password: Aktuelles Passwort
+        password_confirmation: Passwortbestätigung
+        locale: Sprache
+  users:
+    profile: Profil
+    account_since: Dabei seit

@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   get  'dashboard_charts',           to: 'dashboard#charts'
   get  'dashboard_last_sensor_data', to: 'dashboard#last_sensor_data'
 
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: 'users/registrations'
+  }
+  resources :users, only: :show
   resource :health_check, only: :show
 
   resources :devices do

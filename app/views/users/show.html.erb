@@ -1,0 +1,33 @@
+<div class="intro-y col-span-12">
+  <div class="box p-5">
+    <div class="flex items-start">
+      <div class="w-full flex flex-col lg:flex-row items-center">
+        <div class="text-center lg:text-left mt-3 lg:mt-0">
+          <div class="font-medium"><%= current_user.email %></div>
+          <div class="text-slate-500 text-xs mt-0.5">
+            <%= [t('users.account_since'), current_user.created_at.to_s(:date)].join(' ') %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-center lg:text-left mt-5">
+      <div class="flex items-center text-slate-500 mt-5">
+        <div class="w-8">
+        <%= icon('fa', 'tablet-screen-button') %>
+        </div>
+        <%= current_user.devices.size %>
+        <%= Device.model_name.human(count: 2) %>
+      </div>
+      <div class="flex items-center text-slate-500 mt-5">
+        <div class="w-8">
+          <%= icon('fa', 'temperature-quarter') %>
+        </div>
+        <%= current_user.sensors.size %>
+        <%= Sensor.model_name.human(count: 2) %>
+      </div>
+    </div>
+    <div class="text-center lg:text-right p-5 border-t border-slate-200/60 dark:border-darkmode-400">
+      <%= link_to t('edit_title', model: User.model_name.human), edit_user_registration_path, class: 'btn btn-outline-secondary py-1 px-2' %>
+    </div>
+  </div>
+</div>

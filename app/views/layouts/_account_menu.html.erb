@@ -1,10 +1,5 @@
 <div class="intro-x dropdown w-8 h-8">
-  <div
-    class="dropdown-toggle text-center"
-    role="button"
-    aria-expanded="false"
-    data-tw-toggle="dropdown"
-  >
+  <div class="dropdown-toggle text-center" role="button" aria-expanded="false" data-tw-toggle="dropdown">
     <%= icon('fas', 'globe-europe') %>
   </div>
   <div class="dropdown-menu w-56">
@@ -22,12 +17,7 @@
 </div>
 
 <div class="intro-x dropdown w-8 h-8">
-  <div
-    class="dropdown-toggle text-center"
-    role="button"
-    aria-expanded="false"
-    data-tw-toggle="dropdown"
-  >
+  <div class="dropdown-toggle text-center" role="button" aria-expanded="false" data-tw-toggle="dropdown">
     <%= icon('fa', 'user') %>
   </div>
   <div class="dropdown-menu w-56">
@@ -39,17 +29,13 @@
         <hr class="dropdown-divider border-white/[0.08]" />
       </li>
       <li>
-        <a href="" class="dropdown-item hover:bg-white/5">
-          <i data-lucide="user" class="w-4 h-4 mr-2"></i> Profile
-        </a>
+        <%= link_to t('users.profile'), current_user, class: 'dropdown-item hover:bg-white/5' %>
       </li>
       <li>
         <hr class="dropdown-divider border-white/[0.08]" />
       </li>
       <li>
-        <%= button_to destroy_user_session_path, method: :delete, class: 'dropdown-item hover:bg-white/5' do %>
-          <i data-lucide="toggle-right" class="w-4 h-4 mr-2"></i> Logout
-        <% end %>
+        <%= button_to t('devise.logout'), destroy_user_session_path, method: :delete, class: 'dropdown-item hover:bg-white/5' %>
       </li>
     </ul>
   </div>

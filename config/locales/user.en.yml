@@ -1,0 +1,16 @@
+en:
+  activerecord:
+    models:
+      user:
+        one: User
+        other: Users
+    attributes:
+      user:
+        password: Password
+        current_password: Current password
+        encrypted_password: Encrypted password
+        password_confirmation: Password confirmation
+        locale: Locale
+  users:
+    profile: Profile
+    account_since: Since
