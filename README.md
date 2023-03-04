@@ -1,10 +1,15 @@
 # Sensor Dashboard
-This Sensor Dashboard is a web application that allows users to view sensor data from a variety of sources. The application is built using Ruby on Rails.
+[![View performance data on Skylight](https://badges.skylight.io/typical/GM3F6Hj9avEh.svg)](https://oss.skylight.io/app/applications/GM3F6Hj9avEh)
+[![View performance data on Skylight](https://badges.skylight.io/problem/GM3F6Hj9avEh.svg)](https://oss.skylight.io/app/applications/GM3F6Hj9avEh)
+
+Sensor Dashboard is a web application that allows users to view sensor data from a variety of sources.  
+The application is built using Ruby on Rails.  
+There is also a [mobile app](https://github.com/leon-vogt/sensor_dashboard_android) in development.
 
 ## Data model
 The idea is to have devices that have sensors attached to them.
 Therefore a device can have multiple sensors that collect data and send it to the server.
-Each sensor has a type (like temperature, humidity, pressure, etc.) and can define a chart type (line, bar, etc.) and a chart color.
+Each sensor has a type (like temperature, humidity, pressure, etc.) and can define a chart type (line, bar, etc.).
 
 ## Installation
 1. Install the dependencies:
