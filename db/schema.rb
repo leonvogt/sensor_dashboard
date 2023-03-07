@@ -67,6 +67,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_04_133907) do
     t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
   end
 
+  create_table "rule_violations", force: :cascade do |t|
+    t.bigint "alarm_rule_id", null: false
+    t.integer "status"
+    t.string "violation_text"
+    t.datetime "closed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["alarm_rule_id"], name: "index_rule_violations_on_alarm_rule_id"
+  end
+
   create_table "sensor_data", force: :cascade do |t|
     t.bigint "sensor_id", null: false
     t.decimal "value", precision: 10, scale: 2, null: false
@@ -102,6 +112,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_04_133907) do
   add_foreign_key "api_errors", "devices"
   add_foreign_key "devices", "users"
   add_foreign_key "mobile_app_connections", "users"
+  add_foreign_key "rule_violations", "alarm_rules"
   add_foreign_key "sensor_data", "sensors"
   add_foreign_key "sensors", "devices"
 end

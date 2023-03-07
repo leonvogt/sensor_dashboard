@@ -2,6 +2,7 @@ class AlarmRule < ApplicationRecord
   RULE_TYPES = %w(min_value max_value)
 
   belongs_to :sensor
+  has_many :rule_violations
 
   validates :rule_type, :value, presence: true
   validates :value, numericality: true

@@ -1,0 +1,14 @@
+en:
+  activerecord:
+    models:
+      rule_violation:
+        one: Rule violation
+        other: Rule violations
+    attributes:
+      rule_violation:
+        alarm_rule: Alarm rule
+        status: Status
+        violation_text: Text
+        closed_at: Closed at
+  rule_violations:
+    violation_text: "Current value: %{value}"

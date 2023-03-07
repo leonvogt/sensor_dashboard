@@ -4,6 +4,7 @@ class Sensor < ApplicationRecord
 
   has_many :sensor_data, dependent: :destroy
   has_many :alarm_rules, dependent: :destroy
+  has_many :rule_violations, through: :alarm_rules
 
   scope :shown_in_dashboard, -> { where(show_in_dashboard: true) }
 
