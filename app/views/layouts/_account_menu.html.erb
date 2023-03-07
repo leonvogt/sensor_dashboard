@@ -22,21 +22,13 @@
   </div>
   <div class="dropdown-menu w-56">
     <ul class="dropdown-content bg-primary text-white">
-      <li class="p-2">
-        <div class="font-medium"><%= current_user.email %></div>
-      </li>
-      <li>
-        <hr class="dropdown-divider border-white/[0.08]" />
-      </li>
-      <li>
-        <%= link_to t('users.profile'), current_user, class: 'dropdown-item hover:bg-white/5' %>
-      </li>
-      <li>
-        <hr class="dropdown-divider border-white/[0.08]" />
-      </li>
-      <li>
-        <%= button_to t('devise.logout'), destroy_user_session_path, method: :delete, class: 'dropdown-item hover:bg-white/5' %>
-      </li>
+      <li class="p-2"><div class="font-medium"><%= current_user.email %></div></li>
+      <li><hr class="dropdown-divider border-white/[0.08]" /></li>
+      <li><%= link_to t('users.profile'), current_user, class: 'dropdown-item hover:bg-white/5' %></li>
+      <li><hr class="dropdown-divider border-white/[0.08]" /></li>
+      <li><%= link_to MobileAppConnection.model_name.human(count: 2), mobile_app_connections_path, class: 'dropdown-item hover:bg-white/5' %></li>
+      <li><hr class="dropdown-divider border-white/[0.08]" /></li>
+      <li><%= button_to t('devise.logout'), destroy_user_session_path, method: :delete, class: 'dropdown-item hover:bg-white/5' %></li>
     </ul>
   </div>
 </div>

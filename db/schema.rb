@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_25_192807) do
+ActiveRecord::Schema[7.0].define(version: 2023_03_04_133907) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_25_192807) do
     t.string "unique_mobile_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["notification_token"], name: "index_mobile_app_connections_on_notification_token", unique: true
     t.index ["user_id"], name: "index_mobile_app_connections_on_user_id"
   end

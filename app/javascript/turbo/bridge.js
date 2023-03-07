@@ -7,7 +7,7 @@ export default class Bridge {
 
   // This function can be called by the Turbo Native App to save the current mobile app settings.
   static registerMobileApp(mobileAppSettings) {
-    fetch("/api/v1/mobile_app_connections", {
+    fetch("/mobile_app_connections", {
       body: JSON.stringify({
         notification_token: mobileAppSettings["pushNotificationToken"],
         unique_mobile_id: mobileAppSettings["uniqueMobileId"],

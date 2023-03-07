@@ -4,11 +4,12 @@ Rails.application.routes.draw do
   get  'dashboard_charts',           to: 'dashboard#charts'
   get  'dashboard_last_sensor_data', to: 'dashboard#last_sensor_data'
 
+  resource :health_check, only: :show
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
   resources :users, only: :show
-  resource :health_check, only: :show
+  resources :mobile_app_connections
 
   resources :devices do
     resource :access_token, only: :create
@@ -21,7 +22,6 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resource :sensor_data, only: :create
-      resources :mobile_app_connections, only: :create
     end
   end
 end
