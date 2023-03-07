@@ -1,8 +1,14 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   root "dashboard#show"
   get  'dashboard',                  to: 'dashboard#show'
   get  'dashboard_charts',           to: 'dashboard#charts'
   get  'dashboard_last_sensor_data', to: 'dashboard#last_sensor_data'
+
+  authenticate :user, lambda { |u| u.is_admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
 
   resource :health_check, only: :show
   devise_for :users, controllers: {
