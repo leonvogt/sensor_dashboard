@@ -11,3 +11,4 @@ production:
 
 :queues:
   - default
+  - sensor_dashboard_production_default
