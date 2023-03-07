@@ -10,5 +10,5 @@ production:
 :max_retries: 5
 
 :queues:
-  - default
   - sensor_dashboard_production_default
+  - sensor_dashboard_development_default
