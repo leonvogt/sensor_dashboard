@@ -61,6 +61,9 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment).
   config.active_job.queue_name_prefix = "sensor_dashboard_production"
 
+  # Monitor active_job with Skylight
+  config.skylight.probes << 'active_job'
+
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.

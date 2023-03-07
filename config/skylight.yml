@@ -1,5 +1,7 @@
 ---
 # Usees the SKYLIGHT_AUTHENTICATION ENV to authentication the application.
 authentication: SKYLIGHT_AUTHENTICATION
+enable_sidekiq: true
+worker_component: 'sidekiq'
 ignored_endpoints:
   - HealthChecksController#show
