@@ -1,15 +1,10 @@
 # Firebase Cloud Messaging is integrated using the `noticed` gem.
 # Documentation: https://github.com/excid3/noticed
-
 class SensorAlarmNotification < Noticed::Base
-  # Add required params
-  # param :post
+  param :rule_violation
 
   deliver_by :fcm, credentials: :fcm_credentials, format: :format_notification
-
-  def fcm_device_tokens(user)
-    user.mobile_app_connections.pluck(:notification_token)
-  end
+  deliver_by :database
 
   # Follow this guide to get your credentials: https://github.com/excid3/noticed/blob/master/docs/delivery_methods/fcm.md#google-firebase-cloud-messaging-notification-service
   def fcm_credentials
@@ -17,12 +12,23 @@ class SensorAlarmNotification < Noticed::Base
     JSON.parse(credentials)
   end
 
-  def format_notification(device_token)
+  def fcm_device_tokens(user)
+    user.mobile_app_connections.pluck(:notification_token)
+  end
+
+  def title
+    t('.title', device_name: params[:rule_violation].alarm_rule&.sensor&.device.to_s, locale: recipient.locale)
+  end
+
+  def format_notification(fcm_device_token)
     {
-      token: device_token,
+      token: fcm_device_token,
       notification: {
-        title: "Test Title",
-        body: "Test body"
+        title: title,
+        body: params[:rule_violation].violation_text,
+      },
+      data: {
+        sensor_id: params[:rule_violation].alarm_rule.sensor_id.to_s
       }
     }
   end

@@ -21,7 +21,7 @@ class RuleViolationHandler
       end
 
       sensor_data_which_violates.each do |sensor_data|
-        violation_text  = I18n.t('rule_violations.violation_text', value: sensor_data.value, locale: @device.user.locale)
+        violation_text  = I18n.t('rule_violations.violation_text', value: sensor_data.to_s, locale: @device.user.locale)
         open_violations = alarm_rule.rule_violations.open
         if open_violations.present?
           open_violations.update_all(violation_text: violation_text)
