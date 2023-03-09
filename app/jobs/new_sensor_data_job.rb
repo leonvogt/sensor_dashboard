@@ -13,7 +13,7 @@ class NewSensorDataJob < ApplicationJob
 
       # Create rule violations if necessary
       rule_violation_handler = RuleViolationHandler.new(device, created_sensor_data)
-      rule_violation_handler.maybe_create_violation
+      rule_violation_handler.maybe_create_or_update_violation
       rule_violation_handler.maybe_close_violation
     end
   end

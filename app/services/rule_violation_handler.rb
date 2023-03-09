@@ -6,27 +6,24 @@ class RuleViolationHandler
     @alarm_rules = AlarmRule.where(sensor: @sensors)
   end
 
-  def maybe_create_violation
-    # Check if the sensor value is outside the allowed range
-    # If it is, create a new rule violation
-    # If there is already a rule violation for this sensor, update the rule violation
-    return if @alarm_rules.empty?
-
+  # Creates violation if sensor data violates an alarm rule
+  # Updates a violation if it already exists
+  def maybe_create_or_update_violation
     @alarm_rules.each do |alarm_rule|
-      case alarm_rule.rule_type
-      when 'max_value'
-        sensor_data_which_violates = @sensor_data.select { |sensor_data| sensor_data.value > alarm_rule.value }
-      when 'min_value'
-        sensor_data_which_violates = @sensor_data.select { |sensor_data| sensor_data.value < alarm_rule.value }
-      end
-
-      sensor_data_which_violates.each do |sensor_data|
+      sensor_data_that_violates_alarm_rule(alarm_rule, @sensor_data).each do |sensor_data|
         violation_text  = I18n.t('rule_violations.violation_text', value: sensor_data.to_s, locale: @device.user.locale)
+
         open_violations = alarm_rule.rule_violations.open
         if open_violations.present?
           open_violations.update_all(violation_text: violation_text)
         else
-          alarm_rule.rule_violations.create!(violation_text: violation_text)
+          AlarmRule.transaction do
+            # Create a new violation
+            rule_violation = alarm_rule.rule_violations.create!(violation_text: violation_text)
+
+            # Send Notification to user
+            SensorAlarmNotification.with(rule_violation: rule_violation).deliver(@device.user)
+          end
         end
       end
     end
@@ -42,6 +39,16 @@ class RuleViolationHandler
           rule_violation.close! if @sensor_data.select { |sensor_data| sensor_data.sensor == sensor }.map(&:value).min >= rule_violation.alarm_rule.value
         end
       end
+    end
+  end
+
+  private
+  def sensor_data_that_violates_alarm_rule(alarm_rule, sensor_data)
+    case alarm_rule.rule_type
+    when 'max_value'
+      sensor_data.select { |sensor_data| sensor_data.value > alarm_rule.value }
+    when 'min_value'
+      sensor_data.select { |sensor_data| sensor_data.value < alarm_rule.value }
     end
   end
 end
