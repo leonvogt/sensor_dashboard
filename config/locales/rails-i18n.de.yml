@@ -225,7 +225,7 @@ de:
   time:
     am: vormittags
     formats:
-      default: "%d.%m.%Y %H:%M"
+      default: "%d.%m.%y %H:%M"
       default_with_seconds: "%d.%m.%Y %H:%M:%S"
       long: "%A, %d. %B %Y, %H:%M"
       short: "%d.%m.%Y %R"

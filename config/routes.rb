@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   }
   resources :users, only: :show
   resources :mobile_app_connections
+  resources :notifications, only: :index
 
   resources :devices do
     resource :access_token, only: :create

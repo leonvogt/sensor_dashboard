@@ -219,7 +219,7 @@ en:
   time:
     am: am
     formats:
-      default: "%d.%m.%Y %H:%M"
+      default: "%d.%m.%y %H:%M"
       default_with_seconds: "%d.%m.%Y %H:%M:%S"
       long: "%B %d, %Y %I:%M %p"
       short: "%d %b %I:%M %p"

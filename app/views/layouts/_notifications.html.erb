@@ -1,0 +1,13 @@
+<div class="intro-x dropdown w-20 h-8">
+  <div class="dropdown-toggle text-center" role="button" aria-expanded="false" data-tw-toggle="dropdown">
+    <%= icon('fa-regular', 'bell') %>
+  </div>
+  <div class="notification-content pt-2 dropdown-menu" style="position: absolute; inset: 0px 0px auto auto; margin: 0px; transform: translate(0px, 20px)" data-popper-placement="bottom-end">
+    <div class="notification-content__box dropdown-content">
+      <div class="notification-content__title">Notifications</div>
+      <div class="notificatin-container">
+        <%= turbo_frame_tag :notifications, src: notifications_path %>
+      </div>
+    </div>
+  </div>
+</div>

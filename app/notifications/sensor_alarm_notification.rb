@@ -20,12 +20,16 @@ class SensorAlarmNotification < Noticed::Base
     t('.title', device_name: params[:rule_violation].alarm_rule&.sensor&.device.to_s, locale: recipient.locale)
   end
 
+  def body
+    params[:rule_violation].violation_text
+  end
+
   def format_notification(fcm_device_token)
     {
       token: fcm_device_token,
       notification: {
         title: title,
-        body: params[:rule_violation].violation_text,
+        body: body,
       },
       data: {
         sensor_id: params[:rule_violation].alarm_rule.sensor_id.to_s
