@@ -25,7 +25,6 @@
 @import "@left4code/tw-starter/dist/css/_form-inline.css";
 @import "@left4code/tw-starter/dist/css/_form-select.css";
 @import "@left4code/tw-starter/dist/css/_input-group.css";
-@import "@left4code/tw-starter/dist/css/_intro.css";
 @import "@left4code/tw-starter/dist/css/_tab.css";
 @import "@left4code/tw-starter/dist/css/_table.css";
 @import "@left4code/tw-starter/dist/css/_box.css";
@@ -40,6 +39,7 @@
 @import "./components/_breadcrumb.css";
 @import "./components/_tom-select.css";
 @import "./components/_mobile-menu.css";
+@import "./components/_intro_animation.css";
 
 /* Custom Files */
 @import "helpers";
