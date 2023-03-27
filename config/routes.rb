@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resource :sensor_data, only: :create
+      resource :path_configuration, only: :show
     end
   end
 end
