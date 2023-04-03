@@ -7,7 +7,7 @@ class AccessTokensController < ApplicationController
 
     if @device.update(access_token: access_token)
       notice = "#{t('successful.messages.created', model: Device.human_attribute_name(:access_token))} Access token: #{plain_token}"
-      redirect_to @device, notice: notice
+      render turbo_stream: turbo_stream.update("access-token-hint", notice)
     else
       redirect_to @device, alert: "Access token could not be created"
     end

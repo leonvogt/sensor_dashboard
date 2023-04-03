@@ -19,7 +19,7 @@ describe NewSensorDataJob, type: :job do
 
   describe 'sends notifications' do
     let!(:user) { create(:user) }
-    let!(:mobile_app_connection) { create(:mobile_app_connection, user: user, notification_token: '"fexB9TduRH-0O3QDLLKCJB:APA91bH1MMKqtsAAuu6F6Y52RH0M6KONDSzDpSXeYbZKfOMpyK-v8S1253JL4JhkIZLMUX-JcjS_2i42p5E_fH7BwBeb9mOdyxJsKv7QO2eHAGOlD8J3lh5sVtOkh6z2-4RXFRSDOSjj') }
+    let!(:mobile_app_connection) { create(:mobile_app_connection, user: user, notification_token: 'fexB9TduRH-0O3QDLLKCJB:APA91bH1MMKqtsAAuu6F6Y52RH0M6KONDSzDpSXeYbZKfOMpyK-v8S1253JL4JhkIZLMUX-JcjS_2i42p5E_fH7BwBeb9mOdyxJsKv7QO2eHAGOlD8J3lh5sVtOkh6z2-4RXFRSDOSjj') }
 
     it 'sends notifications to users with mobile app connections' do
       expect {
