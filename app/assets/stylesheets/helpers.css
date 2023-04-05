@@ -17,3 +17,7 @@ canvas {
   filter: alpha(opacity=0);
   z-index: -1
 }
+
+.turbo-native .d-turbo-native-hidden {
+  display: none;
+}

@@ -12,15 +12,18 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body class="<%= turbo_native_app? ? 'native' : 'desktop' %>">
-    <% if user_signed_in? && turbo_native_app? %>
+  <body class="<%= turbo_native_app? ? 'turbo-native' : 'desktop' %>">
+    <% if !user_signed_in? %>
+      <%= render 'layouts/flash_messages', flash: flash %>
+      <%= yield %>
+    <% elsif turbo_native_app? %>
       <div class="content">
         <%= render 'layouts/flash_messages', flash: flash %>
         <div class="grid grid-cols-12 gap-6">
           <%= yield %>
         </div>
       </div>
-    <% elsif user_signed_in? %>
+    <% else %>
       <%= render 'layouts/mobile_menu' %>
       <div class="flex md:mt-0 mt-[4.7rem]">
         <%= render 'layouts/side_menu' %>
@@ -32,9 +35,6 @@
           </div>
         </div>
       </div>
-    <% else %>
-      <%= render 'layouts/flash_messages', flash: flash %>
-      <%= yield %>
     <% end %>
   </body>
 </html>
