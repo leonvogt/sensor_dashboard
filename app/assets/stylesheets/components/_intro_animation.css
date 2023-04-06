@@ -1,4 +1,4 @@
-body.desktop * {
+body.desktop #main-container * {
   @for $i from 1 to 50 {
     > .intro-x:nth-child($i) {
       z-index: calc(50 - $i);
