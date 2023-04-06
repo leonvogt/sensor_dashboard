@@ -3,6 +3,11 @@ class ApplicationController < ActionController::Base
   before_action :authenticate_user!
   before_action :set_locale
   before_action :check_user_privileges
+  helper_method :breadcrumbs
+
+  def breadcrumbs
+    BreadcrumbsAssembler.new(controller_path, action_name, params).crumbs
+  end
 
   def check_user_privileges
     if current_user&.guest? && action_name.in?(%w[create update destroy])

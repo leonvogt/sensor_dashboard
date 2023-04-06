@@ -1,0 +1,14 @@
+<nav aria-label="breadcrumb" class="-intro-x mr-auto hidden sm:flex">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <%= link_to root_path do %>
+        <%= icon('fa', 'home') %>
+      <% end %>
+    </li>
+    <% breadcrumbs.each do |crumb| %>
+      <li class="breadcrumb-item" aria-current="page">
+        <%= link_to crumb.name, crumb.path %>
+      </li>
+    <% end %>
+  </ol>
+</nav>
