@@ -15,7 +15,7 @@
     "chartjs-plugin-zoom": "^2.0.1",
     "esbuild": "^0.16.0",
     "luxon": "^3.3.0",
-    "postcss": "^8.4.22",
+    "postcss": "^8.4.23",
     "postcss-advanced-variables": "^3.0.1",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^15.1.0",
