@@ -14,7 +14,7 @@ gem "bootsnap", require: false
 gem "puma", "~> 6.2"
 
 # Database
-gem "pg", "~> 1.4"
+gem "pg", "~> 1.5"
 
 # Authentication
 gem 'devise'
