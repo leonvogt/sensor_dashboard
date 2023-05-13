@@ -12,6 +12,13 @@ class User < ApplicationRecord
   has_many :mobile_app_connections, dependent: :destroy
   has_many :notifications, as: :recipient, dependent: :destroy
 
+  has_secure_token :authentication_token
+
+  def self.valid_credentials?(email, password)
+    user = find_by(email:)
+    user&.valid_password?(password) ? user : nil
+  end
+
   def guest?
     email == GUEST_EMAIL
   end

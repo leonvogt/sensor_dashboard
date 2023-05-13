@@ -51,3 +51,11 @@ The following sensor data are currently supported:
 - pH
 - EC (Conductivity)
 - Hz (General frequency)
+
+## API
+### External API
+Sensor Dashboard provides an public API to send sensor data to the server.    
+After creating a device you can create an Access Token, which is used to authenticate the request.
+
+### Internal API
+For the Turbo Native mobile app there is an internal API, which is used to get things like the PathConfiguration.

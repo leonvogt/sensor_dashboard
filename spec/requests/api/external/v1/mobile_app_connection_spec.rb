@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.shared_context 'MobileApp requests' do
   def send_request(unique_mobile_id: SecureRandom.hex, notification_token: SecureRandom.hex, platform: 'android', app_version: '1.0.0')
-    post mobile_app_connections_url, params: {
+    post api_v1_mobile_app_connections_url, params: {
       mobile_app_connection: {
         unique_mobile_id: unique_mobile_id,
         notification_token: notification_token,
