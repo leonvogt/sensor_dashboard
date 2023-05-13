@@ -5,7 +5,7 @@
 
 <% if sensor_to_show.present? %>
   <div class="col-span-12">
-    <div class="grid grid-cols-1 2xl:grid-cols-7 gap-6 p-5">
+    <div class="grid grid-cols-1 2xl:grid-cols-7 gap-6 <%= 'p-5' if !turbo_native_app? %>">
       <div class="2xl:col-span-2">
         <% sensors.reject { |sensor| sensor == sensor_to_show }.each do |sensor| %>
           <div class="grid grid-cols-2 gap-6 mb-5">
