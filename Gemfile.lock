@@ -293,6 +293,8 @@ GEM
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
+    sassc (2.4.0)
+      ffi (~> 1.9)
     selenium-webdriver (4.9.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -404,6 +406,7 @@ DEPENDENCIES
   redis (~> 5.0)
   remote_database_importer
   rspec-rails
+  sassc
   selenium-webdriver
   sidekiq
   skylight

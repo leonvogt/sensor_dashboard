@@ -57,6 +57,8 @@ group :development do
   gem "web-console"
   gem "rack-mini-profiler"
   gem 'better_errors'
+  gem 'sassc' # better_errors dependency. Can be removed when PR is merged: https://github.com/BetterErrors/better_errors/pull/515
+
   gem 'binding_of_caller'
   gem 'solargraph'
   gem 'remote_database_importer'
