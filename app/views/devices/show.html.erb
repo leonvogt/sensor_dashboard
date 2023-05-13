@@ -22,7 +22,7 @@
         </li>
       </ul>
       <div class="flex items-center">
-        <%= link_to @device, data: { turbo: true, turbo_method: :delete, turbo_confirm: t('confirm_delete') }, class: 'btn btn-outline-secondary text-danger mr-5' do %>
+        <%= button_to @device, method: :delete, form: { data: { turbo_confirm: t('confirm_delete') } }, class: 'btn btn-outline-secondary text-danger mr-5' do %>
           <%= t('delete') %>
         <% end %>
         <%= link_to t('edit_title', model: Device.model_name.human), edit_device_path(@device), class: 'btn btn-outline-secondary whitespace-nowrap' %>
