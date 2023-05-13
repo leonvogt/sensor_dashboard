@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :mobile_app_connections, dependent: :destroy
   has_many :notifications, as: :recipient, dependent: :destroy
 
+  has_secure_token :authentication_token
+
   def guest?
     email == GUEST_EMAIL
   end
