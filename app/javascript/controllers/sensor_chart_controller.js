@@ -193,15 +193,10 @@ export default class extends Controller {
             mode: 'x',
             onZoomStart: () => this.checkZoomValidity(),
             onZoom: () => this.showResetZoomButton(),
-            // Maus zum zoomen
             drag: {
               enabled: true,
               backgroundColor: 'rgba(54, 162, 235, 0.2)'
             },
-            // Fingergeste zum zoomen
-            pinch: {
-              enabled: true
-            }
           }
         },
         autocolors: false,
