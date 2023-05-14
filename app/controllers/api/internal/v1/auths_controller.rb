@@ -1,7 +1,7 @@
 module API::Internal::V1
   class AuthsController < ActionController::Base
     skip_before_action :verify_authenticity_token
-    before_action :authenticate_token!, except: [:create]
+    before_action :authenticate_token!
 
     def create
       if (user = User.valid_credentials?(params[:email], params[:password]))
@@ -20,6 +20,10 @@ module API::Internal::V1
     private
 
     def authenticate_token!
+      # Skip token authentication for the create action
+      # (On the first login, the user won't have a token yet and will be authenticated by email and password)
+      return if controller_name == 'auths' && action_name == 'create'
+
       if (user = user_from_token)
         sign_in user, store: false
       else
