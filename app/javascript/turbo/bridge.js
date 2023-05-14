@@ -4,26 +4,14 @@
 // https://masilotti.com/turbo-ios/the-javascript-bridge (Shout out to Joe Masilotti for this helpful article! 🙌)
 
 export default class Bridge {
-
-  // This function can be called by the Turbo Native App to save the current mobile app settings.
-  static registerMobileApp(mobileAppSettings) {
-    fetch("/mobile_app_connections", {
-      body: JSON.stringify({
-        notification_token: mobileAppSettings["pushNotificationToken"],
-        unique_mobile_id: mobileAppSettings["uniqueMobileId"],
-        platform: mobileAppSettings["platform"],
-        app_version: mobileAppSettings["appVersion"]
-      }),
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-CSRF-Token": this.getMetaValue("csrf-token")
-      },
-    });
+  // Toggles navbar visibility in browser from Turbo Native
+  static toggleNavBar() {
+    const event = new CustomEvent("toggle-nav-bar")
+    window.dispatchEvent(event)
   }
 
-  static getMetaValue(name) {
-    const element = document.head.querySelector(`meta[name="${name}"]`)
-    return element.getAttribute("content")
+  // Sends a message to the native app, if active.
+  static postMessage(name, data = {}) {
+    window.nativeApp?.postMessage(JSON.stringify({name, ...data}))
   }
 }

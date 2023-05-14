@@ -18,3 +18,6 @@ application.register("toastify", Toastify)
 
 import FormTemplate from "./form_template_controller.js"
 application.register("form-template", FormTemplate)
+
+import NavBar from "./nav_bar_controller.js"
+application.register("nav-bar", NavBar)

@@ -2,7 +2,7 @@
   @apply w-full fixed bg-primary/90 z-[60] border-b border-white/[0.08] -mt-5 -mx-8 mb-6 dark:bg-darkmode-800/90;
   &:before {
     content: "";
-    @apply w-full h-screen z-10 fixed inset-x-0 bg-black/90 invisible opacity-0 transition-opacity duration-200 ease-in-out;
+    @apply w-full z-10 top-0 bottom-0 fixed inset-x-0 bg-black/90 invisible opacity-0 transition-opacity duration-200 ease-in-out;
   }
   &.mobile-menu--active {
     &:before {

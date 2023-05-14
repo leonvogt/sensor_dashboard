@@ -17,6 +17,7 @@
       <%= render 'layouts/flash_messages', flash: flash %>
       <%= yield %>
     <% elsif turbo_native_app? %>
+      <%= render 'layouts/mobile_menu' %>
       <div class="content">
         <%= render 'layouts/flash_messages', flash: flash %>
         <div id="main-container" class="grid grid-cols-12 gap-6">
