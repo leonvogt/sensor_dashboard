@@ -7,7 +7,7 @@ module API::Internal::V1
           screenshots_enabled: true,
           tabs: [
             {
-              title: "Home",
+              title: "Dashboard",
               path: root_path,
               icon: "home"
             },
