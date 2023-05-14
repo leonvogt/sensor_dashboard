@@ -27,7 +27,7 @@ export default class extends Controller {
       stopOnFocus: true,
       style: {
         background: this.toastifyColors[this.typeValue],
-        minWidth: "250px",
+        minWidth: "280px",
       }
     }
 

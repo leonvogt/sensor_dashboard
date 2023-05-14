@@ -1,5 +1,5 @@
 <%= content_tag :div, id: "sensor-#{sensor.id}-chart", data: { controller: 'sensor-chart', sensor_id: sensor.id, show_details: show_details, sensor_chart_no_data_text_value: t('sensors.no_sensor_measurements') } do %>
-  <div class="mb-5">
+  <div class="mb-5f">
     <%= turbo_frame_tag sensor %>
   </div>
   <div class="flex mb-5">

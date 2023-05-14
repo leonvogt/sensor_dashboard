@@ -22,22 +22,22 @@
           <a href="javascript:;" class="nav-link py-4" data-tw-target="#api-info-tab" role="tab"><%= t('.api_info_tab') %></a>
         </li>
       </ul>
-      <div class="flex items-center">
+      <div class="flex justify-between gap-1 py-2">
+        <%= link_to t('edit_title', model: Device.model_name.human), edit_device_path(@device), class: 'btn btn-outline-secondary whitespace-nowrap' %>
         <%= button_to @device, method: :delete, form: { data: { turbo_confirm: t('confirm_delete') } }, class: 'btn btn-outline-secondary text-danger mr-5' do %>
           <%= t('delete') %>
         <% end %>
-        <%= link_to t('edit_title', model: Device.model_name.human), edit_device_path(@device), class: 'btn btn-outline-secondary whitespace-nowrap' %>
       </div>
     </div>
   </div>
 </div>
 
-<div class="intro-y col-span-12 box tab-content  pt-5">
+<div class="intro-y col-span-12 tab-content">
   <div id="api-info-tab" class="tab-pane" role="tabpanel">
     <%= render 'api_info', device: @device %>
   </div>
 
-  <div id="sensors-tab" class="tab-pane active " role="tabpanel">
+  <div id="sensors-tab" class="tab-pane active" role="tabpanel">
     <%= render 'sensors_tab', device: @device, sensors: @sensors, sensor_to_show: @sensor_to_show %>
   </div>
 </div>
