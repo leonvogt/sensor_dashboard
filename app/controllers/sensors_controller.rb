@@ -45,6 +45,19 @@ class SensorsController < ApplicationController
   end
 
   def destroy
+    respond_to do |format|
+      if Sensor::Destroy.new(@sensor).destroy_sensor_and_associated_records!
+        @device = @sensor.device
+        @sensors = @device.sensors.includes(:sensor_measurements)
+        @sensor_to_show = params[:sensor_to_show].present? ? Sensor.find(params[:sensor_to_show]) : @sensors.first
+
+        format.html { redirect_to @sensor.device }
+        format.turbo_stream
+      else
+        format.html { render :show }
+        format.json { render json: @sensor.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   private

@@ -1,5 +1,3 @@
 <%= turbo_frame_tag Sensor.new do %>
-  <div class="box p-2 mt-5">
-    <%= render 'sensors/form', sensor: @sensor, model: [@sensor.device, @sensor] %>
-  </div>
+  <%= render 'sensors/form', sensor: @sensor, model: [@sensor.device, @sensor] %>
 <% end %>

@@ -36,7 +36,7 @@ class DevicesController < ApplicationController
   end
 
   def destroy
-    DestroyDevice.new(@device).destroy!
+    DestroyDevice.new(@device).destroy_device_and_associated_records!
     redirect_to devices_path, notice: t('successful.messages.deleted', model: Device.model_name.human)
   end
 
