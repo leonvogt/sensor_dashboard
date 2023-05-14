@@ -1,4 +1,4 @@
-class SensorConfiguration
+class Sensor::ConfigurationOptions
   CHART_TYPES = ['line', 'bar'].freeze
 
   SENSOR_TYPE_SUFFIX = {

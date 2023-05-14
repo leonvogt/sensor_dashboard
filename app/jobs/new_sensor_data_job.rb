@@ -9,7 +9,7 @@ class NewSensorDataJob < ApplicationJob
       device = Device.find(device_id)
 
       # Save all sensor data from the device
-      created_sensor_data = SensorDataHandler.new(device, sensor_value_params).save!
+      created_sensor_data = Sensor::NewDataHandler.new(device, sensor_value_params).save!
 
       # Create rule violations if necessary
       rule_violation_handler = RuleViolationHandler.new(device, created_sensor_data)

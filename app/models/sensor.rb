@@ -17,6 +17,6 @@ class Sensor < ApplicationRecord
   end
 
   def value_suffix
-    SensorConfiguration::SENSOR_TYPE_SUFFIX[sensor_type]
+    Sensor::ConfigurationOptions::SENSOR_TYPE_SUFFIX[sensor_type]
   end
 end

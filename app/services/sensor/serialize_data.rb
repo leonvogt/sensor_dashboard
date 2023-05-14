@@ -1,4 +1,4 @@
-class SerializeSensorData
+class Sensor::SerializeData
   def initialize(sensor, sensor_data)
     @sensor = sensor
     @sensor_data = sensor_data

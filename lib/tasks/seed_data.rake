@@ -29,7 +29,7 @@ namespace :seed_data do
 
   def seed_sensor(device, amount = 1)
     amount.times do
-      sensor = Sensor.create!(sensor_type: SensorConfiguration::SENSOR_TYPES.sample, chart_type: 'line', show_in_dashboard: true, device: device)
+      sensor = Sensor.create!(sensor_type: Sensor::ConfigurationOptions::SENSOR_TYPES.sample, chart_type: 'line', show_in_dashboard: true, device: device)
     end
   end
 

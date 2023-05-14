@@ -1,4 +1,4 @@
-class SensorDataHandler
+class Sensor::NewDataHandler
   def initialize(device, sensor_value_params)
     @device = device
     @sensor_value_params = sensor_value_params

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe SerializeSensorData do
+RSpec.describe Sensor::SerializeData do
   let!(:sensor)      { create(:sensor, sensor_type: 'temperature') }
   let!(:sensor_data) { create_list(:sensor_data, 10, sensor: sensor) }
 
