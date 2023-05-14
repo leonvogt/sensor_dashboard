@@ -1,4 +1,9 @@
 de:
+  activerecord:
+    models:
+      notification:
+        one: Benachrichtigung
+        other: Benachrichtigungen
   notifications:
     sensor_alarm_notification:
       title: "Sensor Alarm - %{device_name}"
