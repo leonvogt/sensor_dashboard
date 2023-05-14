@@ -4,9 +4,9 @@ class MobileAppConnection < ApplicationRecord
   belongs_to :user
 
   validates :platform, presence: true, inclusion: { in: PLATFORMS }
-  validates :unique_mobile_id, :notification_token, presence: true, uniqueness: true
+  validates :notification_token, presence: true, uniqueness: true
 
   def to_s
-    name.presence || unique_mobile_id
+    name.presence || notification_token.truncate(10)
   end
 end
