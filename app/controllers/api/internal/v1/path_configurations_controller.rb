@@ -14,7 +14,12 @@ module API::Internal::V1
             {
               title: "Devices",
               path: devices_path,
-              icon: "announcement"
+              icon: "settings_remote"
+            },
+            {
+              title: "Notifications",
+              path: notifications_path,
+              icon: "notifications"
             }
           ].to_json
         },
