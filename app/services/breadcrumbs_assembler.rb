@@ -17,8 +17,8 @@ class BreadcrumbsAssembler
 
   private
   def assemble_crumbs(controller, action, params)
-    crumbs  = []
-    id      = params[:id]
+    crumbs = []
+    id     = params[:id]
 
     case [controller, action].join('#')
     when 'dashboard#show'
