@@ -12,12 +12,12 @@ module API::Internal::V1
               icon: "home"
             },
             {
-              title: "Devices",
+              title: Device.model_name.human(count: 2),
               path: devices_path,
               icon: "settings_remote"
             },
             {
-              title: "Notifications",
+              title: Notification.model_name.human(count: 2),
               path: notifications_path,
               icon: "notifications"
             }

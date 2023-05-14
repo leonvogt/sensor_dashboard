@@ -1,4 +1,6 @@
 <% content_for :title, Notification.model_name.human(count: 2) %>
-<%= turbo_frame_tag :notifications do %>
-  <%= render @notifications %>
-<% end %>
+<div class="col-span-12">
+  <%= turbo_frame_tag :notifications do %>
+    <%= render @notifications %>
+  <% end %>
+</div>

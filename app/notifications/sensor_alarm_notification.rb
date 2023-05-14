@@ -25,6 +25,8 @@ class SensorAlarmNotification < Noticed::Base
   end
 
   def format_notification(fcm_device_token)
+    host = Rails.env.development? ? '192.168.1.10:3000' : Rails.application.config.action_mailer.default_url_options[:host]
+
     {
       token: fcm_device_token,
       notification: {
@@ -32,7 +34,8 @@ class SensorAlarmNotification < Noticed::Base
         body: body,
       },
       data: {
-        sensor_id: params[:rule_violation].alarm_rule.sensor_id.to_s
+        sensor_id: params[:rule_violation].alarm_rule.sensor_id.to_s,
+        url: devices_url(host: host)
       }
     }
   end

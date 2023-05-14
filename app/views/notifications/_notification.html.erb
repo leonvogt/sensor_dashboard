@@ -1,12 +1,12 @@
-<div class="cursor-pointer relative flex items-center py-2">
-  <div class="ml-2 overflow-hidden">
-    <div class="flex items-center">
-      <div class="font-medium truncate mr-5"><%= notification.to_notification.title %></div>
-      <a href="javascript:;" class=""></a>
-      <div class="text-xs text-slate-400 ml-auto whitespace-nowrap"><%= l(notification.created_at, format: :short) %></div>
-    </div>
-    <div class="w-full truncate text-slate-500 mt-0.5">
-      <%= notification.to_notification.body %>
-    </div>
+<div class="py-2 overflow-hidden">
+
+  <div class="flex justify-between">
+    <div class="font-medium truncate mr-5"><%= notification.to_notification.title %></div>
+    <div class="text-xs text-slate-400 ml-auto whitespace-nowrap"><%= l(notification.created_at, format: :short) %></div>
+  </div>
+
+
+  <div class="w-full truncate text-slate-500 mt-0.5">
+    <%= notification.to_notification.body %>
   </div>
 </div>
