@@ -6,7 +6,7 @@ namespace :seed_data do
 
     seed_device(user, 3)
     user.devices.each { |device| seed_sensor(device, 3) }
-    user.sensors.each { |sensor| seed_sensor_data(sensor, 100) }
+    user.sensors.each { |sensor| seed_sensor_measurements(sensor, 100) }
   end
 
   desc 'Create sample data development'
@@ -18,7 +18,7 @@ namespace :seed_data do
 
     seed_device(user, 2)
     user.devices.each { |device| seed_sensor(device, 3) }
-    user.sensors.each { |sensor| seed_sensor_data(sensor, 100) }
+    user.sensors.each { |sensor| seed_sensor_measurements(sensor, 100) }
   end
 
   def seed_device(user, amount = 1)
@@ -33,11 +33,11 @@ namespace :seed_data do
     end
   end
 
-  def seed_sensor_data(sensor, amount = 1)
+  def seed_sensor_measurements(sensor, amount = 1)
     value = 20
     amount.times do |i|
       value += rand(-2..2)
-      sensor_data = SensorData.create!(value: value, sensor: sensor, created_at: Time.current - i.hours, updated_at: Time.current - i.hours)
+      SensorMeasurement.create!(value: value, sensor: sensor, created_at: Time.current - i.hours, updated_at: Time.current - i.hours)
     end
   end
 end

@@ -1,5 +1,5 @@
 module API::External::V1
-  class SensorDataController < ApplicationController
+  class SensorMeasurementsController < ApplicationController
     include ExternalAPIKeyAuthenticatable
 
     # Deactivate Devise authentication

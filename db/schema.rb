@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_29_184808) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_14_103002) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -77,12 +77,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_29_184808) do
     t.index ["alarm_rule_id"], name: "index_rule_violations_on_alarm_rule_id"
   end
 
-  create_table "sensor_data", force: :cascade do |t|
+  create_table "sensor_measurements", force: :cascade do |t|
     t.bigint "sensor_id", null: false
     t.decimal "value", precision: 10, scale: 2, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["sensor_id"], name: "index_sensor_data_on_sensor_id"
+    t.index ["sensor_id"], name: "index_sensor_measurements_on_sensor_id"
   end
 
   create_table "sensors", force: :cascade do |t|
@@ -116,6 +116,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_29_184808) do
   add_foreign_key "devices", "users"
   add_foreign_key "mobile_app_connections", "users"
   add_foreign_key "rule_violations", "alarm_rules"
-  add_foreign_key "sensor_data", "sensors"
+  add_foreign_key "sensor_measurements", "sensors"
   add_foreign_key "sensors", "devices"
 end

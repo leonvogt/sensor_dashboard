@@ -10,7 +10,7 @@ de:
         chart_type: Chart-Typ
         show_in_dashboard: Im Dashboard anzeigen
   sensors:
-    no_sensor_data: Noch keine Daten vorhanden
+    no_sensor_measurements: Noch keine Daten vorhanden
     sensor_types:
       temperature: Temperatur
       humidity: Luftfeuchtigkeit

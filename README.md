@@ -35,8 +35,8 @@ To start the webserver, sidekiq, yarn watch and tailwind watch run:
 bin/dev
 ```
 
-## Sensor data
-The following sensor data are currently supported:
+## Sensor Measurement Types
+The following sensor measurement types are currently supported:
 - Temperature
 - Humidity
 - Pressure

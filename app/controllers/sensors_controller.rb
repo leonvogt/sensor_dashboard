@@ -6,8 +6,8 @@ class SensorsController < ApplicationController
     start_date = params[:timestamp_start].blank? ? Time.current.yesterday : Time.at(params[:timestamp_start].to_i)
     end_date   = params[:timestamp_end].blank?  ? Time.current : Time.at(params[:timestamp_end].to_i)
 
-    sensor_data = @sensor.sensor_data.where("created_at >= ? AND created_at <= ?", start_date, end_date ).order(created_at: :asc)
-    render json: Sensor::SerializeData.new(@sensor, sensor_data).serialize
+    sensor_measurements = @sensor.sensor_measurements.where("created_at >= ? AND created_at <= ?", start_date, end_date ).order(created_at: :asc)
+    render json: Sensor::SerializeMeasurements.new(@sensor, sensor_measurements).serialize
   end
 
   def new
@@ -30,7 +30,7 @@ class SensorsController < ApplicationController
 
   def create
     @sensor  = @device.sensors.new(sensor_params)
-    @sensors = @device.sensors.includes(:sensor_data)
+    @sensors = @device.sensors.includes(:sensor_measurements)
     @sensor_to_show = params[:sensor_to_show].present? ? Sensor.find(params[:sensor_to_show]) : @sensors.first
 
     respond_to do |format|

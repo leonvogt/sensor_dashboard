@@ -2,7 +2,7 @@ class Sensor < ApplicationRecord
   belongs_to :device
   delegate :user, to: :device
 
-  has_many :sensor_data, dependent: :destroy
+  has_many :sensor_measurements, dependent: :destroy
   has_many :alarm_rules, dependent: :destroy
   has_many :rule_violations, through: :alarm_rules
 

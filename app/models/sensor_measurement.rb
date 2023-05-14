@@ -1,4 +1,4 @@
-class SensorData < ApplicationRecord
+class SensorMeasurement < ApplicationRecord
   belongs_to :sensor
 
   validates :value, presence: true

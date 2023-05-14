@@ -13,11 +13,11 @@ class DestroyDevice
   private
   def destroy_associated_records
     @device.sensors.each do |sensor|
-      # Delete all RuleViolations and SensorData without callbacks,
+      # Delete all RuleViolations and SensorMeasurements without callbacks,
       # because there could be a lot of them and we don't want to
       # trigger callbacks for each of them.
       RuleViolation.merge(sensor.rule_violations).delete_all
-      sensor.sensor_data.delete_all
+      sensor.sensor_measurements.delete_all
 
       sensor.destroy
     end

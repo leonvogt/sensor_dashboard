@@ -15,12 +15,12 @@
                 Reset Zoom
               </button>
             </div>
-            <% if sensor.sensor_data.any? %>
+            <% if sensor.sensor_measurements.any? %>
               <%= content_tag :div, id: "sensor-container-#{sensor.id}", class: 'h-[213px]' do %>
                 <%= content_tag :canvas, '', id: "sensor-#{sensor.id}", data: { sensor_chart_target: 'canvas' } %>
               <% end %>
             <% else %>
-              <p class="text-center"><i><%= t('sensors.no_sensor_data') %></i></p>
+              <p class="text-center"><i><%= t('sensors.no_sensor_measurements') %></i></p>
             <% end %>
           </div>
         </div>
