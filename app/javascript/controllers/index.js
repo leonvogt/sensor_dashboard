@@ -21,3 +21,6 @@ application.register("form-template", FormTemplate)
 
 import NavBar from "./nav_bar_controller.js"
 application.register("nav-bar", NavBar)
+
+import NativeBridge from "./native_bridge_controller.js"
+application.register("native-bridge", NativeBridge)

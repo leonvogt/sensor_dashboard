@@ -19,6 +19,13 @@
           <div class="menu__title"><%= Device.model_name.human(count: 2) %></div>
         <% end %>
       </li>
+
+      <li>
+        <%= link_to '#', class: 'menu', data: { controller: 'native-bridge', native_bridge_message_value: 'signOut', action: 'click->native-bridge#postMessage' } do %>
+          <div class="menu__icon"><%= icon('fa', 'right-from-bracket') %></div>
+          <div class="menu__title"><%= t('devise.logout') %></div>
+        <% end %>
+      </li>
     </ul>
   </div>
 </div>
