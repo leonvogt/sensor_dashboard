@@ -5,6 +5,8 @@ module API::Internal::V1
       render json: {
         settings: {
           screenshots_enabled: true,
+          register_with_account: true,
+          require_authentication: true,
           tabs: [
             {
               title: "Dashboard",
@@ -19,7 +21,8 @@ module API::Internal::V1
             {
               title: Notification.model_name.human(count: 2),
               path: notifications_path,
-              icon: "notifications"
+              icon: "notifications",
+              show_notification_badge: true
             }
           ].to_json
         },
@@ -52,6 +55,20 @@ module API::Internal::V1
             patterns: ["/users/sign_in"],
             properties: {
               uri: "turbo://fragment/users/sign_in",
+              context: "modal"
+            }
+          },
+          {
+            patterns: ["/users/sign_up"],
+            properties: {
+              uri: "turbo://fragment/users/sign_up",
+              context: "modal"
+            }
+          },
+          {
+            patterns: ["/account/password/edit"],
+            properties: {
+              uri: "turbo://fragment/account/password/edit",
               context: "modal"
             }
           }
