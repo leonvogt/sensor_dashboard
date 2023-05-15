@@ -35,7 +35,7 @@
           <span class="text-slate-500">
             <pre>
               {
-                "sensor_values": {
+                "values": {
                   <% device.sensors.each do |sensor| %>
                     <%= "\"#{sensor.sensor_type}\":#{rand(30)}" %>
                   <% end %>

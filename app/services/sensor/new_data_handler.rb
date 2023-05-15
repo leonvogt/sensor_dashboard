@@ -1,13 +1,13 @@
 class Sensor::NewDataHandler
-  def initialize(device, sensor_value_params)
+  def initialize(device, sensor_measurements)
     @device = device
-    @sensor_value_params = sensor_value_params
+    @sensor_measurements = sensor_measurements
   end
 
   def save!
     created_sensor_measurements = []
     SensorMeasurement.transaction do
-      @sensor_value_params.each do |sensor_type, value|
+      @sensor_measurements.each do |sensor_type, value|
         begin
           created_sensor_measurements << @device.sensors.find_by!(sensor_type: sensor_type).sensor_measurements.create!(value: value)
         rescue ActiveRecord::RecordNotFound

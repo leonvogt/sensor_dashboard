@@ -14,13 +14,13 @@ module API::External::V1
 
 
     def create
-      NewSensorDataJob.perform_later(@current_device.id, sensor_value_params)
+      NewSensorMeasurementJob.perform_later(@current_device.id, sensor_measurements_params)
       render json: { status: 'success' }, status: :ok
     end
 
     private
-    def sensor_value_params
-      params.require(:sensor_values).permit!
+    def sensor_measurements_params
+      params.require(:values).permit!
     end
   end
 end
