@@ -5,7 +5,7 @@ module API::Internal::V1
       render json: {
         settings: {
           screenshots_enabled: true,
-          register_with_account: true,
+          register_with_account: false,
           require_authentication: true,
           tabs: [
             {
