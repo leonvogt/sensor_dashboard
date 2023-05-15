@@ -1,0 +1,12 @@
+<% content_for :title, t('.forgot_your_password') %>
+
+<%= form_for(resource, as: resource_name, url: password_path(resource_name)) do |f| %>
+  <div class="flex justify-center mx-auto my-auto items-center flex-col">
+      <div class="w-3/4 mb-6">
+        <%= f.email_field :email, class: 'w-full py-4 px-8 bg-slate-200 placeholder:font-semibold rounded hover:ring-1 hover:ring-gray-600 outline-slate-500 border-solid border-2 border-slate-300', autofocus: true, placeholder: "email" %>
+      </div>
+      <div class="w-3/4 mb-12">
+        <%= f.submit t('.send_me_reset_password_instructions'), class: 'btn btn-primary w-full' %>
+      </div>
+  </div>
+<% end %>

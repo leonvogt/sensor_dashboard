@@ -2,7 +2,9 @@ class ApplicationController < ActionController::Base
   include EsbuildErrorRendering if Rails.env.development?
   before_action :authenticate_user!
   before_action :set_locale
+  before_action :set_variant
   before_action :check_user_privileges
+
   helper_method :breadcrumbs
 
   def breadcrumbs
@@ -16,6 +18,10 @@ class ApplicationController < ActionController::Base
       return if controller_path == 'devise/sessions' && action_name.in?(%w[create destroy])
       render_forbidden
     end
+  end
+
+  def set_variant
+    request.variant = :turbo if turbo_native_app?
   end
 
   def set_locale
