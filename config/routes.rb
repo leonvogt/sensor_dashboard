@@ -42,6 +42,7 @@ Rails.application.routes.draw do
         resource :auth, only: [:create, :destroy]
         resource :path_configuration, only: :show
         resources :mobile_app_connections, only: :create
+        resources :users, only: :create
       end
     end
   end
