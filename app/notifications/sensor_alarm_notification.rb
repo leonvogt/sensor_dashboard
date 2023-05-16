@@ -8,7 +8,7 @@ class SensorAlarmNotification < Noticed::Base
 
   # Follow this guide to get your credentials: https://github.com/excid3/noticed/blob/master/docs/delivery_methods/fcm.md#google-firebase-cloud-messaging-notification-service
   def fcm_credentials
-    credentials =  File.read(Rails.root.join("config/credentials/firebase.json"))
+    credentials = File.read(Rails.root.join("config/firebase.json"))
     JSON.parse(credentials)
   end
 
