@@ -37,7 +37,7 @@
               {
                 "values": {
                   <% device.sensors.each do |sensor| %>
-                    <%= "\"#{sensor.sensor_type}\":#{rand(30)}" %>
+                    <%= "\"#{sensor.sensor_type}\":#{rand(30)}," %>
                   <% end %>
                 }
               }
