@@ -1,5 +1,6 @@
 class SensorMeasurement < ApplicationRecord
   belongs_to :sensor
+  has_many :alarm_rules, through: :sensor
 
   validates :value, presence: true
 

@@ -11,10 +11,8 @@ class NewSensorMeasurementJob < ApplicationJob
       # Save all sensor data from the device
       created_sensor_measurements = Sensor::NewDataHandler.new(device, sensor_measurements).save!
 
-      # Create rule violations if necessary
-      rule_violation_handler = RuleViolationHandler.new(device, created_sensor_measurements)
-      rule_violation_handler.maybe_create_or_update_violation
-      rule_violation_handler.maybe_close_violation
+      # Create or update RuleViolations if necessary
+      RuleViolationHandler.new(created_sensor_measurements).check_for_violations!
     end
   end
 end
