@@ -17,10 +17,11 @@ RSpec.describe Sensor::Destroy do
     end
 
     it 'destroys associated records' do
-      subject.destroy_sensor_and_associated_records!
-      expect(SensorMeasurement.count).to eq(0)
-      expect(AlarmRule.count).to eq(0)
-      expect(RuleViolation.count).to eq(0)
+      expect do
+        subject.destroy_sensor_and_associated_records!
+      end.to  change { SensorMeasurement.count }.by(-sensor_measurements.size)
+         .and change { AlarmRule.count }.by(-alarm_rules.size)
+         .and change { RuleViolation.count }.by(-rule_violations.size)
     end
   end
 end
