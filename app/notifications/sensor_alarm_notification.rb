@@ -35,7 +35,7 @@ class SensorAlarmNotification < Noticed::Base
       },
       data: {
         sensor_id: params[:rule_violation].alarm_rule.sensor_id.to_s,
-        url: devices_url(host: host)
+        url: notifications_url(host: host)
       }
     }
   end
