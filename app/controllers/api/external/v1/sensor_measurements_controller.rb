@@ -14,7 +14,7 @@ module API::External::V1
 
 
     def create
-      NewSensorMeasurementJob.perform_later(@current_device.id, sensor_measurements_params)
+      ::NewSensorMeasurementJob.perform_later(@current_device.id, sensor_measurements_params)
       render json: { status: 'success' }, status: :ok
     end
 
