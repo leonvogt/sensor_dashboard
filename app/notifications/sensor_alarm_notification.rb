@@ -17,11 +17,13 @@ class SensorAlarmNotification < Noticed::Base
   end
 
   def title
+    return t('.unknown_error') if params[:rule_violation].blank?
+
     t('.title', device_name: params[:rule_violation].alarm_rule&.sensor&.device.to_s, locale: recipient.locale)
   end
 
   def body
-    params[:rule_violation].violation_text
+    params[:rule_violation]&.violation_text
   end
 
   def format_notification(fcm_device_token)

@@ -7,3 +7,4 @@ de:
   notifications:
     sensor_alarm_notification:
       title: "Sensor Alarm - %{device_name}"
+      unknown_error: "Unbekannter Fehler"
