@@ -3,6 +3,12 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+/* Font Awesome */
+@import "@fortawesome/fontawesome-free/css/solid.min.css";
+@import "@fortawesome/fontawesome-free/css/regular.min.css";
+@import "@fortawesome/fontawesome-free/css/fontawesome.min.css";
+
+
 /* Custom Colors */
 @import "./_colors.css";
 
