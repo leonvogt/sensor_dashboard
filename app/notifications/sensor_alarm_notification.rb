@@ -3,8 +3,8 @@
 class SensorAlarmNotification < Noticed::Base
   param :rule_violation
 
-  deliver_by :fcm, credentials: :fcm_credentials, format: :format_notification
   deliver_by :database
+  deliver_by :fcm, credentials: :fcm_credentials, format: :format_notification, if: :should_send_push_notifications?
 
   # Follow this guide to get your credentials: https://github.com/excid3/noticed/blob/master/docs/delivery_methods/fcm.md#google-firebase-cloud-messaging-notification-service
   def fcm_credentials
@@ -45,5 +45,9 @@ class SensorAlarmNotification < Noticed::Base
   # Firebase Cloud Messaging Notifications may fail delivery if the user has removed the app from their device.
   def cleanup_device_token(token:, platform:)
     MobileAppConnection.where(notification_token: token).destroy_all
+  end
+
+  def should_send_push_notifications?
+    recipient.mobile_app_connections.present? && !recipient.guest?
   end
 end

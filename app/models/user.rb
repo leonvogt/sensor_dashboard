@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   has_many :devices, dependent: :destroy
   has_many :sensors, through: :devices
+  has_many :alarm_rules, through: :sensors
+  has_many :rule_violations, through: :alarm_rules
   has_many :sensor_measurements, through: :sensors
 
   has_many :mobile_app_connections, dependent: :destroy
