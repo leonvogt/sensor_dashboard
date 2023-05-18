@@ -4,7 +4,7 @@
 // https://masilotti.com/turbo-ios/the-javascript-bridge (Shout out to Joe Masilotti for this helpful article! 🙌)
 
 export default class Bridge {
-  // Toggles navbar visibility in browser from Turbo Native
+  // Toggles navbar visibility in browser from Turbo Native App.
   static toggleNavBar() {
     const event = new CustomEvent("toggle-nav-bar")
     window.dispatchEvent(event)
