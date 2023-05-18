@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       format.html do
         flash[:error] = t('resource_not_allowed')
-        redirect_to root_path
+        refresh_or_redirect_to root_path
       end
       format.json do
         render json: { status: 'error', message: t('resource_not_allowed') }, status: :forbidden

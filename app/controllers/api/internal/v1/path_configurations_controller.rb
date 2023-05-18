@@ -44,6 +44,13 @@ module API::Internal::V1
             }
           },
           {
+            patterns: ["/refresh_historical_location"],
+            properties: {
+              uri: "turbo://fragment/web/home",
+              presentation: "refresh"
+            }
+          },
+          {
             patterns: ["/new$", "/edit$"],
             properties: {
               context: "modal",
