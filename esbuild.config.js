@@ -1,6 +1,7 @@
 const watch = process.argv.includes('--watch')
 const railsEnv = process.env.RAILS_ENV || 'development'
 const errorFilePath = `esbuild_error_${railsEnv}.txt`
+const rails = require('esbuild-rails')
 
 const path = require('path')
 const fs = require('fs')
@@ -17,5 +18,5 @@ require("esbuild").build({
   absWorkingDir: path.join(process.cwd(), "app/javascript"),
   watch: watch && { onRebuild: handleError },
   // custom plugins will be inserted is this array
-  plugins: [],
+  plugins: [rails()],
 }).catch(() => process.exit(1));
