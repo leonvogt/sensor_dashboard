@@ -1,3 +1,4 @@
 en:
   dashboard:
+    title: "Dashboard"
     last_sensor_measurements: Current Data
