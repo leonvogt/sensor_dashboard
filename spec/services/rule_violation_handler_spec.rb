@@ -36,7 +36,7 @@ RSpec.describe RuleViolationHandler do
       RuleViolationHandler.new([create(:sensor_measurement, sensor: sensor, value: 21)]).check_for_violations!
       expect {
         RuleViolationHandler.new([create(:sensor_measurement, sensor: sensor, value: 25)]).check_for_violations!
-      }.to change { RuleViolation.first.violation_text }
+      }.to change { RuleViolation.last.violation_text }
     end
   end
 end
