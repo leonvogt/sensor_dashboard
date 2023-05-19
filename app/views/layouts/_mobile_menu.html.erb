@@ -21,7 +21,7 @@
       </li>
 
       <li>
-        <%= link_to '#', class: 'menu', data: { controller: 'native-bridge', native_bridge_message_value: 'signOut', action: 'click->native-bridge#postMessage' } do %>
+        <%= link_to '#', class: 'menu', data: { controller: 'native-bridge', native_bridge_title_value: 'signOut', action: 'click->native-bridge#postMessage' } do %>
           <div class="menu__icon"><%= icon('fa', 'right-from-bracket') %></div>
           <div class="menu__title"><%= t('devise.logout') %></div>
         <% end %>
