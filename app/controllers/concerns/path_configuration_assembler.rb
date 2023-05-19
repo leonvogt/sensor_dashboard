@@ -58,7 +58,7 @@ module PathConfigurationAssembler
         patterns: ["/refresh_historical_location"],
         properties: {
           uri: "turbo://fragment/web/home",
-          presentation: "replace_root"
+          presentation: "refresh"
         }
       }
     ]
