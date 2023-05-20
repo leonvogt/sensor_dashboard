@@ -11,7 +11,7 @@ module PathConfigurationAssembler
         tabs: [
           {
             title: I18n.t("dashboard.title"),
-            path: root_path,
+            path: dashboard_path,
             icon: "home"
           },
           {
@@ -48,7 +48,11 @@ module PathConfigurationAssembler
         }
       },
       {
-        patterns: ["^$", "^/$"],
+        patterns: [
+          "^$",
+          "^/$",
+          "/dashboard$"
+        ],
         properties: {
           uri: "turbo://fragment/web/home",
           presentation: "replace_root"
