@@ -12,7 +12,7 @@ module.exports = {
           require("postcss-import"),
           require("postcss-advanced-variables"),
           require("tailwindcss/nesting"),
-          require("tailwindcss")("./app/javascript/tailwind.config.js"),
+          require("tailwindcss")("./tailwind.config.js"),
           require("autoprefixer"),
         ]).process(root, result.opts)
       },
