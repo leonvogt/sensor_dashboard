@@ -39,7 +39,15 @@ class ApplicationController < ActionController::Base
     respond_to do |format|
       format.html do
         flash[:error] = t('resource_not_allowed')
-        refresh_or_redirect_to root_path
+        recede_or_redirect_back_or_to(root_path)
+      end
+      format.turbo_stream do
+        flash[:error] = t('resource_not_allowed') if !turbo_native_app?
+
+        # If we use a normal reload or redirect combined with the flash message,
+        # the flash message can be shown twice on the Turbo Native App.
+        # Therefore we use this custom turbo_stream action.
+        render turbo_stream: turbo_stream.reload_with_notify('error', t('resource_not_allowed'))
       end
       format.json do
         render json: { status: 'error', message: t('resource_not_allowed') }, status: :forbidden

@@ -60,6 +60,13 @@ module PathConfigurationAssembler
           uri: "turbo://fragment/web/home",
           presentation: "refresh"
         }
+      },
+      {
+        patterns: ["/recede_historical_location"],
+        properties: {
+          uri: "turbo://fragment/web/home",
+          presentation: "pop"
+        }
       }
     ]
   end
