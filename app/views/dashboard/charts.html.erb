@@ -6,7 +6,7 @@
         <div class="col-span-12 sm:col-span-6 lg:col-span-4 mb-3" data-controller="sensor-chart" data-sensor-id=<%= sensor.id %> data-show-details="true">
           <div class="intro-y flex items-center h-10">
             <h2><%= sensor.to_s %></h2>
-            <%= link_to t('details'), device_path(sensor&.device, sensor_to_show: sensor.id), class: 'ml-auto text-primary truncate', target: '_top' %>
+            <%= link_to t('details'), device_path(sensor&.device, sensor_to_show: sensor.id), class: 'ml-auto text-primary truncate', data: { turbo_frame: '_top' } %>
           </div>
           <div class="intro-y box p-5">
             <div class="flex justify-end">

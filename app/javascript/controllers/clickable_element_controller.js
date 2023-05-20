@@ -8,9 +8,14 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="clickable-element"
 export default class extends Controller {
   open_link(event) {
-    var url = this.element.dataset.url;
-    var target = (event.ctrlKey || event.metaKey) ? '_blank' : '_self';
-    window.open(url, target);
+    const url = this.element.dataset.url;
+    const shouldOpenInNewTab = event.metaKey || event.ctrlKey;
+
+    if (shouldOpenInNewTab) {
+      window.open(url, '_blank');
+    } else {
+      Turbo.visit(url);
+    }
   }
 
   click_start(event) {
