@@ -32,18 +32,18 @@
       </div>
 
       <%= form.fields_for :alarm_rules do |alarm_rules_form| %>
-        <div class="col-11 mt-4" data-controller="dom-manipulations" data-dom-manipulations-target="element">
-          <div class="flex gap-5 whitespace-nowrap">
-            <div class="input-group">
-              <label class="input-group-text"><%= t('alarm_rules.rule_type_hint') %></label>
-              <%= alarm_rules_form.select :rule_type, alarm_rule_types_for_select, {}, class: 'tom-select' %>
-            </div>
+        <div class="grid grid-cols-12 gap-5 py-5 whitespace-nowrap border-b border-gray-300" data-controller="dom-manipulations" data-dom-manipulations-target="element">
+          <div class="col-span-12 2xl:col-span-5 input-group">
+            <label class="input-group-text"><%= t('alarm_rules.rule_type_hint') %></label>
+            <%= alarm_rules_form.select :rule_type, alarm_rule_types_for_select, {}, class: 'tom-select w-full' %>
+          </div>
 
-            <div class="input-group">
-              <%= alarm_rules_form.text_field :value, class: 'form-control', type: 'number' %>
-              <label class="input-group-text"><%= sensor.value_suffix %></label>
-            </div>
+          <div class="col-span-12 2xl:col-span-5 input-group">
+            <%= alarm_rules_form.text_field :value, class: 'form-control', type: 'number' %>
+            <label class="input-group-text"><%= sensor.value_suffix %></label>
+          </div>
 
+          <div class="col-span-12 2xl:col-span-2 grid">
             <%= alarm_rules_form.hidden_field :_destroy, data: { dom_manipulations_target: 'destroyField' } %>
             <button type="button" class="btn btn-outline-secondary" data-action="click->dom-manipulations#setDestroyField click->dom-manipulations#hideElement">
               <%= icon('fa', 'trash-alt', class: 'text-danger') %>
@@ -54,17 +54,19 @@
 
       <%= content_tag :div, '', data: { form_template_target: 'templateOutput' } %>
 
-      <div class="flex justify-between mt-5">
-        <% if sensor.persisted? %>
-          <button type="button" class="btn" data-action="click->form-template#addTemplate">
-            <%= icon('fa', 'plus', class: 'mr-2') %>
-            <%= t('new_title', model: AlarmRule.model_name.human) %>
-          </button>
-        <% end %>
+      <div class="grid grid-cols-2 mt-5">
+        <div>
+          <% if sensor.persisted? %>
+            <button type="button" class="btn" data-action="click->form-template#addTemplate">
+              <%= icon('fa', 'plus', class: 'mr-2') %>
+              <%= AlarmRule.model_name.human %>
+            </button>
+          <% end %>
+        </div>
 
-        <div class="flex flex-col lg:flex-row justify-between items-stretch gap-2">
-          <%= link_to t('cancel'), 'javascript:;', class: 'btn btn-outline-secondary', data: { action: 'click->dom-manipulations#removeElement' } %>
-          <%= form.submit t('save'), class: 'btn btn-success' %>
+        <div class="text-right">
+          <%= link_to t('cancel'), 'javascript:;', class: 'btn btn-outline-secondary mb-1', data: { action: 'click->dom-manipulations#removeElement' } %>
+          <%= form.submit t('save'), class: 'btn btn-success ml-1' %>
         </div>
       </div>
     <% end %>

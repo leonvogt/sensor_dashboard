@@ -1,13 +1,11 @@
 <%= content_tag :div, id: "sensor-#{sensor.id}-chart", data: { controller: 'sensor-chart', sensor_id: sensor.id, show_details: show_details, sensor_chart_no_data_text_value: t('sensors.no_sensor_measurements') } do %>
-  <div class="mb-5f">
-    <%= turbo_frame_tag sensor %>
-  </div>
+  <%= turbo_frame_tag sensor %>
   <div class="flex mb-5">
     <div class="font-medium">
       <%= link_to sensor.to_s, device_path(sensor&.device, sensor_to_show: sensor.id) %>
     </div>
     <div class="ml-auto text-end">
-      <button class="btn btn-sm mr-2 fade-out" data-sensor-chart-target="resetButton" data-action="click->sensor-chart#resetChartZoom">
+      <button class="btn btn-sm mr-2 fade-out d-turbo-native-hidden" data-sensor-chart-target="resetButton" data-action="click->sensor-chart#resetChartZoom">
         <%= icon('fas', 'sync-alt', class: 'mr-2') %>
         Reset Zoom
       </button>

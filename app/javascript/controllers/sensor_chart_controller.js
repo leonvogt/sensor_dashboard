@@ -35,7 +35,7 @@ export default class extends Controller {
   async initializeChart() {
     const sensorData = await this.getSensorData()
     if (sensorData.values.length == 0) {
-      this.canvasTarget.outerHTML = `<div class='alert alert-warning' role='alert'>${this.noDataTextValue || 'No data available'}</div>`
+      this.canvasTarget.outerHTML = `<p class="text-center"><i>${this.noDataTextValue || 'No data available'}</i></p>`
       return
     }
 

@@ -1,25 +1,20 @@
-<div class="col-11 mt-4" data-controller="dom-manipulations" data-dom-manipulations-target="element">
-  <div class="flex gap-5 whitespace-nowrap">
-    <div class="input-group">
-      <label class="input-group-text"><%= t('alarm_rules.rule_type_hint') %></label>
-      <select class="tom-select" name="sensor[alarm_rules_attributes][idx][rule_type]" id="sensor_alarm_rules_attributes_idx_rule_type">
-        <% AlarmRule::RULE_TYPES.each do |rule_type|  %>
-          <option value="<%= rule_type %>"><%= t(rule_type, scope: "alarm_rules.rule_types") %></option>
-        <% end %>
-      </select>
-    </div>
+<div class="grid grid-cols-12 gap-5 py-5 whitespace-nowrap border-b border-gray-300" data-controller="dom-manipulations" data-dom-manipulations-target="element">
+  <div class="col-span-12 2xl:col-span-5 input-group">
+    <label class="input-group-text"><%= t('alarm_rules.rule_type_hint') %></label>
+    <select class="tom-select w-full" name="sensor[alarm_rules_attributes][idx][rule_type]" id="sensor_alarm_rules_attributes_idx_rule_type">
+      <% AlarmRule::RULE_TYPES.each do |rule_type|  %>
+        <option value="<%= rule_type %>"><%= t(rule_type, scope: "alarm_rules.rule_types") %></option>
+      <% end %>
+    </select>
+  </div>
 
-    <div class="input-group">
-      <input
-        class="form-control"
-        type="number"
-        name="sensor[alarm_rules_attributes][idx][value]"
-        id="sensor_alarm_rules_attributes_idx_value"
-      />
-      <label class="input-group-text"><%= value_suffix %></label>
-    </div>
+  <div class="col-span-12 2xl:col-span-5 input-group">
+    <input class="form-control" type="number" name="sensor[alarm_rules_attributes][idx][value]" id="sensor_alarm_rules_attributes_idx_value"/>
+    <label class="input-group-text"><%= value_suffix %></label>
+  </div>
 
-    <button type="button" class="btn btn-outline-secondary" data-action="click->dom-manipulations#removeElement">
+  <div class="col-span-12 2xl:col-span-2 grid">
+    <button type="button" class="btn btn-outline-secondary" data-action="click->dom-manipulations#setDestroyField click->dom-manipulations#hideElement">
       <%= icon('fa', 'trash-alt', class: 'text-danger') %>
     </button>
   </div>

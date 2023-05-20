@@ -3,7 +3,11 @@
     <h1 class="font-medium text-lg"><%= device.name %></h1>
     <div class="grid grid-cols-12 gap-6">
       <% device.sensors.shown_in_dashboard.each do |sensor| %>
-        <div class="col-span-12 sm:col-span-6 lg:col-span-4 mb-3" data-controller="sensor-chart" data-sensor-id=<%= sensor.id %> data-show-details="true">
+        <%= content_tag :div, class: 'col-span-12 sm:col-span-6 lg:col-span-4 mb-3', data: {
+          controller: 'sensor-chart',
+          sensor_id: sensor.id,
+          show_details: true,
+          sensor_chart_no_data_text_value: t('sensors.no_sensor_measurements') } do %>
           <div class="intro-y flex items-center h-10">
             <h2><%= sensor.to_s %></h2>
             <%= link_to t('details'), device_path(sensor&.device, sensor_to_show: sensor.id), class: 'ml-auto text-primary truncate', data: { turbo_frame: '_top' } %>
@@ -15,15 +19,11 @@
                 Reset Zoom
               </button>
             </div>
-            <% if sensor.sensor_measurements.any? %>
-              <%= content_tag :div, id: "sensor-container-#{sensor.id}", class: 'h-[213px]' do %>
-                <%= content_tag :canvas, '', id: "sensor-#{sensor.id}", data: { sensor_chart_target: 'canvas' } %>
-              <% end %>
-            <% else %>
-              <p class="text-center"><i><%= t('sensors.no_sensor_measurements') %></i></p>
+            <%= content_tag :div, id: "sensor-container-#{sensor.id}", class: 'h-[213px]' do %>
+              <%= content_tag :canvas, '', id: "sensor-#{sensor.id}", data: { sensor_chart_target: 'canvas' } %>
             <% end %>
           </div>
-        </div>
+        <% end %>
       <% end %>
     </div>
   <% end %>
