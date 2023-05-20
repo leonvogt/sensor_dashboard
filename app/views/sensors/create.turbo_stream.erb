@@ -2,4 +2,4 @@
   <%= render partial: 'devices/sensors_tab', locals: { device: @device, sensors: @sensors, sensor_to_show: @sensor_to_show } %>
 <% end %>
 
-<%= turbo_stream.toast 'success', t('successful.messages.created', model: Sensor.model_name.human) %>
+<%= turbo_stream.notify 'success', t('successful.messages.created', model: Sensor.model_name.human) %>

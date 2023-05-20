@@ -1,21 +1,13 @@
-// Initializers
-import { StreamActions } from "@hotwired/turbo"
+// Turbo
+import * as Turbo from "@hotwired/turbo"
 
-// Turbo Native bridge
 import Bridge from "./turbo/bridge.js";
 window.bridge = Bridge;
+import './turbo/custom_stream_actions'
 
-// Custom StreamActions
-StreamActions.toast = () => void 0;
-
-
-// Import Stimulus controllers
+// Stimulus
 import "./controllers"
 
-// Global JS functions
-import './global/chart_functions'
-
-// Import custom JS
-import './custom/tailwind_alerts'
-import './custom/tailwind_tabs'
-import './custom/tailwind_dropdowns'
+// Everything else
+import "./global/**/*"
+import "./custom/**/*"

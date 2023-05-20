@@ -2,4 +2,4 @@
   <%= render partial: 'sensors/chart', locals: { sensor: @sensor, container_class: 'h-[400px]', show_details: true } %>
 <% end %>
 
-<%= turbo_stream.toast 'success', t('successful.messages.updated', model: Sensor.model_name.human) %>
+<%= turbo_stream.notify 'success', t('successful.messages.updated', model: Sensor.model_name.human) %>

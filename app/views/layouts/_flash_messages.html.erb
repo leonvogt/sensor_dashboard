@@ -1,3 +1,3 @@
 <% flash.each do |type, message| %>
-  <%= content_tag :div, '', data: { controller: 'toastify', toastify_type_value: type, toastify_message_value: message } %>
+  <%= turbo_stream.notify type, message %>
 <% end %>
