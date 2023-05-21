@@ -10,7 +10,8 @@ module.exports = {
       './public/*.html',
       './app/helpers/**/*.rb',
       './app/javascript/**/*.js',
-      './app/views/**/*.{erb,html}'
+      './app/assets/stylesheets/**/*.css',
+      './app/views/**/*.erb'
     ],
     darkMode: "class",
     theme: {
