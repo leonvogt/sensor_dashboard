@@ -1,9 +1,9 @@
 require 'rails_helper'
 
-RSpec.describe AccessTokenHandler do
+RSpec.describe API::Authentication::Device do
   let!(:device) { create(:device) }
 
-  subject { described_class.new }
+  subject { described_class }
 
   describe '#generate_plain_token' do
     it 'generates a new plain access token' do
@@ -30,11 +30,11 @@ RSpec.describe AccessTokenHandler do
     end
   end
 
-  describe '#authorize_by_token' do
+  describe '#find_by_token' do
     it 'finds the device by access token' do
       access_token = subject.generate_plain_token
       device.update!(access_token: subject.generate_digest_token(access_token))
-      expect(subject.authorize_by_token(access_token)).to eq(device)
+      expect(subject.find_by_token(access_token)).to eq(device)
     end
   end
 end
