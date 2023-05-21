@@ -19,6 +19,6 @@ module ExternalAPIKeyAuthenticatable
   attr_writer :current_device
 
   def authenticator(token, options)
-    @current_device = AccessTokenHandler.new.authorize_by_token(token)
+    @current_device = API::Authentication::Device.find_by_token(token)
   end
 end

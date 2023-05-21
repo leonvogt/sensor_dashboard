@@ -20,6 +20,6 @@ class AccessTokensController < ApplicationController
   end
 
   def access_token_handler
-    @_access_token_handler ||= AccessTokenHandler.new
+    @_access_token_handler ||= API::Authentication::Device
   end
 end
