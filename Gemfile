@@ -36,14 +36,15 @@ gem "cssbundling-rails", "~> 1.1"
 # Deployment
 gem 'mina'
 
-# Other
-gem 'faker'
-
 # Error monitoring
 gem 'honeybadger'
 
 # Performance monitoring
 gem 'skylight'
+
+# Other
+gem 'faker'
+gem 'rqrcode'
 
 group :development, :test do
   gem 'rspec-rails'

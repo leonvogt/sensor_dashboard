@@ -4,7 +4,7 @@ module API::Internal::V1
     before_action :authenticate_token!
 
     def create
-      if user = API::Authentication::User.find_by_credentials(params[:email], params[:password])
+      if user = API::Authentication::User.try_to_authenticate(authentication_params)
         sign_in user
         render json: { token: user.authentication_token }
       else
@@ -19,12 +19,16 @@ module API::Internal::V1
 
     private
 
+    def authentication_params
+      params.permit(:email, :password, :temporary_sign_in_token)
+    end
+
     def authenticate_token!
       # Skip token authentication for the create action
       # (On the first login, the user won't have a token yet and will be authenticated by email and password)
       return if controller_name == 'auths' && action_name == 'create'
 
-      if user = API::Authentication::User.find_by_token(token)
+      if user = API::Authentication::User.find_by_authentication_token(token)
         sign_in user
       else
         head :unauthorized

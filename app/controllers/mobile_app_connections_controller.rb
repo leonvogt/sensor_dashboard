@@ -3,6 +3,7 @@ class MobileAppConnectionsController < ApplicationController
 
   def index
     @mobile_app_connections = current_user.mobile_app_connections
+    @qrcode = RQRCode::QRCode.new(API::Authentication::User.new(current_user).temporary_sign_in_token_details.to_json)
   end
 
   def destroy

@@ -1,4 +1,17 @@
 <div class="intro-y col-span-12 md:col-span-4">
+  <button class="btn btn-primary" data-tw-toggle="modal" data-tw-target="#modal-sign-in-qr-code">
+    Show QR Code
+  </button>
+  <div id="modal-sign-in-qr-code" class="modal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body p-10 text-center flex justify-center">
+          <%= @qrcode.as_svg(use_path: true, viewbox: true).html_safe %>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <% @mobile_app_connections.each do |mobile_app| %>
     <div class="box">
       <div class="flex flex-col lg:flex-row items-center p-5 border-b border-slate-200/60 dark:border-darkmode-400">
