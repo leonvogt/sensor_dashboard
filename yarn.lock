@@ -407,10 +407,10 @@
   resolved "https://registry.yarnpkg.com/@kurkle/color/-/color-0.3.2.tgz#5acd38242e8bde4f9986e7913c8fdf49d3aa199f"
   integrity sha512-fuscdXJ9G1qb7W8VdHi+IwRqij3lBkosAm4ydQtEmbY58OzHXqQhvlxqEkoz0yssNVn38bcpRWgA9PP+OGoisw==
 
-"@left4code/tw-starter@^3.1.35", "@left4code/tw-starter@^3.2.3":
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/@left4code/tw-starter/-/tw-starter-3.2.3.tgz#1e432dd5d5d6478d2a2de1cc892b13b9d1736721"
-  integrity sha512-4+5tOhI49MhxU4ofR6+fVUQ2o1SjSdGFq9D+IWAQtn+NPfBl1cqngnnb0JMLd7rz6zjQafXgyeZOGehHbwZP6A==
+"@left4code/tw-starter@^3.1.35", "@left4code/tw-starter@^3.2.9":
+  version "3.2.9"
+  resolved "https://registry.yarnpkg.com/@left4code/tw-starter/-/tw-starter-3.2.9.tgz#744b5c9b91fd56de1829c233891c6bd3897728f7"
+  integrity sha512-/GplyspCazevgf09fcGcv01HK32tgpeEoUKYI+r4DG9X/RwNeRDL2YeWJRNcWH1eEKrCg6DG/wBu7PjRQs0bKA==
   dependencies:
     "@left4code/tw-starter" "^3.1.35"
 
