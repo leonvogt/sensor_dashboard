@@ -13,6 +13,7 @@
   </head>
 
   <body class="<%= turbo_native_app? ? 'turbo-native' : 'desktop' %>">
+    <%= turbo_frame_tag 'remote_modal' %>
     <% if !user_signed_in? %>
       <%= render 'layouts/flash_messages', flash: flash %>
       <%= yield %>

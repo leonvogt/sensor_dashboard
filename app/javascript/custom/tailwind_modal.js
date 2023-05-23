@@ -1,9 +1,13 @@
 import dom from "@left4code/tw-starter/dist/js/dom";
 
 document.addEventListener("turbo:load", function () {
+  startModalEventListeners();
+});
+
+export function startModalEventListeners() {
   // Show modal
   dom("body").on("click", '[data-tw-toggle="modal"]', function () {
-    show(dom(this).attr("data-tw-target"));
+    showModal(dom(this).attr("data-tw-target"));
   });
 
   // Hide modal
@@ -14,7 +18,7 @@ document.addEventListener("turbo:load", function () {
     ) {
       // Check if modal backdrop is not static
       if (dom(event.target).data("tw-backdrop") !== "static") {
-        hide(event.target);
+        hideModal(event.target);
       } else {
         dom(event.target).addClass("modal-static");
         setTimeout(() => {
@@ -27,7 +31,7 @@ document.addEventListener("turbo:load", function () {
   // Dismiss modal by link
   dom("body").on("click", '[data-tw-dismiss="modal"]', function () {
     let modal = dom(this).closest(".modal")[0];
-    hide(modal);
+    hideModal(modal);
   });
 
   // Keyboard event
@@ -42,7 +46,7 @@ document.addEventListener("turbo:load", function () {
       ) {
         // Check if modal backdrop is not static
         if (dom(el).data("tw-backdrop") !== "static") {
-          hide(el);
+          hideModal(el);
         } else {
           dom(el).addClass("modal-static");
           setTimeout(() => {
@@ -52,31 +56,10 @@ document.addEventListener("turbo:load", function () {
       }
     }
   });
-});
-
-
-// Get highest z-index
-function getHighestZindex() {
-  let zIndex = 9999;
-  dom(".modal").each(function () {
-    if (
-      dom(this).css("z-index") !== "auto" &&
-      dom(this).css("z-index") > zIndex
-    ) {
-      zIndex = parseInt(dom(this).css("z-index"));
-    }
-  });
-
-  return zIndex;
-}
-
-// Get scrollbar width
-function getScrollbarWidth(el) {
-  return window.innerWidth - dom(el)[0].clientWidth;
 }
 
 // Show modal with z-index
-function show(el) {
+export function showModal(el) {
   if (!dom("[data-modal-replacer='" + dom(el).attr("id") + "']").length) {
     // Move modal element to body
     dom(
@@ -121,7 +104,7 @@ function show(el) {
 }
 
 // Hide modal & remove modal scroll
-function hide(el) {
+export function hideModal(el) {
   if (dom(el).hasClass("modal") && dom(el).hasClass("show")) {
     let transitionDuration =
       parseFloat(dom(el).css("transition-duration").split(",")[1]) * 1000;
@@ -147,11 +130,6 @@ function hide(el) {
         dom("body").removeClass("overflow-y-hidden").css("padding-right", "");
       }
 
-      // Return back modal element to it's first place
-      dom('[data-modal-replacer="' + dom(el).attr("id") + '"]').replaceWith(
-        el
-      );
-
       // Trigger "hidden.tw.modal" callback function
       const event = new Event("hidden.tw.modal");
       dom(el)[0].dispatchEvent(event);
@@ -161,4 +139,24 @@ function hide(el) {
     const event = new Event("hide.tw.modal");
     dom(el)[0].dispatchEvent(event);
   }
+}
+
+// Get highest z-index
+function getHighestZindex() {
+  let zIndex = 9999;
+  dom(".modal").each(function () {
+    if (
+      dom(this).css("z-index") !== "auto" &&
+      dom(this).css("z-index") > zIndex
+    ) {
+      zIndex = parseInt(dom(this).css("z-index"));
+    }
+  });
+
+  return zIndex;
+}
+
+// Get scrollbar width
+function getScrollbarWidth(el) {
+  return window.innerWidth - dom(el)[0].clientWidth;
 }

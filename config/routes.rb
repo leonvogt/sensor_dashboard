@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   resource :health_check, only: :show
   resources :users, only: :show
   resources :notifications, only: :index
-  resources :mobile_app_connections, only: [:index, :destroy]
+  resources :mobile_app_connections, only: [:index, :new, :destroy]
 
   resources :devices do
     resource :access_token, only: :create

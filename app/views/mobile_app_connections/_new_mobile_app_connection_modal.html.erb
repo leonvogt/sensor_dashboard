@@ -1,0 +1,9 @@
+<div id="modal-sign-in-qr-code" class="modal" tabindex="-1" aria-hidden="true" data-controller="modal" data-modal-auto-show-value="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body p-10 text-center flex justify-center">
+        <%= qr_code.as_svg(use_path: true, viewbox: true).html_safe %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,7 +3,15 @@ class MobileAppConnectionsController < ApplicationController
 
   def index
     @mobile_app_connections = current_user.mobile_app_connections
-    @qrcode = RQRCode::QRCode.new(API::Authentication::User.new(current_user).temporary_sign_in_token_details.to_json)
+  end
+
+  def new
+    qr_code = RQRCode::QRCode.new(API::Authentication::User.new(current_user).temporary_sign_in_token_details.to_json)
+    render turbo_stream: turbo_stream.update(
+      'remote_modal',
+      partial: 'new_mobile_app_connection_modal',
+      locals: { qr_code: qr_code }
+    )
   end
 
   def destroy
