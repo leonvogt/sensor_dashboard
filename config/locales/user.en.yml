@@ -14,3 +14,4 @@ en:
   users:
     profile: Profile
     account_since: Since
+    show_login_qr_code: Login QR-Code

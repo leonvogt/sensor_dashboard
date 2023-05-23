@@ -13,3 +13,4 @@ de:
   users:
     profile: Profil
     account_since: Dabei seit
+    show_login_qr_code: Login QR-Code
