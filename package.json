@@ -16,7 +16,7 @@
     "esbuild": "^0.16.0",
     "esbuild-rails": "^1.0.4",
     "luxon": "^3.3.0",
-    "postcss": "^8.4.23",
+    "postcss": "^8.4.24",
     "postcss-advanced-variables": "^3.0.1",
     "postcss-flexbugs-fixes": "^5.0.2",
     "postcss-import": "^15.1.0",
