@@ -9,7 +9,12 @@ export default class extends Controller {
     useClickOutside(this, { element: this.navContentTarget })
 
     // Listen for toggle-nav-bar event (gets called from the TurboNative Bridge)
-    window.addEventListener("toggle-nav-bar", this.toggle.bind(this))
+    this.boundToggle = this.toggle.bind(this)
+    window.addEventListener("toggle-nav-bar", this.boundToggle)
+  }
+
+  disconnect() {
+    window.removeEventListener("toggle-nav-bar", this.boundToggle)
   }
 
   toggle() {
