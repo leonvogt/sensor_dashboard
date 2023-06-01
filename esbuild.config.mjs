@@ -33,8 +33,7 @@ const config = {
   entryPoints: entryPoints,
   minify: process.env.RAILS_ENV == "production",
   outdir: path.join(process.cwd(), "app/assets/builds"),
-  plugins: [rails()],
-  sourcemap: process.env.RAILS_ENV != "production"
+  plugins: [rails()]
 }
 
 async function buildAndReload() {
