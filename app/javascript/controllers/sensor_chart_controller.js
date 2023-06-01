@@ -8,6 +8,8 @@ export default class extends Controller {
   static values = { noDataText: String }
 
   connect() {
+    if (!this.hasCanvasTarget) return;
+
     this.chart?.destroy()
 
     this.sensorId     = this.element.dataset.sensorId
