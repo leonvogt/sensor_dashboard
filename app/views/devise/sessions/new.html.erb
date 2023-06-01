@@ -1,9 +1,9 @@
 <div class="flex justify-center container mx-auto my-auto w-screen h-screen items-center flex-col">
   <div class="w-full md:w-3/4 lg:w-1/2 flex flex-col bg-slate-50 rounded-md p-10 gap-5">
     <div class="flex justify-end">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <%= f.hidden_field :email, value: User::GUEST_EMAIL %>
-        <%= f.hidden_field :password, value: User::GUEST_PASSWORD %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { id: 'guest-login' }) do |f| %>
+        <%= f.hidden_field :email, value: User::GUEST_EMAIL, id: 'guest-email' %>
+        <%= f.hidden_field :password, value: User::GUEST_PASSWORD, id: 'guest-password' %>
         <%= f.submit t('.sign_in_as_guest'), class: 'btn btn-secondary btn-sm w-full' %>
       <% end %>
     </div>
