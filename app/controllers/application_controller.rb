@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  include EsbuildErrorRendering if Rails.env.development?
   before_action :authenticate_user!
   before_action :set_locale
   before_action :set_variant

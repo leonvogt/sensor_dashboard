@@ -8,7 +8,6 @@ def system!(*args)
   system(*args) || abort("\n== Command #{args} failed ==")
 end
 
-FileUtils.touch('esbuild_error_development.txt')
 FileUtils.chdir APP_ROOT do
   # This script is a way to set up or update your development environment automatically.
   # This script is idempotent, so that you can run it at any time and get an expectable outcome.
