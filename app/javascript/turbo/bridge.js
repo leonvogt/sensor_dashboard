@@ -12,6 +12,10 @@ export default class Bridge {
 
   // Sends a message to the turbo native app
   static postMessage(title, body = {}) {
+    // Android
     window.nativeApp?.postMessage(JSON.stringify({title, ...body}))
+
+    // iOS
+    window.webkit?.messageHandlers?.nativeApp?.postMessage({title, ...body})
   }
 }
