@@ -40,9 +40,15 @@ Rails.application.routes.draw do
     scope module: 'internal' do
       namespace :v1 do
         resource :auth, only: [:create, :destroy]
-        resource :path_configuration, only: :show
         resources :mobile_app_connections, only: :create
         resources :users, only: :create
+
+        namespace :ios do
+          resource :path_configuration, only: :show
+        end
+        namespace :android do
+          resource :path_configuration, only: :show
+        end
       end
     end
   end
