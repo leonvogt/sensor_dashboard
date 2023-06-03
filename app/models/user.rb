@@ -3,7 +3,7 @@ class User < ApplicationRecord
   GUEST_PASSWORD = 'guestPassword!'
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :timeoutable
 
   has_many :devices, dependent: :destroy
   has_many :sensors, through: :devices
@@ -18,5 +18,15 @@ class User < ApplicationRecord
 
   def guest?
     email == GUEST_EMAIL
+  end
+
+  # Override Devise methods
+  # Turbo Native App users should be remembered for a long time
+  def remember_me
+    true
+  end
+
+  def timeout_in
+    2.years
   end
 end
