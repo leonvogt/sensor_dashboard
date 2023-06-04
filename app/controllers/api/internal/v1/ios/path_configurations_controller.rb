@@ -10,7 +10,6 @@ module API::Internal::V1::IOS
         settings: {
           screenshots_enabled: true,
           register_with_account: false,
-          require_authentication: true,
           tabs: [
             {
               title: I18n.t("dashboard.title"),

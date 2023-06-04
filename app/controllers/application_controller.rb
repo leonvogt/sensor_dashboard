@@ -10,13 +10,6 @@ class ApplicationController < ActionController::Base
     BreadcrumbsAssembler.new(controller_path, action_name, params).crumbs
   end
 
-  def authenticate_user!
-    # Override authenticate_user! to return 401 instead of 302 redirect
-    # Is needed for the login flow in the Turbo Native App
-    head :unauthorized if turbo_native_app? && !user_signed_in?
-    super
-  end
-
   def check_user_privileges
     if current_user&.guest? && action_name.in?(%w[create update destroy])
       # Guest users are not allowed to create, update or destroy resources
