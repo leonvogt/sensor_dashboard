@@ -1,4 +1,4 @@
-<%= turbo_frame_tag 'last-sensor-data' do %>
+<%= turbo_frame_tag 'last-sensor-measurements' do %>
   <div class="2xl:border-l -mb-10 pb-10">
     <div class="2xl:pl-6 grid grid-cols-12 gap-x-6 2xl:gap-x-0 gap-y-6">
       <div class="col-span-12 md:col-span-6 xl:col-span-4 2xl:col-span-12">
@@ -8,7 +8,7 @@
         <div class="mt-5">
           <% @sensor_measurements.each do |data| %>
             <div class="intro-x">
-              <%= link_to device_path(data.sensor&.device, sensor_to_show: data.sensor.id), target: '_top' do %>
+              <%= link_to device_path(data.sensor&.device, sensor_to_show: data.sensor.id), data: { turbo_frame: '_top' } do %>
                 <div class="box px-5 py-3 mb-3 flex items-center zoom-in">
                   <div class="ml-4 mr-auto">
                     <div class="font-medium"><%= data.sensor.to_s %></div>
