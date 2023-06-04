@@ -36,7 +36,7 @@ module API::Internal::V1::IOS
               "/passwords/new"
             ],
             properties: {
-              "presentation": "modal"
+              presentation: "modal"
             }
           },
           {
@@ -48,13 +48,13 @@ module API::Internal::V1::IOS
           {
             patterns: ["/users/sign_in"],
             properties: {
-              "flow": "authentication"
+              flow: "authentication"
             }
           },
           {
             patterns: ["/account/password/edit"],
             properties: {
-              "flow": "update_password"
+              flow: "update_password"
             }
           }
         ]
