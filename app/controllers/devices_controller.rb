@@ -38,7 +38,13 @@ class DevicesController < ApplicationController
   def destroy
     DestroyDevice.new(@device).destroy_device_and_associated_records!
     flash[:notice] = t('successful.messages.deleted', model: Device.model_name.human)
-    recede_or_redirect_to devices_path
+    if turbo_native_android_app?
+      # Without the call to recede on android, the flash message is not shown
+      # This is a workaround and can be removed once the issue is found
+      recede_or_redirect_to devices_path
+    else
+      redirect_to devices_path
+    end
   end
 
   private
