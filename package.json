@@ -14,7 +14,7 @@
     "chartjs-plugin-annotation": "^3.0.1",
     "chartjs-plugin-zoom": "^2.0.1",
     "esbuild": "^0.17.19",
-    "esbuild-rails": "^1.0.5",
+    "esbuild-rails": "^1.0.7",
     "luxon": "^3.3.0",
     "postcss": "^8.4.24",
     "postcss-advanced-variables": "^3.0.1",
