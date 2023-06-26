@@ -31,7 +31,7 @@ gem 'noticed'
 gem 'googleauth'
 
 # Styling
-gem "cssbundling-rails", "~> 1.1"
+gem "cssbundling-rails", "~> 1.2"
 
 # Deployment
 gem 'mina'
