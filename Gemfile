@@ -2,7 +2,7 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Rails Basics
-gem "rails", "~> 7.0.5"
+gem "rails", "~> 7.0.6"
 gem "sprockets-rails"
 gem "jsbundling-rails"
 gem "turbo-rails"
