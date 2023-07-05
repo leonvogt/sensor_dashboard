@@ -23,7 +23,7 @@ class RuleViolationHandler
 
   def create_or_update_violation(measurement, alarm_rule)
     # Update open violations
-    violation_text = I18n.t('rule_violations.violation_text', value: measurement.to_s, locale: @user.locale)
+    violation_text = I18n.t("rule_violations.violation_text", value: measurement.to_s, locale: @user.locale)
     open_violations = alarm_rule.rule_violations.open
     if open_violations.present?
       open_violations.update_all(violation_text: violation_text)
@@ -38,6 +38,6 @@ class RuleViolationHandler
   end
 
   def measurement_violates_rule?(measurement, rule)
-    rule.rule_type == 'max_value' ? measurement.value > rule.value : measurement.value < rule.value
+    (rule.rule_type == "max_value") ? measurement.value > rule.value : measurement.value < rule.value
   end
 end

@@ -13,7 +13,7 @@ class Sensor < ApplicationRecord
   accepts_nested_attributes_for :alarm_rules, allow_destroy: true
 
   def to_s
-    I18n.t(sensor_type, scope: 'sensors.sensor_types')
+    I18n.t(sensor_type, scope: "sensors.sensor_types")
   end
 
   def value_suffix

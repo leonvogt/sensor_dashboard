@@ -16,6 +16,7 @@ module ExternalAPIKeyAuthenticatable
   end
 
   private
+
   attr_writer :current_device
 
   def authenticator(token, options)

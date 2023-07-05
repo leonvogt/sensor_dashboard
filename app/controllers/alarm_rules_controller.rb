@@ -5,6 +5,7 @@ class AlarmRulesController < ApplicationController
   end
 
   private
+
   def set_sensor
     @sensor = Sensor.find(params[:sensor_id])
   end

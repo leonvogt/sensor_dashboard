@@ -2,9 +2,9 @@ FactoryBot.define do
   factory :device do
     association :user
 
-    sequence(:name)         { |n| "Test Sensor #{n}" }
+    sequence(:name) { |n| "Test Sensor #{n}" }
     sequence(:access_token) { |n| "test_access_token#{n}" }
-    description             { nil }
+    description { nil }
 
     trait :with_sensor do
       transient do

@@ -15,13 +15,13 @@ class ApplicationController < ActionController::Base
     if current_user&.guest? && action_name.in?(%w[create update destroy])
       # Guest users are not allowed to create, update or destroy resources
       # Only exceptions are the login and logout action
-      return if controller_path == 'devise/sessions' && action_name.in?(%w[create destroy])
+      return if controller_path == "devise/sessions" && action_name.in?(%w[create destroy])
       render_forbidden
     end
   end
 
   def set_locale
-    if current_user.present? && ['de', 'en'].include?(params[:locale])
+    if current_user.present? && ["de", "en"].include?(params[:locale])
       current_user.update_attribute(:locale, params[:locale])
     end
     I18n.locale = params[:locale] || current_user&.locale || I18n.default_locale
@@ -34,19 +34,19 @@ class ApplicationController < ActionController::Base
   def render_forbidden
     respond_to do |format|
       format.html do
-        flash[:error] = t('resource_not_allowed')
+        flash[:error] = t("resource_not_allowed")
         recede_or_redirect_back_or_to(root_path)
       end
       format.turbo_stream do
-        flash[:error] = t('resource_not_allowed') if !turbo_native_app?
+        flash[:error] = t("resource_not_allowed") if !turbo_native_app?
 
         # If we use a normal reload or redirect combined with the flash message,
         # the flash message can be shown twice on the Turbo Native App.
         # Therefore we use this custom turbo_stream action.
-        render turbo_stream: turbo_stream.reload_with_notify('error', t('resource_not_allowed'))
+        render turbo_stream: turbo_stream.reload_with_notify("error", t("resource_not_allowed"))
       end
       format.json do
-        render json: { status: 'error', message: t('resource_not_allowed') }, status: :forbidden
+        render json: {status: "error", message: t("resource_not_allowed")}, status: :forbidden
       end
     end
   end

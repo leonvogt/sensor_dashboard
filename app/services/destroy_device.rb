@@ -11,6 +11,7 @@ class DestroyDevice
   end
 
   private
+
   def destroy_associated_records
     @device.sensors.each do |sensor|
       Sensor::Destroy.new(sensor).destroy_sensor_and_associated_records!
