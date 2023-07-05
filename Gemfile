@@ -45,6 +45,7 @@ gem 'skylight'
 # Other
 gem 'faker'
 gem 'rqrcode'
+gem "standard", group: [:development, :test]
 
 group :development, :test do
   gem 'rspec-rails'
