@@ -11,6 +11,7 @@ class Sensor::Destroy
   end
 
   private
+
   def destroy_associated_records
     # Delete all RuleViolations and SensorMeasurements without callbacks and validations
     # because there could be a lot of them and we don't want to trigger callbacks for each of them.

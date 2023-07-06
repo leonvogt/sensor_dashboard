@@ -19,7 +19,7 @@ class DevicesController < ApplicationController
 
   def update
     if @device.update(device_params)
-      redirect_to @device, notice: t('successful.messages.updated', model: Device.model_name.human)
+      redirect_to @device, notice: t("successful.messages.updated", model: Device.model_name.human)
     else
       render :edit, status: :unprocessable_entity
     end
@@ -29,7 +29,7 @@ class DevicesController < ApplicationController
     @device = Device.new(device_params)
 
     if @device.save
-      redirect_to @device, notice: t('successful.messages.created', model: Device.model_name.human)
+      redirect_to @device, notice: t("successful.messages.created", model: Device.model_name.human)
     else
       render :new, status: :unprocessable_entity
     end
@@ -37,7 +37,7 @@ class DevicesController < ApplicationController
 
   def destroy
     DestroyDevice.new(@device).destroy_device_and_associated_records!
-    flash[:notice] = t('successful.messages.deleted', model: Device.model_name.human)
+    flash[:notice] = t("successful.messages.deleted", model: Device.model_name.human)
     if turbo_native_android_app?
       # Without the call to recede on android, the flash message is not shown
       # This is a workaround and can be removed once the issue is found
@@ -48,6 +48,7 @@ class DevicesController < ApplicationController
   end
 
   private
+
   def set_device
     @device = Device.find(params[:id])
     authorize_resource(@device)

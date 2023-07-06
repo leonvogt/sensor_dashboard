@@ -1,9 +1,9 @@
 class User < ApplicationRecord
-  GUEST_EMAIL    = 'guest@guest.com'
-  GUEST_PASSWORD = 'guestPassword!'
+  GUEST_EMAIL = "guest@guest.com"
+  GUEST_PASSWORD = "guestPassword!"
 
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :timeoutable
+    :recoverable, :rememberable, :validatable, :timeoutable
 
   has_many :devices, dependent: :destroy
   has_many :sensors, through: :devices

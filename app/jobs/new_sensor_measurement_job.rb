@@ -1,4 +1,4 @@
-# Saves sensor data and creates rule_violations if necessary.
+#  Saves sensor data and creates rule_violations if necessary.
 # If a rule_violation is created, it will send notifications to mobile_app_connections from the user.
 # Broadcasts the new sensor data to the view.
 class NewSensorMeasurementJob < ApplicationJob

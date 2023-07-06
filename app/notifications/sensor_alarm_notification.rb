@@ -17,9 +17,9 @@ class SensorAlarmNotification < Noticed::Base
   end
 
   def title
-    return t('.unknown_error') if params[:rule_violation].blank?
+    return t(".unknown_error") if params[:rule_violation].blank?
 
-    t('.title', device_name: params[:rule_violation].alarm_rule&.sensor&.device.to_s, locale: recipient.locale)
+    t(".title", device_name: params[:rule_violation].alarm_rule&.sensor&.device.to_s, locale: recipient.locale)
   end
 
   def body
@@ -27,13 +27,13 @@ class SensorAlarmNotification < Noticed::Base
   end
 
   def format_notification(fcm_device_token)
-    host = Rails.env.development? ? '192.168.1.10:3000' : Rails.application.config.action_mailer.default_url_options[:host]
+    host = Rails.env.development? ? "192.168.1.10:3000" : Rails.application.config.action_mailer.default_url_options[:host]
 
     {
       token: fcm_device_token,
       notification: {
         title: title,
-        body: body,
+        body: body
       },
       data: {
         sensor_id: params[:rule_violation].alarm_rule.sensor_id.to_s,

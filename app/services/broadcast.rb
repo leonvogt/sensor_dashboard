@@ -4,7 +4,7 @@ module Broadcast
       [page, sensor_measurement.sensor.device.user_id],
       target: "sensor-container-#{sensor_measurement.sensor_id}",
       partial: "sensors/new_data_notifier",
-      locals: { sensor_measurement: sensor_measurement }
+      locals: {sensor_measurement: sensor_measurement}
     )
   end
 end
