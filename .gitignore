@@ -33,6 +33,7 @@
 /config/deploy.rb
 /config/firebase.json
 /config/honeybadger.yml
+/config/apns.p8
 
 /app/assets/builds/*
 !/app/assets/builds/.keep

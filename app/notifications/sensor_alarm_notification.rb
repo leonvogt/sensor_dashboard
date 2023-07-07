@@ -5,6 +5,22 @@ class SensorAlarmNotification < Noticed::Base
 
   deliver_by :database
   deliver_by :fcm, credentials: :fcm_credentials, format: :format_notification, if: :should_send_push_notifications?
+  deliver_by :Ios, format: :ios_format, cert_path: :ios_cert_path, bundle_identifier: "sensor.dashboard.com.ios", development: true, if: :should_send_push_notifications?
+
+  def ios_format(apn)
+    host = Rails.env.development? ? "192.168.1.10:3000" : Rails.application.config.action_mailer.default_url_options[:host]
+
+    apn.alert = "Hello world"
+    apn.custom_payload = {url: notifications_url(host: host)}
+  end
+
+  def ios_cert_path
+    Rails.root.join("config/apns.p8")
+  end
+
+  def ios_device_tokens(user)
+    user.mobile_app_connections.ios.pluck(:notification_token)
+  end
 
   # Follow this guide to get your credentials: https://github.com/excid3/noticed/blob/master/docs/delivery_methods/fcm.md#google-firebase-cloud-messaging-notification-service
   def fcm_credentials
@@ -13,7 +29,7 @@ class SensorAlarmNotification < Noticed::Base
   end
 
   def fcm_device_tokens(user)
-    user.mobile_app_connections.pluck(:notification_token)
+    user.mobile_app_connections.android.pluck(:notification_token)
   end
 
   def title

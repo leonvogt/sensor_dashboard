@@ -29,6 +29,7 @@ gem "redis", "~> 5.0"
 # Push Notifications
 gem "noticed"
 gem "googleauth"
+gem "apnotic"
 
 # Styling
 gem "cssbundling-rails", "~> 1.2"
