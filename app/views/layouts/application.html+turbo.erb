@@ -3,6 +3,7 @@
   <head>
     <title><%= content_for(:title).present? ? content_for(:title) : 'SensorDashboard' %></title>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,23 +12,15 @@
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body class="desktop">
+  <body class="turbo-native">
     <%= turbo_frame_tag 'remote_modal' %>
+    <%= render 'layouts/mobile_menu' %>
     <%= render 'layouts/flash_messages', flash: flash %>
 
-    <% if user_signed_in? %>
-      <%= render 'layouts/mobile_menu' %>
-      <div class="flex md:mt-0 mt-[4.7rem]">
-        <%= render 'layouts/side_menu' %>
-        <div class="content">
-          <%= render 'layouts/top_bar' %>
-          <div id="main-container" class="grid grid-cols-12 gap-6 mt-5 px-5">
-            <%= yield %>
-          </div>
-        </div>
+    <div class="content">
+      <div id="main-container" class="grid grid-cols-12 gap-6">
+        <%= yield %>
       </div>
-    <% else %>
-      <%= yield %>
-    <% end %>
+    </div>
   </body>
 </html>
