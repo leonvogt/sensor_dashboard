@@ -1,4 +1,4 @@
-module API::Internal::V1::IOS
+module API::Internal::V1::Ios
   class PathConfigurationsController < API::Internal::V1::AuthsController
     skip_before_action :authenticate_token!
     # https://github.com/hotwired/turbo-ios/blob/main/Docs/PathConfiguration.md
