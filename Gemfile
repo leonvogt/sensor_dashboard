@@ -2,13 +2,14 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Rails Basics
-gem "rails", "~> 7.0.6"
+gem "rails", "~> 7.1.2"
 gem "sprockets-rails"
 gem "jsbundling-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
 gem "jbuilder"
 gem "bootsnap", require: false
+gem "sassc"
 
 # Webserver
 gem "puma", "~> 6.3"
@@ -34,7 +35,7 @@ gem "googleauth"
 gem "cssbundling-rails", "~> 1.2"
 
 # Deployment
-gem "mina"
+gem "kamal"
 
 # Error monitoring
 gem "honeybadger"
@@ -58,7 +59,6 @@ group :development do
   gem "web-console"
   gem "rack-mini-profiler"
   gem "better_errors"
-  gem "sassc" # better_errors dependency. Can be removed when PR is merged: https://github.com/BetterErrors/better_errors/pull/515
 
   gem "binding_of_caller"
   gem "solargraph"
