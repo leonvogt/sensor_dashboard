@@ -43,6 +43,9 @@ gem "honeybadger"
 # Performance monitoring
 gem "skylight"
 
+# Cron jobs
+gem "whenever"
+
 # Other
 gem "faker"
 gem "rqrcode"

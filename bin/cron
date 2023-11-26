@@ -1,0 +1,7 @@
+#!/bin/bash
+
+env >> /etc/environment
+crontab -u rails ./crontab
+
+# Run cron in foreground and enable logging
+exec "/usr/sbin/cron" -f -l 2
