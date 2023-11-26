@@ -9,6 +9,7 @@ gem "turbo-rails"
 gem "stimulus-rails"
 gem "jbuilder"
 gem "bootsnap", require: false
+gem "sassc"
 
 # Webserver
 gem "puma", "~> 6.3"
@@ -34,7 +35,7 @@ gem "googleauth"
 gem "cssbundling-rails", "~> 1.2"
 
 # Deployment
-gem "mina"
+gem "kamal"
 
 # Error monitoring
 gem "honeybadger"

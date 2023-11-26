@@ -1,16 +1,3 @@
-# PostgreSQL. Versions 9.3 and up are supported.
-#
-# Install the pg driver:
-#   gem install pg
-# On macOS with Homebrew:
-#   gem install pg -- --with-pg-config=/usr/local/bin/pg_config
-# On macOS with MacPorts:
-#   gem install pg -- --with-pg-config=/opt/local/lib/postgresql84/bin/pg_config
-# On Windows:
-#   gem install pg
-#       Choose the win32 build.
-#       Install PostgreSQL and put its /bin directory on your path.
-
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -19,13 +6,18 @@ default: &default
 development:
   <<: *default
   database: sensor_dashboard_development
+  prepared_statements: <%= ENV['PREPARED_STATEMENTS'] != 'false' %>
 
 test:
   <<: *default
+  host: <%= ENV["POSTGRES_HOST"] %>
+  username: <%= ENV["POSTGRES_USER"] %>
+  password: <%= ENV["POSTGRES_PASSWORD"] %>
   database: sensor_dashboard_test
 
 production:
   <<: *default
-  database: sensor_dashboard_production
-  username: sensor_dashboard
-  password: <%= ENV["SENSOR_DASHBOARD_DATABASE_PASSWORD"] %>
+  host: <%= ENV['POSTGRES_HOST'] %>
+  database: <%= ENV['POSTGRES_DB'] %>
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
