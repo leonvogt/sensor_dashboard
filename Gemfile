@@ -37,8 +37,9 @@ gem "cssbundling-rails", "~> 1.2"
 # Deployment
 gem "kamal"
 
-# Error monitoring
+# Monitoring
 gem "honeybadger"
+gem "logtail-rails"
 
 # Performance monitoring
 gem "skylight"
