@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "dashboard_charts", to: "dashboard#charts"
   get "dashboard_last_sensor_measurements", to: "dashboard#last_sensor_measurements"
 
+  get "up" => "rails/health#show", :as => :rails_health_check
+
   authenticate :user, lambda { |u| u.is_admin? } do
     mount Sidekiq::Web => "/sidekiq"
   end

@@ -1,4 +1,4 @@
-class CreateApiErrors < ActiveRecord::Migration[7.0]
+class CreateAPIErrors < ActiveRecord::Migration[7.0]
   def change
     create_table :api_errors do |t|
       t.text :error_message

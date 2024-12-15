@@ -1,5 +1,4 @@
 source "https://rubygems.org"
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Rails Basics
 gem "rails", "~> 8.0"
@@ -35,7 +34,8 @@ gem "googleauth"
 gem "cssbundling-rails", "~> 1.2"
 
 # Deployment
-gem "kamal"
+gem "kamal", require: false
+gem "thruster", require: false
 
 # Monitoring
 gem "honeybadger"
