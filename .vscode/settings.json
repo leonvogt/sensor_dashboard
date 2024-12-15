@@ -1,4 +1,10 @@
 {
   "editor.formatOnSave": true,
-  "standardRuby.mode": "enableUnconditionally"
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "rubyLsp.formatter": "standard",
+  "rubyLsp.linters": ["standard"],
+  "rubyLsp.enabledFeatures": {
+    "diagnostics": true
+  },
+  "rubyLsp.bundleGemfile": ""
 }
