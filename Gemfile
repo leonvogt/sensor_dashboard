@@ -2,7 +2,7 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 # Rails Basics
-gem "rails", "~> 7.1.2"
+gem "rails", "~> 8.0"
 gem "sprockets-rails"
 gem "jsbundling-rails"
 gem "turbo-rails"
@@ -12,7 +12,7 @@ gem "bootsnap", require: false
 gem "sassc"
 
 # Webserver
-gem "puma", "~> 6.3"
+gem "puma"
 
 # Database
 gem "pg", "~> 1.5"
@@ -20,15 +20,15 @@ gem "pg", "~> 1.5"
 # Authentication
 gem "devise"
 
-#  Background Job Handling
+# Background Job Handling
 gem "sidekiq"
 
 # Redis adapter to run Action Cable in production
 # And for sidekiq background jobs
-gem "redis", "~> 5.0"
+gem "redis"
 
 # Push Notifications
-gem "noticed"
+gem "noticed", "~> 1.6.3"
 gem "googleauth"
 
 # Styling
