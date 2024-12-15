@@ -211,17 +211,6 @@ GEM
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
     logger (1.6.3)
-    logtail (0.1.13)
-      msgpack (~> 1.0)
-    logtail-rack (0.2.5)
-      logtail (~> 0.1)
-      rack (>= 1.2, < 4.0)
-    logtail-rails (0.2.8)
-      actionpack (>= 5.0.0)
-      activerecord (>= 5.0.0)
-      logtail (~> 0.1)
-      logtail-rack (~> 0.1)
-      railties (>= 5.0.0)
     loofah (2.23.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -519,7 +508,6 @@ DEPENDENCIES
   jbuilder
   jsbundling-rails
   kamal
-  logtail-rails
   noticed (~> 1.6.3)
   pg (~> 1.5)
   pry

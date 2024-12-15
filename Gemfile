@@ -39,7 +39,6 @@ gem "kamal"
 
 # Monitoring
 gem "honeybadger"
-gem "logtail-rails"
 
 # Performance monitoring
 gem "skylight"
